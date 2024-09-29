@@ -24,7 +24,7 @@
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalFormulario">
                 Subir Archivo
             </button>
-            <a href="/ProyectoPEED-master/Menu/Menu.html">
+            <a href="../../Menu/Menu.html">
                 <button type="button" class="btn btn-dark">Volver</button>
             </a>
         </div>

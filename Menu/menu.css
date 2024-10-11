@@ -1,3 +1,4 @@
+/* Estilos globales */
 body {
     margin: 0;
     padding: 0;
@@ -6,8 +7,8 @@ body {
     color: #2c3e50;
 }
 
+/* Estilo para la barra de navegación */
 nav {
-    
     background-color: #004085; 
     color: #000; /* Letras negras */
     height: 70px;
@@ -40,6 +41,7 @@ nav a:hover {
     color: #1a2530;
 }
 
+/* Estilo para el contenido principal */
 .contenido {
     background-color: #ffffff;
     padding: 40px;
@@ -49,8 +51,20 @@ nav a:hover {
 
 h1, p {
     margin: 0;
+    font-weight: 500;
 }
 
+h1 {
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+}
+
+p {
+    margin-bottom: 40px;
+    font-size: 1.3rem;
+}
+
+/* Estilo para los botones */
 .button-container {
     display: flex;
     flex-direction: column;
@@ -90,15 +104,17 @@ button:hover {
 .generate-button button {
     padding: 10px 20px;
     font-size: 16px;
-    background-color: #1a5276; /* Azul rey */
+    background-color: #000; /* Fondo negro */
     color: #ecf0f1;
     border: none;
+    border-top: 3px solid #000000; /* Azul más fuerte en el borde superior */
+    border-bottom: 3px solid #000000; /* Azul más fuerte en el borde inferior */
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s;
 }
 
 .generate-button button:hover {
-    background-color: #153d58; /* Tonos más oscuros para hover */
+    background-color: #333; /* Fondo gris oscuro en hover */
     color: #fff;
 }

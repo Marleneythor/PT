@@ -19,7 +19,7 @@
 <body>
 <div class="container">
     <div class="fixed-header">
-        <h1 class="text-center my-4">Requisitos de Inicio</h1>
+        <h1 class="text-center my-4">REQUISITOS DE INICIO</h1>
         <div class="button-group mb-4">
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalFormulario">
                 Subir Archivo
@@ -87,12 +87,12 @@
                         </tr>
                         <?php
                     } else {
-                        echo "<tr>
-                                <td class='requisito-col'>$i</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>";
+                    echo "<tr>
+                            <td class='requisito-col'>$i</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>";
                     }
                 }
                 ?>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generar Constancia en PDF</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .constancia {
+            width: 210mm;
+            height: 297mm;
+            padding: 20mm;
+            border: 1px solid #000;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .header img {
+            width: 60px;
+        }
+        .header h2 {
+            margin: 0;
+            font-size: 16px;
+        }
+        .content {
+            font-size: 12px;
+            line-height: 1.6;
+        }
+        .table-container {
+            margin-top: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 5px;
+            text-align: center;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        input, select, button {
+            margin-bottom: 10px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <h1>Generar Constancia de Estudiantes Atendidos</h1>
+    
+    <!-- Formulario -->
+    <form id="constancia-form">
+        <label for="nombre-docente">Nombre del Docente:</label>
+        <input type="text" id="nombre-docente" name="nombre-docente" required>
+
+        <label for="carrera">Carrera:</label>
+        <input type="text" id="carrera" name="carrera" required>
+
+        <label for="fecha">Fecha:</label>
+        <input type="date" id="fecha" name="fecha" required>
+
+        <!-- Repetir para más materias -->
+        <h3>Materias del semestre</h3>
+        <label for="materia1">Materia 1:</label>
+        <input type="text" id="materia1" name="materia1" required>
+
+        <label for="alumnos1">Número de Alumnos 1:</label>
+        <input type="number" id="alumnos1" name="alumnos1" required>
+
+        <label for="clave1">Clave de la Materia 1:</label>
+        <input type="text" id="clave1" name="clave1" required>
+
+        <!-- Puedes añadir más materias aquí -->
+
+        <button type="button" onclick="generarPDF()">Generar PDF</button>
+    </form>
+
+    <!-- Constancia en HTML que será convertida a PDF -->
+    <div class="constancia" id="constancia" style="display: none;">
+        <div class="header">
+            <img src="logo.png" alt="Logo">
+            <h2>Instituto Tecnológico de Lázaro Cárdenas</h2>
+            <h4>Constancia de Estudiantes Atendidos</h4>
+        </div>
+
+        <div class="content">
+            <p>A quien corresponda,</p>
+            <p>
+                Por este medio, me permito notificar que el docente <strong id="docente-nombre"></strong>, de la
+                carrera de <strong id="docente-carrera"></strong>, atendió un total de 166 estudiantes durante los
+                semestres que se indican:
+            </p>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Semestre</th>
+                            <th>Materia</th>
+                            <th>Alumnos</th>
+                            <th>Clave de la Materia</th>
+                        </tr>
+                    </thead>
+                    <tbody id="materias-table">
+                        <tr>
+                            <td id="semestre1">Enero - Junio 2022</td>
+                            <td id="materia1-display"></td>
+                            <td id="alumnos1-display"></td>
+                            <td id="clave1-display"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p>
+                Se extiende la presente a petición del interesado a los <strong id="fecha-display"></strong>.
+            </p>
+
+            <p>Atentamente,</p>
+            <div class="footer">
+                <p>Firma del responsable</p>
+                <p><strong>Nombre del Responsable</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Librerías jsPDF y html2canvas -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script>
+        function generarPDF() {
+            // Obtener datos del formulario
+            const nombreDocente = document.getElementById('nombre-docente').value;
+            const carrera = document.getElementById('carrera').value;
+            const fecha = document.getElementById('fecha').value;
+
+            const materia1 = document.getElementById('materia1').value;
+            const alumnos1 = document.getElementById('alumnos1').value;
+            const clave1 = document.getElementById('clave1').value;
+
+            // Colocar los datos en el documento de la constancia
+            document.getElementById('docente-nombre').textContent = nombreDocente;
+            document.getElementById('docente-carrera').textContent = carrera;
+            document.getElementById('fecha-display').textContent = new Date(fecha).toLocaleDateString();
+
+            document.getElementById('materia1-display').textContent = materia1;
+            document.getElementById('alumnos1-display').textContent = alumnos1;
+            document.getElementById('clave1-display').textContent = clave1;
+
+            // Mostrar el contenedor de la constancia (antes oculto)
+            document.getElementById('constancia').style.display = 'block';
+
+            // Usar html2canvas para capturar el contenido de la constancia
+            html2canvas(document.querySelector("#constancia")).then(canvas => {
+                const imgData = canvas.toDataURL("image/png");
+                const { jsPDF } = window.jspdf;
+                const doc = new jsPDF();
+
+                const imgWidth = 210; // Ancho A4 en mm
+                const pageHeight = 297; // Altura A4 en mm
+                const imgHeight = canvas.height * imgWidth / canvas.width;
+
+                // Agregar la imagen al PDF
+                doc.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+
+                // Guardar el archivo PDF
+                doc.save("constancia.pdf");
+
+                // Ocultar la constancia de nuevo
+                document.getElementById('constancia').style.display = 'none';
+            });
+        }
+    </script>
+</body>
+</html>

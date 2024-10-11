@@ -77,5 +77,5 @@ function limpiarFormulario() {
 }
 
 function crearDocumento() { 
-    window.location.href = 'Generar_RI7.html';
+    window.location.href = '../RI7/RI7.html';  // Ruta absoluta a partir de la raíz del servidor
 }

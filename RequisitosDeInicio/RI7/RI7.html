@@ -188,23 +188,19 @@
         const doc = new jsPDF();
 
       // Cargar la imagen en base64
- const img = new Image();
+        const img = new Image();
         img.src = 'encabezado.png'; // Ruta de la imagen
-        img.onload = function () {
+ 
         // Una vez que la imagen esté cargada, la agregamos al PDF
-        doc.addImage(img, 'PNG', 25, 10, 90, 20); // (imagen, formato, x, y, ancho, alto)
-        doc.setFont("Arial", "normal");
-        doc.setFontSize(10);
-
-        
+        doc.addImage(img, 'PNG', 10, 10, 190, 30); // (imagen, formato, x, y, ancho, alto)
+     
+    let currentY = 80; // Ajusta según sea necesario
         // Inicializar currentY para el posicionamiento vertical
-        let currentY = 80; // Ajusta según sea necesario
 
         // Cabecera personalizada
             // Establecer el tipo y tamaño de fuente
         doc.setFont("Arial", "normal");
         doc.setFontSize(12);
-        doc.text("I")
 
         // Coordenada X para la alineación derecha (ajustar según sea necesario)
         const rightAlignX = 190;  
@@ -320,7 +316,6 @@
         doc.text(nombresFirmante2, rightX, currentY  + 55 );  // Nombre debajo de la línea
 
         doc.save("constancia_estudiantes.pdf");
-    }; 
     } else {
         alert("Por favor, ingrese al menos una materia en al menos uno de los semestres.");
     }

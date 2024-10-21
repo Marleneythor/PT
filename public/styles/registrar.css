@@ -1,59 +1,36 @@
-body{
-    width: 100%;
-    height: 100%;
+
+body {
+    background-color: #F0EDCF; /* Fondo */
+    padding: 20px; /* Espacio alrededor de toda la página */
 }
 
-.formulario{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-self: center;
-    align-content: center;
+.register-container {
+    background-color: #FFFFFF; /* Fondo del formulario */
+    border: 2px solid #40A2D8; /* Borde del formulario */
+    padding: 30px; /* Espacio interno del formulario */
+    margin: 20px; /* Margen externo para separar del borde del navegador */
 }
 
-
-.flexCenter{
-    width: 60%;
-    justify-content: center;
-    align-self: center;
+h3 {
+    color: #0B60B0; /* Color del título */
 }
-
-.flexCenter div{
-    display: flex;
-    align-self: center;
-    justify-content: center;
-    width: 100%;
-    margin-top: 5px;
-    background-color: #198754;
-    color: white;
-
+.form-label {
+    color: #000000; /* Color de las etiquetas */
 }
-
-
-
-span{
-    width: 20%;
-    padding: 5px;
+.btn-primary {
+    background-color: #0B60B0;
+    border-color: #0B60B0;
 }
-
-.flexCenter div input{
-    flex: 1;
-    border: #198754 solid 1px;
-    padding-left: 10px;
+.btn-primary:hover {
+    background-color: #40A2D8;
+    border-color: #40A2D8;
 }
-
-
-button{
-    margin-top: 20px;
-    padding: 10px;
-    background-color: #198754;
-    color: white;
-    border-radius: 5px;
+.btn-outline-secondary {
+    color: #0B60B0;
+    border-color: #0B60B0;
 }
-
-button:hover{
-    background-color: grey;
-    cursor: pointer;
+.btn-outline-secondary:hover {
+    background-color: #40A2D8;
+    border-color: #40A2D8;
+    color: #FFFFFF;
 }

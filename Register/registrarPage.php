@@ -1,79 +1,89 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EDD</title>
-    <link rel="stylesheet" type="text/css" href="../public/styles/registrar.css">
+    <title>EDD - Registro de usuario</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../public/styles/registrar.css">
 </head>
 <body>
-    <div class="formulario">
-        <form action="registrar.php" class="flexCenter" name="formulario" method="post">
-            <h3>Registro de usuario</h3>
-            <div>
-                <span>Nombres</span>
-                <input name="nombres" type="text" required>
+
+<main class="d-flex align-items-center justify-content-center min-vh-100">
+    <section class="container p-4 rounded shadow-sm bg-white border" style="max-width: 800px;">
+        <h3 class="text-center mb-4">Registro de usuario</h3>
+        <form action="registrar.php" method="post" class="row g-3">
+            <div class="col-md-6 col-sm-12">
+                <label for="nombres" class="form-label">Nombres</label>
+                <input name="nombres" type="text" class="form-control" required>
             </div>
-            <div>
-                <span>Apellido Materno</span>
-                <input name="apellidoMaterno" type="text" required>
+            <div class="col-md-6 col-sm-12">
+                <label for="apellidoPaterno" class="form-label">Apellido Paterno</label>
+                <input name="apellidoPaterno" type="text" class="form-control" required>
             </div>
-            <div>
-                <span>Apellido Paterno</span>
-                <input name="apellidoPaterno" type="text" required>
+            <div class="col-md-6 col-sm-12">
+                <label for="apellidoMaterno" class="form-label">Apellido Materno</label>
+                <input name="apellidoMaterno" type="text" class="form-control" required>
             </div>
-            <div>
-                <span>Grado de estudio</span>
-                <input name="grado" type="text" required>
+            <div class="col-md-6 col-sm-12">
+                <label for="grado" class="form-label">Grado de estudio</label>
+                <input name="grado" type="text" class="form-control" required>
             </div>
-            <div>
-                <span>CURP</span>
-                <input name="curp" type="text" required>
+            <div class="col-md-6 col-sm-12">
+                <label for="curp" class="form-label">CURP</label>
+                <input name="curp" type="text" class="form-control" required>
             </div>
-            <div>
-                <span>Sexo</span>
-                <input name="sexo" type="text" required>
+            <div class="col-md-6 col-sm-12">
+                <label for="sexo" class="form-label">Sexo</label>
+                <input name="sexo" type="text" class="form-control" required>
             </div>
-            <div>
-                <span>RFC</span>
-                <input name="rfc" type="text" required>
+            <div class="col-md-6 col-sm-12">
+                <label for="rfc" class="form-label">RFC</label>
+                <input name="rfc" type="text" class="form-control" required>
             </div>
-            <div>
-                <span>Celular</span>
-                <input name="celular" type="text">
+            <div class="col-md-6 col-sm-12">
+                <label for="celular" class="form-label">Celular</label>
+                <input name="celular" type="text" class="form-control">
             </div>
-            <div>
-                <span>Escuela o facultad</span>
-                <input name="escuela" type="text" value="Instituto Tecnológico de Lázaro Cárdenas" required>
+            <div class="col-md-6 col-sm-12">
+                <label for="escuela" class="form-label">Escuela o facultad</label>
+                <input name="escuela" type="text" class="form-control" value="Instituto Tecnológico de Lázaro Cárdenas" required>
             </div>
-            <div>
-                <span>Nacionalidad</span>
-                <input name="nacionalidad" type="text">
+            <div class="col-md-6 col-sm-12">
+                <label for="nacionalidad" class="form-label">Nacionalidad</label>
+                <input name="nacionalidad" type="text" class="form-control">
             </div>
-            <div>
-                <span>País</span>
-                <input name="pais" type="text">
+            <div class="col-md-6 col-sm-12">
+                <label for="pais" class="form-label">País</label>
+                <input name="pais" type="text" class="form-control">
             </div>
-            <div>
-                <span>Nivel Educativo</span>
-                <input name="nivelEducativo" type="text">
+            <div class="col-md-6 col-sm-12">
+                <label for="nivelEducativo" class="form-label">Nivel Educativo</label>
+                <input name="nivelEducativo" type="text" class="form-control">
             </div>
-            <div>
-                <span>Correo electrónico</span>
-                <input name="correo" type="email" required>
+            <div class="col-md-6 col-sm-12">
+                <label for="correo" class="form-label">Correo electrónico</label>
+                <input name="correo" type="email" class="form-control" required>
             </div>
-            <div>
-                <span>Usuario</span>
-                <input name="usuario" type="text" required>
+            <div class="col-md-6 col-sm-12">
+                <label for="usuario" class="form-label">Usuario</label>
+                <input name="usuario" type="text" class="form-control" required>
             </div>
-            <div>
-                <span>Contraseña</span>        
-                <input name="contrasena" type="text" required></div>
-                <button type="submit">Registrar</button>
-                <button><a href="../index.php">Inicio de Sesión</a></button>
-                
+            <div class="col-md-12">
+                <label for="contrasena" class="form-label">Contraseña</label>
+                <input name="contrasena" type="password" class="form-control" required>
+            </div>
+            <div class="d-flex justify-content-between mt-4">
+                <button type="submit" class="btn btn-primary">Registrar</button>
+                <a href="../index.php" class="btn btn-outline-secondary">Inicio de Sesión</a>
+            </div>
         </form>
-    </div>
-           
+    </section>
+</main>
+
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

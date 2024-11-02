@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subir Archivo</title>
+</head>
+<body>
+    <h1>Subir un Archivo</h1>
+<!-- 2. Formulario HTML -->
+<button onclick="history.back();">Regresar</button>
+<form action="requisitosDeInicio.php" method="post" enctype="multipart/form-data">
+    <br><br>
+
+    <label for="document_type">Selecciona el tipo de documento:</label>
+    <select name="document_type" id="document_type" required>
+        <option value="Constancia de recursos humanos">01.- Constancia de recursos humanos</option>
+        <option value="Talon de pago">02.- Talon de pago</option>
+        <option value="Carga Academica">03.- Carga Academica</option>
+        <option value="Carta Exclusividad">04.- Carta Exclusividad</option>
+        <option value="Proyecto de investigación">05.- Proyecto de investigación</option>
+        <option value="CV">06.- CV</option>
+        <option value="Constancia de materias">07.- Constancia de materias</option>
+        <option value="Autorización de periodo sabatico">08.- Autorización de periodo sabatico</option>
+        <option value="Licencia Por gravidez">09.- Licencia Por gravidez</option>
+        <option value="Cedula profesional">10.- Cedula profesional</option>
+        <option value="Constancia de cumplimiento actividades docentes">11.- Constancia de cumplimiento actividades docentes</option>
+        <option value="Carta de liberación actividades academicas">12.- Carta de liberación actividades academicas</option>
+        <option value="Evaluaciones departamentales">13.- Evaluaciones departamentales</option>
+        <option value="Evaluaciones de desempeño">14.- Evaluaciones de desempeño</option>
+    </select>
+    <br><br>
+
+    <input type="text" disabled value="Descripción del documento: puedes modificar este texto más tarde.">
+    <br><br>
+
+    <label for="file">Selecciona un archivo (PDF o Word, máximo 500 KB):</label>
+    <input type="file" name="file" id="file" required>
+    <br><br>
+
+    <input type="submit" value="Subir Archivo">
+</form>
+</body>
+</html>

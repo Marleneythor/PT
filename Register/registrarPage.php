@@ -27,8 +27,8 @@
                 <input name="apellidoMaterno" type="text" class="form-control" required>
             </div>
             <div class="col-md-6 col-sm-12">
-                <label for="grado" class="form-label">Grado de estudio</label>
-                <input name="grado" type="text" class="form-control" required>
+                <label for="grado" class="form-label">Grado Academico</label>
+                <input name="grado" type="text" class="form-control">
             </div>
             <div class="col-md-6 col-sm-12">
                 <label for="curp" class="form-label">CURP</label>
@@ -47,20 +47,12 @@
                 <input name="celular" type="text" class="form-control">
             </div>
             <div class="col-md-6 col-sm-12">
-                <label for="escuela" class="form-label">Escuela o facultad</label>
+                <label for="escuela" class="form-label">Escuela</label>
                 <input name="escuela" type="text" class="form-control" value="Instituto Tecnológico de Lázaro Cárdenas" required>
             </div>
             <div class="col-md-6 col-sm-12">
-                <label for="nacionalidad" class="form-label">Nacionalidad</label>
-                <input name="nacionalidad" type="text" class="form-control">
-            </div>
-            <div class="col-md-6 col-sm-12">
-                <label for="pais" class="form-label">País</label>
-                <input name="pais" type="text" class="form-control">
-            </div>
-            <div class="col-md-6 col-sm-12">
-                <label for="nivelEducativo" class="form-label">Nivel Educativo</label>
-                <input name="nivelEducativo" type="text" class="form-control">
+                <label for="nivel" class="form-label">Nivel Educativo</label>
+                <input name="nivel" type="text" class="form-control">
             </div>
             <div class="col-md-6 col-sm-12">
                 <label for="correo" class="form-label">Correo electrónico</label>

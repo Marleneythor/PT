@@ -7,6 +7,7 @@
     <!-- Incluir jsPDF -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <!-- Incluir el plugin jsPDF AutoTable -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.15/jspdf.plugin.autotable.min.js"></script>
     <style>
         .materia-details, .materia2-details {
@@ -37,49 +38,75 @@
 </head>
 <body>
 
-<div class="container">
-    <h1>Formulario para Constancia de Estudiantes Atendidos</h1>
-    <form id="constanciaForm">
-
-        <label for="nombreDocente">Nombre del Docente:</label>
-        <input type="text" id="nombreDocente" name="nombreDocente" required><br>
-
-        <label for="carrera">Carrera:</label>
-        <input type="text" id="carrera" name="carrera" required><br>
-        
-        <label for="fecha">Fecha:</label>
-        <input type="date" id="fecha" name="fecha" required><br>
-
-        <h3>Semestre 1</h3>
-        <label for="semestre1">Nombre del Semestre 1:</label>
-        <input type="text" id="semestre1" name="semestre1" required><br>
-
-        <label for="nivel1">Nivel del semestre 1:</label>
-        <input type="text" id="nivel1" name="nivel1" required><br>
-
-        <label for="numMaterias">Número de materias:</label>
-        <input type="number" id="numMaterias" name="numMaterias" min="1" required><br>
-        <div id="materiaGroup" style="display: none;"></div>
-
-        <h3>Semestre 2</h3>
-        <label for="semestre2">Nombre del Semestre 2:</label>
-        <input type="text" id="semestre2" name="semestre2" required><br>
-
-        <label for="nivel2">Nivel del semestre 2:</label>
-        <input type="text" id="nivel2" name="nivel2" required><br>
-
-        <label for="numMaterias2">Número de materias:</label>
-        <input type="number" id="numMaterias2" name="numMaterias2" min="1" required><br>
-        <div id="materiaGroup2" style="display: none;"></div>
-
-        <label for="nombresFirmante1">Firmante1:</label>
-        <input type="text" id="nombresFirmante1" name="nombresFirmante1" required><br><br>
-        <label for="nombresFirmante2">Firmante2:</label>
-        <input type="text" id="nombresFirmante2" name="nombresFirmante2" required><br><br>
-
-        <button type="submit">Generar Evaluación</button>
-    </form>
-</div>
+    <div class="container mt-4">
+        <h1 class="text-center mb-4">Formulario para Constancia de Estudiantes Atendidos</h1>
+        <form id="constanciaForm" class="p-4 border rounded bg-light shadow-sm">
+    
+            <div class="mb-3">
+                <label for="nombreDocente" class="form-label">Nombre del Docente:</label>
+                <input type="text" id="nombreDocente" name="nombreDocente" class="form-control" required>
+            </div>
+    
+            <div class="mb-3">
+                <label for="carrera" class="form-label">Carrera:</label>
+                <input type="text" id="carrera" name="carrera" class="form-control" required>
+            </div>
+            
+            <div class="mb-3">
+                <label for="fecha" class="form-label">Fecha:</label>
+                <input type="date" id="fecha" name="fecha" class="form-control" required>
+            </div>
+    
+            <h3 class="mt-4">Semestre 1</h3>
+            <div class="mb-3">
+                <label for="semestre1" class="form-label">Nombre del Semestre 1:</label>
+                <input type="text" id="semestre1" name="semestre1" class="form-control" required>
+            </div>
+    
+            <div class="mb-3">
+                <label for="nivel1" class="form-label">Nivel del semestre 1:</label>
+                <input type="text" id="nivel1" name="nivel1" class="form-control" required>
+            </div>
+    
+            <div class="mb-3">
+                <label for="numMaterias" class="form-label">Número de materias:</label>
+                <input type="number" id="numMaterias" name="numMaterias" min="1" class="form-control" required>
+            </div>
+            <div id="materiaGroup" style="display: none;"></div>
+    
+            <h3 class="mt-4">Semestre 2</h3>
+            <div class="mb-3">
+                <label for="semestre2" class="form-label">Nombre del Semestre 2:</label>
+                <input type="text" id="semestre2" name="semestre2" class="form-control" required>
+            </div>
+    
+            <div class="mb-3">
+                <label for="nivel2" class="form-label">Nivel del semestre 2:</label>
+                <input type="text" id="nivel2" name="nivel2" class="form-control" required>
+            </div>
+    
+            <div class="mb-3">
+                <label for="numMaterias2" class="form-label">Número de materias:</label>
+                <input type="number" id="numMaterias2" name="numMaterias2" min="1" class="form-control" required>
+            </div>
+            <div id="materiaGroup2" style="display: none;"></div>
+    
+            <div class="mb-3">
+                <label for="nombresFirmante1" class="form-label">Firmante 1:</label>
+                <input type="text" id="nombresFirmante1" name="nombresFirmante1" class="form-control" required>
+            </div>
+    
+            <div class="mb-3">
+                <label for="nombresFirmante2" class="form-label">Firmante 2:</label>
+                <input type="text" id="nombresFirmante2" name="nombresFirmante2" class="form-control" required>
+            </div>
+    
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">Generar Evaluación</button>
+            </div>
+        </form>
+    </div>
+    
 
 <script>
     const { jsPDF } = window.jspdf;

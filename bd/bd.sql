@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-11-2024 a las 23:58:53
+-- Tiempo de generación: 07-11-2024 a las 06:44:31
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -42,9 +42,9 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_IniciarSesion` (IN `p_usuario` V
     END IF;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_InsertarDocumento` (IN `p_id_docente` INT, IN `p_id_actividad` INT, IN `p_nombre_documento` VARCHAR(255), IN `p_ruta_archivo` VARCHAR(255), IN `p_fecha_subida` DATE, IN `p_categoria` VARCHAR(100), IN `p_tipo_documento` VARCHAR(20))   BEGIN
-    INSERT INTO documentos (id_docente, id_actividad, nombre_documento, ruta_archivo, fecha_subida, categoria, tipo_documento)
-    VALUES (p_id_docente, p_id_actividad, p_nombre_documento, p_ruta_archivo, p_fecha_subida, p_categoria, p_tipo_documento);
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_InsertarDocumento` (IN `p_id_docente` INT, IN `p_id_actividad` INT, IN `p_nombre_documento` VARCHAR(255), IN `p_ruta_archivo` VARCHAR(255), IN `p_fecha_subida` DATE, IN `p_categoria` VARCHAR(100), IN `p_tipo_documento` VARCHAR(20), IN `p_documento` VARCHAR(50))   BEGIN
+    INSERT INTO documentos (id_docente, id_actividad, nombre_documento, ruta_archivo, fecha_subida, categoria, tipo_documento, documento)
+    VALUES (p_id_docente, p_id_actividad, p_nombre_documento, p_ruta_archivo, p_fecha_subida, p_categoria, p_tipo_documento, p_documento);
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_RegistrarDocente` (IN `p_Nombres` VARCHAR(255), IN `p_ApellidoPaterno` VARCHAR(255), IN `p_ApellidoMaterno` VARCHAR(255), IN `p_GradoEstudio` VARCHAR(255), IN `p_CURP` VARCHAR(18), IN `p_Sexo` CHAR(1), IN `p_RFC` VARCHAR(13), IN `p_Celular` VARCHAR(15), IN `p_EscuelaFacultad` VARCHAR(255), IN `p_NivelEducativo` VARCHAR(255), IN `p_Correo` VARCHAR(255), IN `p_Usuario` VARCHAR(255), IN `p_Contrasena` VARCHAR(255))   BEGIN
@@ -203,15 +203,21 @@ CREATE TABLE `documentos` (
   `ruta_archivo` varchar(255) DEFAULT NULL,
   `fecha_subida` date DEFAULT NULL,
   `categoria` varchar(100) DEFAULT NULL,
-  `tipo_documento` varchar(20) DEFAULT NULL
+  `tipo_documento` varchar(20) DEFAULT NULL,
+  `documento` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `documentos`
 --
 
-INSERT INTO `documentos` (`id_documento`, `id_docente`, `id_actividad`, `nombre_documento`, `ruta_archivo`, `fecha_subida`, `categoria`, `tipo_documento`) VALUES
-(9, 4, 1, 'TOSN021114HMNRNSA4_Carga Academica.pdf', '../docentes/TOSN021114HMNRNSA4/requisitosDeInicio/TOSN021114HMNRNSA4_Carga Academica.pdf', '2024-11-02', 'CategoriaEjemplo', 'Constancia');
+INSERT INTO `documentos` (`id_documento`, `id_docente`, `id_actividad`, `nombre_documento`, `ruta_archivo`, `fecha_subida`, `categoria`, `tipo_documento`, `documento`) VALUES
+(26, 4, 1, 'TOSN021114HMNRNSA4_CargaAcademica_1.pdf', '../docentes/TOSN021114HMNRNSA4/requisitosDeInicio/TOSN021114HMNRNSA4_CargaAcademica_1.pdf', '2024-11-07', 'CategoriaEjemplo', 'Constancia', 'CargaAcademica'),
+(27, 4, 1, 'TOSN021114HMNRNSA4_EvaluacionesDeDesempeno_1.pdf', '../docentes/TOSN021114HMNRNSA4/requisitosDeInicio/TOSN021114HMNRNSA4_EvaluacionesDeDesempeno_1.pdf', '2024-11-07', 'CategoriaEjemplo', 'Constancia', 'EvaluacionesDeDesempeno'),
+(29, 4, 1, 'TOSN021114HMNRNSA4_ConstanciaDeRecursosHumanos_1.pdf', '../docentes/TOSN021114HMNRNSA4/requisitosDeInicio/TOSN021114HMNRNSA4_ConstanciaDeRecursosHumanos_1.pdf', '2024-11-07', 'CategoriaEjemplo', 'Constancia', 'ConstanciaDeRecursosHumanos'),
+(31, 4, 1, 'TOSN021114HMNRNSA4_TalonDePago_1.pdf', '../docentes/TOSN021114HMNRNSA4/requisitosDeInicio/TOSN021114HMNRNSA4_TalonDePago_1.pdf', '2024-11-07', 'CategoriaEjemplo', 'Constancia', 'TalonDePago'),
+(32, 4, 1, 'TOSN021114HMNRNSA4_TalonDePago_2.pdf', '../docentes/TOSN021114HMNRNSA4/requisitosDeInicio/TOSN021114HMNRNSA4_TalonDePago_2.pdf', '2024-11-07', 'CategoriaEjemplo', 'Constancia', 'TalonDePago'),
+(33, 4, 1, 'TOSN021114HMNRNSA4_TalonDePago_3.pdf', '../docentes/TOSN021114HMNRNSA4/requisitosDeInicio/TOSN021114HMNRNSA4_TalonDePago_3.pdf', '2024-11-07', 'CategoriaEjemplo', 'Constancia', 'TalonDePago');
 
 -- --------------------------------------------------------
 
@@ -303,7 +309,7 @@ ALTER TABLE `docentes`
 -- AUTO_INCREMENT de la tabla `documentos`
 --
 ALTER TABLE `documentos`
-  MODIFY `id_documento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_documento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT de la tabla `evaluaciones`

@@ -41,9 +41,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['file']) && isset($_SE
             exit();
         }
 
-        // Renombrar el archivo con el CURP y texto personalizado
-        $newFileName = $curp . "_" . $customText . "." . $fileExtension;
-        $targetFilePath = $targetDir . $newFileName;
+        // Generar un nombre de archivo único con sufijo incremental
+        $n = 1;
+        do {
+            $newFileName = $curp . "_" . $customText . "_" . $n . "." . $fileExtension;
+            $targetFilePath = $targetDir . $newFileName;
+            $n++;
+        } while (file_exists($targetFilePath));
+
+        // Extraer el valor de documento del nombre del archivo
+        $documento = $customText; // Asignamos el valor de $customText a la columna `documento`
 
         // Mover el archivo subido a la ruta especificada
         if (move_uploaded_file($_FILES['file']['tmp_name'], $targetFilePath)) {
@@ -54,10 +61,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['file']) && isset($_SE
             $idActividad = 1; // Establecemos el ID de la actividad
 
             // Llamar al procedimiento almacenado
-            $stmt = $conexion->prepare("CALL sp_InsertarDocumento(?, ?, ?, ?, ?, ?, ?)");
-            $stmt->bind_param("iisssss", $idDocente, $idActividad, $newFileName, $targetFilePath, $fechaSubida, $categoria, $tipoDocumento);
+            $stmt = $conexion->prepare("CALL sp_InsertarDocumento(?, ?, ?, ?, ?, ?, ?, ?)");
+            $stmt->bind_param("iissssss", $idDocente, $idActividad, $newFileName, $targetFilePath, $fechaSubida, $categoria, $tipoDocumento, $documento);
             if ($stmt->execute()) {
                 echo "El archivo ha sido subido y registrado exitosamente.";
+                echo "<script>history.back();</script>";  // Regresar a la página anterior
             } else {
                 echo "Hubo un error al registrar el documento.";
             }

@@ -1,0 +1,25 @@
+Pregunta: 1.1.1 ¿cuántas asignaturas diferentes tomo durante el año? 
+Calculo: nAsignaturas*5puntos, máximo 6 asignturas, maximo 30 puntos  
+
+Pregunta: 1.1.2 ¿cuántas materias diferentes adicionales al punto 1.1.1?
+Calculo: nAsignturas*10puntos, máximo 2 asignaturas, máximo 20 puntos
+
+Pregunta: 1.1.3 ¿Cuantas asignaturas diferentes de posgrado impartió en el año? 
+Calculo: nAsignaturas*5puntos, máximo 4 asignaturas, máximo 20 puntos
+
+Pregunta: 1.1.4 ¿Cuántos estudiantes atendió en la modalidad escolarizada, no escolarizada y mixta en licenciatura? 
+Calculo: (nEstudiantes*50)*200, máximo 50 puntos
+
+Pregunta: 1.1.4.1 ¿Cuántos estudiantes atendió en la modalidad escolarizada, no escolarizada y mixta en posgrado? 
+Calculo: nEstudiantes, máximo 50 puntos
+
+Pregunta: 1.1.5 ¿A cuantos estudiantes impartió tutorias? 
+Calculo: nEstudiantes, máximo 50 puntos
+
+Pregunta: 1.1.6 ¿Cuántas asignaturas impartió en programas educativos acreditados y/o en PNPC/SNP?
+Calculo: nAsiganturas*10, máximo 20 puntos
+
+Pregunta: 1.1.7 ¿Cuántas actividades complementarias impartió? 
+Calculo: nActividades*10, máximo 20 puntos
+
+

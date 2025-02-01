@@ -13,7 +13,7 @@ include '../../../Login/auth.php'; // Protege la página
 </head>
 <body class="vh-100 d-flex flex-column">
     <div class="container mt-3 flex-grow-1 overflow-auto">
-        <h1 class="text-center mb-3">1.1 PROMOCIÓN DEL APRENDIZAJE</h1>
+        <h1 class="text-center mb-3">1.2 APOYO A LA DOCENCIA</h1>
         <div class="text-start mb-3">
             <button class="btn btn-secondary" onclick="history.back();" aria-label="Regresar a la página anterior">Regresar</button>
         </div>
@@ -24,13 +24,13 @@ include '../../../Login/auth.php'; // Protege la página
                     <label for="document_type" class="form-label">Selecciona el número de documento:</label>
                     <select name="document_type" id="document_type" class="form-select" required onchange="cargarDocumentoSeleccionado1(); mostrarDescripcion();">
                         <option value="" selected disabled>-- Seleccione --</option>
-                        <option value="1">1.1.1 Asignaturas de licenciatura diferentes por año. </option>
-                        <option value="2">1.1.2 Profesor(a) impartiendo una asignatura adicional de licenciatura (desde la séptima por año)</option>
-                        <option value="3">1.1.3 Asignaturas de posgrado diferentes por año.</option>
-                        <option value="4">1.1.4 Estudiantes atendidos en la modalidad escolarizada, no escolarizada y mixta.</option>
-                        <option value="5">1.1.5 Tutoría a estudiantes de licenciatura en el PIT</option>
-                        <option value="6">1.1.6 Profesor(a) impartiendo asignaturas en programa acreditado o PNPC/SNP</option>
-                        <option value="7">1.1.7 Profesor(a) responsable de créditos complementarios autorizados</option>
+                        <option value="1">hola 23</option>
+                        <option value="2"></option>
+                        <option value="3"></option>
+                        <option value="4"></option>
+                        <option value="5"></option>
+                        <option value="6"></option>
+                        <option value="7"></option>
                     </select>
                 </div>
                 <div class="col-md-6">
@@ -43,7 +43,6 @@ include '../../../Login/auth.php'; // Protege la página
                 <label for="file" class="form-label">Selecciona un archivo (PDF, JPG o Word, máximo 500 KB):</label>
                 <input type="file" name="file" id="file" class="form-control" required>
             </div>
-
             <div class="text-center">
                 <input type="submit" value="Subir Archivo" class="btn btn-primary">
                 
@@ -57,7 +56,7 @@ include '../../../Login/auth.php'; // Protege la página
 
     </div>
 
-    <script src="1.1.js" defer></script>
+    <script src="1.2.js" defer></script>
      
 </body>
 </html>

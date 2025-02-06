@@ -1,5 +1,5 @@
 <?php
-include '../../../Login/auth.php'; // Protege la página
+include '../../../../Login/auth.php'; // Protege la página
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -52,7 +52,7 @@ include '../../../Login/auth.php'; // Protege la página
             </div>
             <input type="hidden" id="puntajeFinal" name="puntajeFinal" value="0">
             <button type="submit" class="btn btn-primary">Guardar Evaluación</button>
-            <a href="../MuenuE1.php" class="btn btn-primary btn-link-style">Volver</a>
+            <a href="../../MuenuE1.php" class="btn btn-primary btn-link-style">Volver</a>
         </form>
 
        

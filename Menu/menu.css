@@ -1,120 +1,49 @@
-/* Estilos globales */
+html{
 body {
-    margin: 0;
-    padding: 0;
     font-family: 'Roboto', sans-serif;
-    background-color: #004085; 
-    color: #2c3e50;
+    background-color: #fcf29a;
+    color: #000;
 }
-
-/* Estilo para la barra de navegación */
 nav {
-    background-color: #004085; 
-    color: #000; /* Letras negras */
-    height: 70px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #0B60B0;
+    padding: 1rem;
 }
-
-nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-}
-
-nav li {
-    margin: 0 15px;
-}
-
-nav a {
-    color: #ecf0f1;
-    text-decoration: none;
-    font-size: 18px;
-    font-weight: bold;
-    transition: color 0.3s;
-}
-
-nav a:hover {
-    color: #1a2530;
-}
-
-/* Estilo para el contenido principal */
-.contenido {
-    background-color: #ffffff;
-    padding: 40px;
-    color: #030f12;
-    text-align: center;
-}
-
-h1, p {
-    margin: 0;
+nav .navbar-nav .nav-link {
+    color: #fff !important;
     font-weight: 500;
 }
-
+nav .navbar-nav .nav-link:hover {
+    color: #40A2D8 !important;
+}
+.contenido {
+    text-align: center;
+    margin-top: 50px;
+    
+}
 h1 {
-    margin-bottom: 20px;
-    font-size: 2.5rem;
+    color: #0B60B0;
+    font-weight: 500;
 }
-
 p {
-    margin-bottom: 40px;
-    font-size: 1.3rem;
+    color: #000;
 }
-
-/* Estilo para los botones */
-.button-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 20px;
-}
-
-button {
-    margin: 15px;
-    padding: 15px 30px;
-    font-size: 20px;
-    background-color: #1a5276; /* Azul rey */
-    color: #ecf0f1;
+.button-container .btn {
+    background-color: #40A2D8;
     border: none;
+    margin: 10px;
+    padding: 15px 25px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #fff;
+    transition: background-color 0.3s ease;
     border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
 }
-
-button a {
-    color: #ecf0f1;
+.button-container .btn:hover {
+    background-color: #0B60B0;
+    color: #fff;
+}
+.button-container a {
     text-decoration: none;
+    color: inherit;
 }
-
-button:hover {
-    background-color: #153d58; /* Tonos más oscuros para hover */
-    color: #fff;
-}
-
-/* Botón Generar Evaluación */
-.generate-button {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-}
-
-.generate-button button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #000; /* Fondo negro */
-    color: #ecf0f1;
-    border: none;
-    border-top: 3px solid #000000; /* Azul más fuerte en el borde superior */
-    border-bottom: 3px solid #000000; /* Azul más fuerte en el borde inferior */
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-.generate-button button:hover {
-    background-color: #333; /* Fondo gris oscuro en hover */
-    color: #fff;
 }

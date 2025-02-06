@@ -16,7 +16,6 @@ if (isset($_SESSION['usuario']) && isset($_GET['document_type'])) {
     $stmt->close();
 
     if ($idDocente) {
-        // Consultar los documentos filtrados por id_docente y documento
         $stmt = $conexion->prepare("SELECT id_documento, nombre_documento, ruta_archivo FROM documentos WHERE id_docente = ? AND documento = ?");
         $stmt->bind_param("is", $idDocente, $documentType);
         $stmt->execute();

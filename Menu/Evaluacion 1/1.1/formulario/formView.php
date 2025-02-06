@@ -48,7 +48,6 @@ include '../../../../Login/auth.php'; // Protege la página
             <input type="range" id="estudiantes1" name="estudiantes1" min="1" max="200" value="1" oninput="updateValue(this, 'output4')">
             <output id="output4">1</output>
         </div>
-
         <div class="form-group">
             <label>1.1.4.1 ¿Cuántos estudiantes atendió en posgrado? (Máx: 50)</label>
             <input type="range" id="estudiantes2" name="estudiantes2" min="0" max="50" value="0" oninput="updateValue(this, 'output5')">
@@ -60,7 +59,7 @@ include '../../../../Login/auth.php'; // Protege la página
             <input type="range" id="tutorias" name="tutorias" min="0" max="50" value="0" oninput="updateValue(this, 'output6')">
             <output id="output6">0</output>
         </div>
-
+        
         <div class="form-group">
             <label>1.1.6 ¿Cuántas asignaturas impartió en programas acreditados? (Máx: 2)</label>
             <input type="range" id="asignaturas4" name="asignaturas4" min="0" max="2" value="0" oninput="updateValue(this, 'output7')">

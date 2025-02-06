@@ -1,7 +1,7 @@
 console.log('scripts.js cargado correctamente'); 
 
 const descripcionesDescripcion = {
-        '1': 'Constancia de Recursos Humanos que especifique el nombramiento en estatus 10 o 95 sin titular, anterior a la quincena 07 del 2024, además deberá especificar que no ha sido acreedor a algún tipo de sanción y que cumplió con al menos el 90% deasistencia de acuerdo con su jornada y horario de trabajo durante el período a evaluar.',
+        'RI1': 'Constancia de Recursos Humanos que especifique el nombramiento en estatus 10 o 95 sin titular, anterior a la quincena 07 del 2024, además deberá especificar que no ha sido acreedor a algún tipo de sanción y que cumplió con al menos el 90% deasistencia de acuerdo con su jornada y horario de trabajo durante el período a evaluar.',
         '2': 'Talón de pago (quincena 07 del 2024, sin la percepción o ajuste del DT o I8).', 
         '3': 'Cumplir con la carga académica reglamentaria, con base en lo dispuesto en el Reglamento Interior de Trabajo del Personal Docente de los Institutos Tecnológicos (Art 143, 144, 146, 147, 148 y 156) reflejado en los horarios del periodo a evaluar y del primer semestre del año de la convocatoria. Para profesores(as) que imparten clases en nivel Posgrado se debenconsiderar los Lineamientos para la Operación de los Estudios de Posgrado en el Tecnológico Nacional de México, en sunumeral 2.4.2. ',
         '4': 'Profesores(as) de tiempo completo presentar carta de exclusividad. Descargar formato en http://www.edd.tecnm.mx',
@@ -81,6 +81,18 @@ function eliminarArchivo(idDocumento, rutaArchivo) {
         };
 
         xhr.send(formData);
+    }
+}
+function toggleDocuments() {
+    const container = document.getElementById('documentsContainer');
+    const button = document.getElementById('toggleButton');
+
+    if (container.style.display === 'none') {
+        container.style.display = 'block';
+        button.innerHTML = '▲'; 
+    } else {
+        container.style.display = 'none';
+        button.innerHTML = '▼'; 
     }
 }
 

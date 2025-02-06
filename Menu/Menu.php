@@ -10,62 +10,78 @@ include '../Login/auth.php'; // Protege la página
     <title>Menú EDD</title>
     <link rel="icon" href="logo.jpg" type="image/jpg" sizes="16x16">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
             font-family: 'Roboto', sans-serif;
-            background-color: #F0EDCF;
-            color: #000;
+            
+            color: #333;
         }
-        nav {
-            background-color: #0B60B0;
-            padding: 1rem;
+        .navbar {
+            background-color: #003366;
         }
-        nav .navbar-nav .nav-link {
-            color: #fff !important;
+        .navbar-brand, .nav-link {
+            color: white !important;
             font-weight: 500;
         }
-        nav .navbar-nav .nav-link:hover {
-            color: #40A2D8 !important;
+        .navbar-toggler {
+            border: none;
         }
         .contenido {
             text-align: center;
-            margin-top: 50px;
-        }
-        h1 {
-            color: #0B60B0;
-            font-weight: 500;
-        }
-        p {
-            color: #000;
+            margin-top: 80px;
         }
         .button-container .btn {
-            background-color: #40A2D8;
-            border: none;
-            margin: 10px;
-            padding: 15px 25px;
-            font-size: 1.2rem;
-            font-weight: 500;
-            color: #fff;
-            transition: background-color 0.3s ease;
+            background-color:#003366;
+            color: white;
+            font-weight: bold;
             border-radius: 8px;
+            margin: 10px;
+            padding: 15px 20px;
+            transition: 0.3s;
         }
         .button-container .btn:hover {
-            background-color: #0B60B0;
-            color: #fff;
+            background-color: #A1E3F9;
+            color: #333;
         }
-        .button-container a {
-            text-decoration: none;
-            color: inherit;
+        @media (max-width: 768px) {
+            .contenido h1{
+                font-size: 1.8rem;
+            }
+            .button-container .btn {
+                width: 100%;
+            }
         }
+        h1 {
+            color: black;
+            font-weight: bold;
+            font-size: 60;
+        }
+        @media (max-width: 768px) {
+    img {
+        width: 70%;
+     
+    margin-left: -50px; 
+    }
+}
+img {
+    float: left;
+    margin-right: 20px;
+    width: 7%;
+    max-width: 150px; /* Nunca será más grande de 300px */
+    height: auto; /* Mantiene proporción */
+}
+
     </style>
 </head>
 <body>
-
     <!-- Menú de navegación -->
-    <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg fixed-top shadow">
         <div class="container">
-            <a class="navbar-brand text-white" href="#">EDD</a>
+           
+          
+            <img src="../public/images/fondo.png" class="img" alt="">
+ <a class="navbar-brand" href="#">EDD</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -92,19 +108,20 @@ include '../Login/auth.php'; // Protege la página
     </nav>
 
     <!-- Contenido principal -->
-    <div class="contenido container">
-        <h1>Bienvenido al Folder Digital EDD</h1>
-        <p>Seleccione un bloque para almacenar sus documentos</p>
-        <div class="button-container d-flex justify-content-center flex-wrap">
-            <a href="../Menu/Evaluacion 1/MuenuE1.php" class="btn">1. La dedicación en las actividades de la docencia</a>
-            <a href="2.html" class="btn">2. La calidad en el desempeño de la docencia</a>
-            <a href="3.html" class="btn">3. La permanencia en las actividades de la docencia</a>
-            <a href="GenerarEvaluacion/GenerarE.html" class="btn">Generar Evaluación</a>
+    <div class="container mt-5 pt-5">
+        <div class="contenido">
+            <h1 class="mb-4">Bienvenido al Folder Digital EDD</h1>
+            <p>Seleccione un bloque para almacenar sus documentos</p>
+            <div class="button-container d-flex flex-wrap justify-content-center">
+                <a href="../Menu/Evaluacion 1/MuenuE1.php" class="btn btn-lg">1. La dedicación en las actividades de la docencia</a>
+                <a href="2.html" class="btn btn-lg">2. La calidad en el desempeño de la docencia</a>
+                <a href="3.html" class="btn btn-lg">3. La permanencia en las actividades de la docencia</a>
+                <a href="GenerarEvaluacion/GenerarE.html" class="btn btn-lg">Generar Evaluación</a>
+            </div>
         </div>
     </div>
 
     <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-tQfZ5LU1hZksmy9HULCaWldvB5aZZ8odHlMmfF2ksmNba6uAmEzsZnnthFv0Iw4o" crossorigin="anonymous"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

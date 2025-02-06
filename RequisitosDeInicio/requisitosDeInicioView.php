@@ -6,23 +6,27 @@ include '../Login/auth.php'; // Protege la página
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Subir Archivo</title>
+    <title>RI</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
 </head>
 <body class="vh-100 d-flex flex-column">
-    <div class="container mt-3 flex-grow-1 overflow-auto">
-        <h1 class="text-center mb-3">REQUISITOS DE INICIO</h1>
-        <div class="text-start mb-3">
-            <button class="btn btn-secondary" onclick="history.back();" aria-label="Regresar a la página anterior">Regresar</button>
+    <div class="sticky-top bg-white p-3 shadow">
+        <div class="d-flex align-items-center position-relative">
+            <button class="btn btn-secondary position-absolute start-0" onclick="history.back();" aria-label="Regresar a la página anterior">
+                <i class="bi bi-arrow-left"></i>
+            </button>
+            <h1 class="text-center flex-grow-1 mb-0">REQUISITOS DE INICIO</h1>
         </div>
-
+    </div>
+    <div class="container mt-3 flex-grow-1 overflow-auto">
         <form action="requisitosDeInicio.php" method="post" enctype="multipart/form-data" class="p-4 border rounded bg-light mb-3">
             <div class="row g-3 mb-3 align-items-center">
                 <div class="col-md-6">
                     <label for="document_type" class="form-label">Selecciona el número de requisito:</label>
                     <select name="document_type" id="document_type" class="form-select" required onchange="cargarDocumentoSeleccionado1(); mostrarDescripcion();">
                         <option value="" selected disabled>-- Seleccione --</option>
-                        <option value="1">01.- Constancia de recursos humanos</option>
+                        <option value="RI1">01.- Constancia de recursos humanos</option>
                         <option value="2">02.- Talon de pago</option>
                         <option value="3">03.- Carga Academica</option>
                         <option value="4">04.- Carta Exclusividad</option>
@@ -30,7 +34,7 @@ include '../Login/auth.php'; // Protege la página
                         <option value="6">06.- CV</option>
                         <option value="7">07.- Constancia de materias</option>
                         <option value="8">08.- Autorización de periodo sabatico</option>
-                        <option value="9">09.- Licencia Por gravidez</option>
+                        <option value="9">09.- Licencia por gravidez</option>
                         <option value="10">10.- Cedula profesional</option>
                         <option value="11">11.- Constancia de cumplimiento actividades docentes</option>
                         <option value="12">12.- Carta de liberación actividades academicas</option>
@@ -49,21 +53,30 @@ include '../Login/auth.php'; // Protege la página
                 <input type="file" name="file" id="file" class="form-control" required>
             </div>
 
-            <div class="text-center">
+            <div class="text-center d-flex justify-content-center gap-3">
                 <input type="submit" value="Subir Archivo" class="btn btn-primary">
-                <div id="botonCrearDocumento" class="text-center mt-3" style="display: none;">
+                <div id="botonCrearDocumento" style="display: none;">
                     <button onclick="crearDocumento()" class="btn btn-success">Crear Documento</button>
                 </div>
             </div>
+
         </form>
 
-        <div class="overflow-auto" style="max-height: 40vh;">
-            <h2 class="text-center mb-3">Documentos Subidos</h2>
-            <div id="documentsContainer" class="border rounded p-3 bg-light"></div>
-        </div>
+        
 
     </div>
+        <div class="sticky-top bg-white p-3 shadow">
+            <div class="d-flex justify-content-between align-items-center">
+                <h2 class="text-center mb-3 flex-grow-1">Documentos Subidos</h2>
+                <button id="toggleButton" class="btn btn-secondary" onclick="toggleDocuments()">
+                    ▼
+                </button>
+            </div>
 
+            <div id="documentsContainer" class="border rounded p-3 bg-light overflow-auto" style="max-height: 40vh; display: none;">
+                <!-- Aquí se cargarán los documentos -->
+            </div>
+        </div>
     <script src="scripts.js" defer></script>
      
 </body>

@@ -32,7 +32,7 @@ include '../../Login/auth.php';
             </button>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown1">
                 <a class="dropdown-item" href="1.1/1.1View.php">Subir Documentación</a>
-                <a class="dropdown-item" href="1.1/formulario/Form.php">Realizar Formulario</a>
+                <a class="dropdown-item" href="1.1/formulario/formView.php">Realizar Formulario</a>
             </div>
         </div>
         

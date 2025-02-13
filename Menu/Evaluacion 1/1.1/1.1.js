@@ -15,7 +15,7 @@ const puntosPuntos = {
     '1.1.1': '5',
     '1.1.2': '10', 
     '1.1.3': '5',
-    '1.1.4': 'Usar Formula',
+    '1.1.4': 'Licenciatura = (Núm. de estudiantes x 50)/200 \nPosgrado = (Un punto por estudiante)',
     '1.1.5': '1 punto por estudiante',
     '1.1.6': '10',
     '1.1.7': '10',
@@ -43,14 +43,16 @@ function mostrarDescripcion() {
     puntos2.value = puntosMax[valorSeleccionado] ||'Descripción no disponible.';
 
     // Mostrar u ocultar el botón según la selección
-    const botonCrearDocumento = document.getElementById('botonCrearDocumento');
-    botonCrearDocumento.style.display = (valorSeleccionado === '7') ? 'block' : 'none';
+    
+    const mostrarpregunta = document.getElementById('mostrarpregunta');
+   
+    mostrarpregunta.style.display = (valorSeleccionado === '1.1.4') ? 'flex' : 'none';
+
 }
 
 async function cargarDocumentoSeleccionado1() {
     const documentType = document.getElementById('document_type').value;
     const documentsContainer = document.getElementById('documentsContainer');
-
   
     documentsContainer.innerHTML = "<p class='text-info'>Cargando documentos...</p>";
 

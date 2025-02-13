@@ -74,22 +74,37 @@ include '../../../Login/auth.php';
             <div  class="row g-3 mb-3 align-items-center">
                     <div class="col-md-6">
                         <label for="puntos" class="form-label">Puntos por actividad:</label>
-                        <textarea id="puntos" class="form-control" rows="1" disabled></textarea>
+                        <textarea id="puntos" class="form-control" rows="2" disabled></textarea>
                     </div>
                     <div class="col-md-6">  
                         <label for="puntosmax" class="form-label">Puntuacion maxima:</label>
-                        <textarea id="puntosmax" class="form-control" rows="1" disabled></textarea>
+                        <textarea id="puntosmax" class="form-control" rows="2" disabled></textarea>
                     </div>
                 </div>
             <div class="mb-3">
                 <label for="file" class="form-label">Selecciona un archivo (PDF, JPG o Word, máximo 500 KB):</label>
                 <input type="file" name="file" id="file" class="form-control" required>
             </div>
-           
-                <div class="text-center">
+            <div class="container">
+                <div class="row g-3 mb-3 align-items-center" id="mostrarpregunta" style="display: none;">
+                    <div class="col-md-6">
+                        <label for="document_type" class="form-label">Selecciona el nivel en que atendió a los estudiantes:</label>
+                        <select name="document_type" id="document_type" class="form-select">
+                            <option value="" selected disabled>-- Seleccione --</option>
+                            <option value="lic">Licenciatura</option>
+                            <option value="pos">Posgrado</option>
+                        </select>  
+                    </div>
+                    <div class="col-md-6">
+                        <label for="file" class="form-label">Ingrese el número de estudiantes atendidos:</label>
+                        <input type="number" class="form-control">
+                    </div>
+                </div>
+            </div>
+                <div class="mb-4 text-center">
                     <input type="submit" value="Subir Archivo" class="btn btn-primary">   
                 </div> 
-            </div>
+            </div>  
         </form>
 
         <div class="sticky-top p-3 shadow menu">
@@ -104,6 +119,7 @@ include '../../../Login/auth.php';
                 <!-- Aquí se cargarán los documentos -->
             </div>
         </div>
+        
 
     </div>
 

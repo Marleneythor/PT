@@ -9,12 +9,12 @@ const descripcionesDescripcion = {
     
 const puntosPuntos = {
     '1.3.1': '1.3.1.1. Licenciatura = 20   \n1.3.1.2. Especialización = 25  \n1.3.1.3. Maestría = 40   \n1.3.1.4. Maestría Co-Director = 30   \n1.3.1.5. Doctorado = 50   \n1.3.1.6. Doctorado. Co-Director = 40 ',
-    '1.3.2': '1.3.1.1. Licenciatura = 80   \n1.3.1.2. Especialización = 75  \n1.3.1.3. Maestría = 80   \n1.3.1.4. Maestría Co-Director = 60   \n1.3.1.5. Doctorado = 100   \n1.3.1.6. Doctorado. Co-Director = 80 ', 
+    '1.3.2': '1.3.2.1. Técnico Superior = 5   \n1.3.2.2. Licenciatura = 10    \n1.3.2.3. Especialización = 15    \n1.3.2.4. Maestría = 15    \n1.3.2.5. Doctorado = 30 ',
    
     
 };
 const puntosMax = {
-    '1.3.1': '1.3.2.1. Técnico Superior = 5   \n1.3.2.2. Licenciatura = 10    \n1.3.2.3. Especialización = 15    \n1.3.2.4. Maestría = 15    \n1.3.2.5. Doctorado = 30 ',
+    '1.3.1': '1.3.1.1. Licenciatura = 80   \n1.3.1.2. Especialización = 75  \n1.3.1.3. Maestría = 80   \n1.3.1.4. Maestría Co-Director = 60   \n1.3.1.5. Doctorado = 100   \n1.3.1.6. Doctorado. Co-Director = 80 ', 
     '1.3.2': '1.3.2.1. Técnico Superior = 30   \n1.3.2.2. Licenciatura = 30   \n 1.3.2.3. Especialización = 30   \n 1.3.2.4. Maestría = 30    \n1.3.2.5. Doctorado = 30 ', 
 
     

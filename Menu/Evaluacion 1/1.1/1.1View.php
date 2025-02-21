@@ -85,28 +85,44 @@ include '../../../Login/auth.php';
                 <label for="file" class="form-label">Selecciona un archivo (PDF, JPG o Word, máximo 500 KB):</label>
                 <input type="file" name="file" id="file" class="form-control" required>
             </div>
+           
+            
             <div class="container">
-                <div class="row g-3 mb-3 align-items-center" id="mostrarpregunta" style="display: none;">
-                    <div class="col-md-6">
-                        <label for="document_type" class="form-label">Selecciona el nivel en que atendió a los estudiantes:</label>
-                        <select name="document_type" id="document_type" class="form-select">
-                            <option value="" selected disabled>-- Seleccione --</option>
-                            <option value="lic">Licenciatura</option>
-                            <option value="pos">Posgrado</option>
-                        </select>  
-                    </div>
-                    <div class="col-md-6">
-                        <label for="file" class="form-label">Ingrese el número de estudiantes atendidos:</label>
-                        <input type="number" class="form-control">
-                    </div>
-                </div>
-            </div>
+    <!-- Sección para 1.1.4 (pregunta con nivel y número de estudiantes) -->
+    <div class="row g-3 mb-3 align-items-center" id="pregunta1_1_4" style="display: none;">
+        <div class="col-md-6">
+            <label for="nivel_estudiantes" class="form-label">Selecciona el nivel en que atendió a los estudiantes:</label>
+            <select name="nivel_estudiantes" id="nivel_estudiantes" class="form-select">
+                <option value="" selected disabled>-- Seleccione --</option>
+                <option value="licenciatura">Licenciatura</option>
+                <option value="posgrado">Posgrado</option>
+            </select>  
+        </div>
+        <div class="col-md-6">
+            <label for="num_estudiantes" class="form-label">Número de estudiantes atendidos:</label>
+            <input type="number" name="num_estudiantes" id="num_estudiantes" class="form-control">
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <!-- Sección para 1.1.5 (solo número de estudiantes) -->
+    <div class="row g-3 mb-3 align-items-center" id="pregunta1_1_5" style="display: none;">
+        <div class="col-md-6">
+            <label for="num_estudiantes_1_1_5" class="form-label">Número de estudiantes atendidos:</label>
+            <input type="number" name="num_estudiantes_1_1_5" id="num_estudiantes_1_1_5" class="form-control">
+        </div>
+    </div>
+</div>
+
+
+
                 <div class="mb-4 text-center">
                     <input type="submit" value="Subir Archivo" class="btn btn-primary">   
                 </div> 
-            </div>  
+            
         </form>
-
+</div>
         <div class="sticky-top p-3 shadow menu">
             <div class="d-flex justify-content-between align-items-center">
                 <h2 class="text-center mb-3 flex-grow-1">Documentos Subidos</h2>
@@ -115,13 +131,13 @@ include '../../../Login/auth.php';
                 </button>
             </div>
 
-            <div id="documentsContainer" class="border rounded p-3 bg-light overflow-auto color" style="max-height: 40vh; display: none;">
+            <div id="documentsContainer" class="border rounded p-3 bg-light overflow-auto color" style="max-height: 30vh; display: none;">
                 <!-- Aquí se cargarán los documentos -->
             </div>
         </div>
         
 
-    </div>
+    
 
     <script src="1.1.js" defer></script>
      

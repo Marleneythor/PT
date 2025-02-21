@@ -17,7 +17,7 @@ if (isset($_SESSION['usuario']) && isset($_GET['document_type'])) {
 
     if ($idDocente) {
         // Consultar los documentos filtrados por id_docente y documento
-        $stmt = $conexion->prepare("SELECT id_documento, nombre_documento, ruta_archivo FROM documentos WHERE id_docente = ? AND documento = ?");
+        $stmt = $conexion->prepare("SELECT id_documento, nombre_documento, ruta_archivo, puntosporactividad FROM documentos WHERE id_docente = ? AND documento = ?");
         $stmt->bind_param("is", $idDocente, $documentType);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -28,10 +28,12 @@ if (isset($_SESSION['usuario']) && isset($_GET['document_type'])) {
                 $idDocumento = $row['id_documento'];
                 $nombreDocumento = $row['nombre_documento'];
                 $rutaArchivo = $row['ruta_archivo'];
+                $puntosPorActividad = $row['puntosporactividad'];
 
                 echo "<div class='d-flex justify-content-between align-items-center mb-2'>";
                 echo "<span class='me-auto'>$nombreDocumento</span>";  // Alineado a la izquierda
-                
+                echo "<span class='badge text-white me-2' style='background-color: #003366; font-size: 14px; padding: 6px 10px; border-radius: 5px; min-width: 50px; text-align: center; display: inline-block;'>$puntosPorActividad Puntos</span>";
+
                 // Contenedor para los botones, alineados a la derecha
                 echo "<div class='d-flex justify-content-end'>";
                 

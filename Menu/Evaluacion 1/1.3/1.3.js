@@ -1,5 +1,4 @@
 console.log('scripts cargado correctamente'); 
-
 const descripcionesDescripcion = {
     '1.3.1': '• Para Licenciatura: Copia del documento del libro de actas de examen profesional o de grado en la que aparezca como Presidente(a) del jurado.No se consideran participaciones como Secretario y/o Vocal.\n• Para Posgrado: Acta de examen de grado en donde se especifique la Dirección o Co-Dirección.\n• Titulaciones en otras instituciones requieren copia de convenio de colaboración académico y de investigación.\nNota: No se reconocerá la asesoría a estudiantes que se titulen por la opción por Promedio, EGEL, Escolaridad por Estudios de Posgrado.',
     
@@ -27,18 +26,21 @@ function mostrarDescripcion() {
     const valorSeleccionado = select.value;
 
     descripcion.value = descripcionesDescripcion[valorSeleccionado] || 'Descripción no disponible.';
-    puntos1.value = puntosPuntos[valorSeleccionado] ||'Descripción no disponible.';
-    puntos2.value = puntosMax[valorSeleccionado] ||'Descripción no disponible.';
+    puntos1.value = puntosPuntos[valorSeleccionado] || 'Descripción no disponible.';
+    puntos2.value = puntosMax[valorSeleccionado] || 'Descripción no disponible.';
 
-    // Mostrar u ocultar el botón según la selección
-    const botonCrearDocumento = document.getElementById('botonCrearDocumento');
-    botonCrearDocumento.style.display = (valorSeleccionado === '7') ? 'block' : 'none';
+    //Mostrar u ocultar el botón según la selección
+    const pregunta1_1_4 = document.getElementById('pregunta1_3_1');
+    pregunta1_1_4.style.display = (valorSeleccionado === '1.3.1') ? 'flex' : 'none';
+    const pregunta1_1_5 = document.getElementById('pregunta1_3_2');
+   pregunta1_1_5.style.display = (valorSeleccionado === '1.3.2') ? 'flex' : 'none';
+  
 }
+
 
 async function cargarDocumentoSeleccionado1() {
     const documentType = document.getElementById('document_type').value;
     const documentsContainer = document.getElementById('documentsContainer');
-
   
     documentsContainer.innerHTML = "<p class='text-info'>Cargando documentos...</p>";
 
@@ -50,7 +52,6 @@ async function cargarDocumentoSeleccionado1() {
         documentsContainer.innerHTML = "<p class='text-danger'>Error al cargar los documentos.</p>";
     }
 }
-
 
 document.getElementById('file').addEventListener('change', function () {
     const file = this.files[0];
@@ -72,16 +73,14 @@ function eliminarArchivo(idDocumento, rutaArchivo) {
         formData.append("ruta_archivo", rutaArchivo);
 
         const xhr = new XMLHttpRequest();
-        xhr.open("POST", "eliminarDocumento.php", true);
+        xhr.open("POST", "../../Acciones/eliminarDocumento.php", true);
 
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4 && xhr.status === 200) {
                 alert(xhr.responseText);
-                
                 document.getElementById('document_type').dispatchEvent(new Event('change'));
             }
         };
-
         xhr.send(formData);
     }
 }
@@ -98,4 +97,3 @@ function toggleDocuments() {
         button.innerHTML = '▼'; 
     }
 }
-

@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 07-11-2024 a las 06:44:31
--- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.2.12
+-- Host: 127.0.0.1
+-- Generation Time: Feb 21, 2025 at 09:32 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,12 +18,12 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `pedd`
+-- Database: `pedd`
 --
 
 DELIMITER $$
 --
--- Procedimientos
+-- Procedures
 --
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_IniciarSesion` (IN `p_usuario` VARCHAR(255), IN `p_contrasena` VARCHAR(255), OUT `p_resultado` INT)   BEGIN
     -- Declarar una variable local para almacenar la contraseña encriptada
@@ -42,9 +42,9 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_IniciarSesion` (IN `p_usuario` V
     END IF;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_InsertarDocumento` (IN `p_id_docente` INT, IN `p_id_actividad` INT, IN `p_nombre_documento` VARCHAR(255), IN `p_ruta_archivo` VARCHAR(255), IN `p_fecha_subida` DATE, IN `p_categoria` VARCHAR(100), IN `p_tipo_documento` VARCHAR(20), IN `p_documento` VARCHAR(50))   BEGIN
-    INSERT INTO documentos (id_docente, id_actividad, nombre_documento, ruta_archivo, fecha_subida, categoria, tipo_documento, documento)
-    VALUES (p_id_docente, p_id_actividad, p_nombre_documento, p_ruta_archivo, p_fecha_subida, p_categoria, p_tipo_documento, p_documento);
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_InsertarDocumento` (IN `p_id_docente` INT, IN `p_id_actividad` INT, IN `p_nombre_documento` VARCHAR(255), IN `p_ruta_archivo` VARCHAR(255), IN `p_fecha_subida` DATE, IN `p_categoria` VARCHAR(100), IN `p_tipo_documento` VARCHAR(20), IN `p_documento` VARCHAR(50), IN `p_puntosporactividad` INT)   BEGIN
+    INSERT INTO documentos (id_docente, id_actividad, nombre_documento, ruta_archivo, fecha_subida, categoria, tipo_documento, documento, puntosporactividad)
+    VALUES (p_id_docente, p_id_actividad, p_nombre_documento, p_ruta_archivo, p_fecha_subida, p_categoria, p_tipo_documento, p_documento, p_puntosporactividad);
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_RegistrarDocente` (IN `p_Nombres` VARCHAR(255), IN `p_ApellidoPaterno` VARCHAR(255), IN `p_ApellidoMaterno` VARCHAR(255), IN `p_GradoEstudio` VARCHAR(255), IN `p_CURP` VARCHAR(18), IN `p_Sexo` CHAR(1), IN `p_RFC` VARCHAR(13), IN `p_Celular` VARCHAR(15), IN `p_EscuelaFacultad` VARCHAR(255), IN `p_NivelEducativo` VARCHAR(255), IN `p_Correo` VARCHAR(255), IN `p_Usuario` VARCHAR(255), IN `p_Contrasena` VARCHAR(255))   BEGIN
@@ -138,7 +138,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `actividades`
+-- Table structure for table `actividades`
 --
 
 CREATE TABLE `actividades` (
@@ -152,7 +152,7 @@ CREATE TABLE `actividades` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `actividades`
+-- Dumping data for table `actividades`
 --
 
 INSERT INTO `actividades` (`id_actividad`, `nombre_actividad`, `descripcion`, `categoria`, `puntaje_maximo`, `nivel`, `subnivel`) VALUES
@@ -161,7 +161,7 @@ INSERT INTO `actividades` (`id_actividad`, `nombre_actividad`, `descripcion`, `c
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `docentes`
+-- Table structure for table `docentes`
 --
 
 CREATE TABLE `docentes` (
@@ -182,7 +182,7 @@ CREATE TABLE `docentes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `docentes`
+-- Dumping data for table `docentes`
 --
 
 INSERT INTO `docentes` (`id_docente`, `Nombres`, `ApellidoPaterno`, `ApellidoMaterno`, `GradoEstudio`, `CURP`, `Sexo`, `RFC`, `Celular`, `EscuelaFacultad`, `NivelEducativo`, `Correo`, `Usuario`, `Contrasena`) VALUES
@@ -192,37 +192,38 @@ INSERT INTO `docentes` (`id_docente`, `Nombres`, `ApellidoPaterno`, `ApellidoMat
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `documentos`
+-- Table structure for table `documentos`
 --
 
 CREATE TABLE `documentos` (
   `id_documento` int(11) NOT NULL,
-  `id_docente` int(11) DEFAULT NULL,
-  `id_actividad` int(11) DEFAULT NULL,
-  `nombre_documento` varchar(255) DEFAULT NULL,
-  `ruta_archivo` varchar(255) DEFAULT NULL,
-  `fecha_subida` date DEFAULT NULL,
-  `categoria` varchar(100) DEFAULT NULL,
-  `tipo_documento` varchar(20) DEFAULT NULL,
-  `documento` varchar(50) DEFAULT NULL
+  `id_docente` int(11) NOT NULL,
+  `id_actividad` int(11) NOT NULL,
+  `nombre_documento` varchar(255) NOT NULL,
+  `ruta_archivo` varchar(255) NOT NULL,
+  `fecha_subida` date NOT NULL,
+  `categoria` varchar(100) NOT NULL,
+  `tipo_documento` varchar(20) NOT NULL,
+  `documento` varchar(50) NOT NULL,
+  `puntosporactividad` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `documentos`
+-- Dumping data for table `documentos`
 --
 
-INSERT INTO `documentos` (`id_documento`, `id_docente`, `id_actividad`, `nombre_documento`, `ruta_archivo`, `fecha_subida`, `categoria`, `tipo_documento`, `documento`) VALUES
-(26, 4, 1, 'TOSN021114HMNRNSA4_CargaAcademica_1.pdf', '../docentes/TOSN021114HMNRNSA4/requisitosDeInicio/TOSN021114HMNRNSA4_CargaAcademica_1.pdf', '2024-11-07', 'CategoriaEjemplo', 'Constancia', 'CargaAcademica'),
-(27, 4, 1, 'TOSN021114HMNRNSA4_EvaluacionesDeDesempeno_1.pdf', '../docentes/TOSN021114HMNRNSA4/requisitosDeInicio/TOSN021114HMNRNSA4_EvaluacionesDeDesempeno_1.pdf', '2024-11-07', 'CategoriaEjemplo', 'Constancia', 'EvaluacionesDeDesempeno'),
-(29, 4, 1, 'TOSN021114HMNRNSA4_ConstanciaDeRecursosHumanos_1.pdf', '../docentes/TOSN021114HMNRNSA4/requisitosDeInicio/TOSN021114HMNRNSA4_ConstanciaDeRecursosHumanos_1.pdf', '2024-11-07', 'CategoriaEjemplo', 'Constancia', 'ConstanciaDeRecursosHumanos'),
-(31, 4, 1, 'TOSN021114HMNRNSA4_TalonDePago_1.pdf', '../docentes/TOSN021114HMNRNSA4/requisitosDeInicio/TOSN021114HMNRNSA4_TalonDePago_1.pdf', '2024-11-07', 'CategoriaEjemplo', 'Constancia', 'TalonDePago'),
-(32, 4, 1, 'TOSN021114HMNRNSA4_TalonDePago_2.pdf', '../docentes/TOSN021114HMNRNSA4/requisitosDeInicio/TOSN021114HMNRNSA4_TalonDePago_2.pdf', '2024-11-07', 'CategoriaEjemplo', 'Constancia', 'TalonDePago'),
-(33, 4, 1, 'TOSN021114HMNRNSA4_TalonDePago_3.pdf', '../docentes/TOSN021114HMNRNSA4/requisitosDeInicio/TOSN021114HMNRNSA4_TalonDePago_3.pdf', '2024-11-07', 'CategoriaEjemplo', 'Constancia', 'TalonDePago');
+INSERT INTO `documentos` (`id_documento`, `id_docente`, `id_actividad`, `nombre_documento`, `ruta_archivo`, `fecha_subida`, `categoria`, `tipo_documento`, `documento`, `puntosporactividad`) VALUES
+(72, 4, 1, 'TOSN021114HMNRNSA4_1.1.1_1.jpg', '../../../docentes/TOSN021114HMNRNSA4/1/1.1/1.1.1//TOSN021114HMNRNSA4_1.1.1_1.jpg', '2025-02-21', 'CategoriaEjemplo', 'Constancia', '1.1.1', 5),
+(73, 4, 1, 'TOSN021114HMNRNSA4_1.1.2_1.jpg', '../../../docentes/TOSN021114HMNRNSA4/1/1.1/1.1.2//TOSN021114HMNRNSA4_1.1.2_1.jpg', '2025-02-21', 'CategoriaEjemplo', 'Constancia', '1.1.2', 10),
+(74, 4, 1, 'TOSN021114HMNRNSA4_1.1.2_2.jpg', '../../../docentes/TOSN021114HMNRNSA4/1/1.1/1.1.2//TOSN021114HMNRNSA4_1.1.2_2.jpg', '2025-02-21', 'CategoriaEjemplo', 'Constancia', '1.1.2', 10),
+(75, 4, 1, 'TOSN021114HMNRNSA4_1.1.2_3.jpg', '../../../docentes/TOSN021114HMNRNSA4/1/1.1/1.1.2//TOSN021114HMNRNSA4_1.1.2_3.jpg', '2025-02-21', 'CategoriaEjemplo', 'Constancia', '1.1.2', 10),
+(76, 4, 1, 'TOSN021114HMNRNSA4_1.3.1_1.jpg', '../../../docentes/TOSN021114HMNRNSA4/1/1.3/1.3.1//TOSN021114HMNRNSA4_1.3.1_1.jpg', '2025-02-21', 'CategoriaEjemplo', 'Constancia', '1.3.1', 20),
+(77, 4, 1, 'TOSN021114HMNRNSA4_1.3.2_1.pdf', '../../../docentes/TOSN021114HMNRNSA4/1/1.3/1.3.2//TOSN021114HMNRNSA4_1.3.2_1.pdf', '2025-02-21', 'CategoriaEjemplo', 'Constancia', '1.3.2', 15);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `evaluaciones`
+-- Table structure for table `evaluaciones`
 --
 
 CREATE TABLE `evaluaciones` (
@@ -235,10 +236,19 @@ CREATE TABLE `evaluaciones` (
   `evaluador` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `evaluaciones`
+--
+
+INSERT INTO `evaluaciones` (`id_evaluacion`, `id_docente`, `id_actividad`, `puntaje_obtenido`, `documento_comprobacion`, `fecha_evaluacion`, `evaluador`) VALUES
+(6, 4, 1, 126, NULL, '2025-02-06', NULL),
+(7, 4, 1, 202, NULL, '2025-02-06', NULL),
+(8, 4, 1, 5, NULL, '2025-02-06', NULL);
+
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `resultados_evaluacion`
+-- Table structure for table `resultados_evaluacion`
 --
 
 CREATE TABLE `resultados_evaluacion` (
@@ -250,24 +260,24 @@ CREATE TABLE `resultados_evaluacion` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Índices para tablas volcadas
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `actividades`
+-- Indexes for table `actividades`
 --
 ALTER TABLE `actividades`
   ADD PRIMARY KEY (`id_actividad`),
   ADD KEY `subnivel` (`subnivel`);
 
 --
--- Indices de la tabla `docentes`
+-- Indexes for table `docentes`
 --
 ALTER TABLE `docentes`
   ADD PRIMARY KEY (`id_docente`);
 
 --
--- Indices de la tabla `documentos`
+-- Indexes for table `documentos`
 --
 ALTER TABLE `documentos`
   ADD PRIMARY KEY (`id_documento`),
@@ -275,7 +285,7 @@ ALTER TABLE `documentos`
   ADD KEY `id_actividad` (`id_actividad`);
 
 --
--- Indices de la tabla `evaluaciones`
+-- Indexes for table `evaluaciones`
 --
 ALTER TABLE `evaluaciones`
   ADD PRIMARY KEY (`id_evaluacion`),
@@ -283,72 +293,72 @@ ALTER TABLE `evaluaciones`
   ADD KEY `id_actividad` (`id_actividad`);
 
 --
--- Indices de la tabla `resultados_evaluacion`
+-- Indexes for table `resultados_evaluacion`
 --
 ALTER TABLE `resultados_evaluacion`
   ADD PRIMARY KEY (`id_resultado`),
   ADD KEY `id_docente` (`id_docente`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `actividades`
+-- AUTO_INCREMENT for table `actividades`
 --
 ALTER TABLE `actividades`
   MODIFY `id_actividad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT de la tabla `docentes`
+-- AUTO_INCREMENT for table `docentes`
 --
 ALTER TABLE `docentes`
   MODIFY `id_docente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT de la tabla `documentos`
+-- AUTO_INCREMENT for table `documentos`
 --
 ALTER TABLE `documentos`
-  MODIFY `id_documento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id_documento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
 
 --
--- AUTO_INCREMENT de la tabla `evaluaciones`
+-- AUTO_INCREMENT for table `evaluaciones`
 --
 ALTER TABLE `evaluaciones`
-  MODIFY `id_evaluacion` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_evaluacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT de la tabla `resultados_evaluacion`
+-- AUTO_INCREMENT for table `resultados_evaluacion`
 --
 ALTER TABLE `resultados_evaluacion`
   MODIFY `id_resultado` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- Restricciones para tablas volcadas
+-- Constraints for dumped tables
 --
 
 --
--- Filtros para la tabla `actividades`
+-- Constraints for table `actividades`
 --
 ALTER TABLE `actividades`
   ADD CONSTRAINT `actividades_ibfk_1` FOREIGN KEY (`subnivel`) REFERENCES `actividades` (`id_actividad`);
 
 --
--- Filtros para la tabla `documentos`
+-- Constraints for table `documentos`
 --
 ALTER TABLE `documentos`
   ADD CONSTRAINT `documentos_ibfk_1` FOREIGN KEY (`id_docente`) REFERENCES `docentes` (`id_docente`),
   ADD CONSTRAINT `documentos_ibfk_2` FOREIGN KEY (`id_actividad`) REFERENCES `actividades` (`id_actividad`);
 
 --
--- Filtros para la tabla `evaluaciones`
+-- Constraints for table `evaluaciones`
 --
 ALTER TABLE `evaluaciones`
   ADD CONSTRAINT `evaluaciones_ibfk_1` FOREIGN KEY (`id_docente`) REFERENCES `docentes` (`id_docente`),
   ADD CONSTRAINT `evaluaciones_ibfk_2` FOREIGN KEY (`id_actividad`) REFERENCES `actividades` (`id_actividad`);
 
 --
--- Filtros para la tabla `resultados_evaluacion`
+-- Constraints for table `resultados_evaluacion`
 --
 ALTER TABLE `resultados_evaluacion`
   ADD CONSTRAINT `resultados_evaluacion_ibfk_1` FOREIGN KEY (`id_docente`) REFERENCES `docentes` (`id_docente`);

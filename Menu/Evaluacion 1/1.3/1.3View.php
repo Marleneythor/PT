@@ -8,7 +8,7 @@ include '../../../Login/auth.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Punto 1.3</title>
+    <title>Punto 1.1</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
     <style>
@@ -46,7 +46,8 @@ include '../../../Login/auth.php';
             </button>
             <h1 class="text-center flex-grow-1 mb-0">1.3 ASESORÍA PARA TITULACIÓN INTEGRAL O DIRECCIÓN DE TESIS</h1>
         </div>
-            <h2 class="text-center mb-0">100 Posibles puntos</h2>
+            <h2 class="text-center mb-0">100 Puntos</h2>
+            
     </div>
     <div class="container mt-3 flex-grow-1 overflow-auto">
         <form action="subirDocumento.php" method="post" enctype="multipart/form-data" class="p-4 border rounded bg-light mb-3">
@@ -54,10 +55,11 @@ include '../../../Login/auth.php';
                 <div class="col-md-6">
                     <label for="document_type" class="form-label">Selecciona el número de documento:</label>
                     <select name="document_type" id="document_type" class="form-select" required onchange="cargarDocumentoSeleccionado1(); mostrarDescripcion();">
-                    <option value="" selected disabled>-- Seleccione --</option>
+                        <option value="" selected disabled>-- Seleccione --</option>
                         <option value="1.3.1">1.3.1. Asesor(a) o director(a) o co-director(a) (solo posgrado) (100 puntos posibles).</option>
                         <option value="1.3.2">1.3.2. Sinodal para titulación u obtención de grado de estudiantes del TecNM (30 puntos posibles).</option>
                     </select>
+                    
                 </div>
                 <div class="col-md-6">
                     <label for="descripcion_documento" class="form-label">Descripción del documento:</label>
@@ -67,11 +69,11 @@ include '../../../Login/auth.php';
             <div  class="row g-3 mb-3 align-items-center">
                     <div class="col-md-6">
                         <label for="puntos" class="form-label">Puntos por actividad:</label>
-                        <textarea id="puntos" class="form-control" rows="3" disabled></textarea>
+                        <textarea id="puntos" class="form-control" rows="2" disabled></textarea>
                     </div>
                     <div class="col-md-6">  
                         <label for="puntosmax" class="form-label">Puntuacion maxima:</label>
-                        <textarea id="puntosmax" class="form-control" rows="3" disabled></textarea>
+                        <textarea id="puntosmax" class="form-control" rows="2" disabled></textarea>
                     </div>
                 </div>
             <div class="mb-3">
@@ -79,12 +81,47 @@ include '../../../Login/auth.php';
                 <input type="file" name="file" id="file" class="form-control" required>
             </div>
            
-                <div class="text-center">
-                    <input type="submit" value="Subir Archivo" class="btn btn-primary">   
-                </div> 
+            
+            <div class="container">
+                <!-- Sección para 1.1.4 (pregunta con nivel y número de estudiantes) -->
+                <div class="row g-3 mb-3 align-items-center" id="pregunta1_3_1" style="display: none;">
+                    <div class="col-md-6">
+                        <label for="nivel_posgrado" class="form-label">Nivel de posgrado en que trabajo como Asesor(a), Director(a) o Co-Director(a):</label>
+                        <select name="nivel_posgrado" id="nivel_posgrado" class="form-select">
+                            <option value="" selected disabled>-- Seleccione --</option>
+                            <option value="licenciatura">Licenciatura</option>
+                            <option value="Especializacion">Especialización</option>
+                            <option value="Maestria">Maestría</option>
+                            <option value="Maestria.Co-Director">Maestría. Co-Director</option>
+                            <option value="Doctorado">Doctorado</option>
+                            <option value="Doctorado.Co-Director">Doctorado. Co-Director</option>
+                        </select>  
+                    </div>
+                </div>
             </div>
-        </form>
 
+            <div class="container">
+            <div class="row g-3 mb-3 align-items-center" id="pregunta1_3_2" style="display: none;">
+                    <div class="col-md-6">
+                        <label for="nivel_academico" class="form-label">Nivel académico en que participo como sinodal para titulación u obtención de grado de estudiantes del TecNM :</label>
+                        <select name="nivel_academico" id="nivel_academico" class="form-select">
+                            <option value="" selected disabled>-- Seleccione --</option>
+                            <option value="TecnicoSuperior">Técnico Superior</option>
+                            <option value="licenciatura">Licenciatura</option>
+                            <option value="Especializacion">Especialización</option>
+                            <option value="Maestria">Maestría</option>
+                            <option value="Doctorado">Doctorado</option>
+                        </select>  
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-4 text-center">
+                <input type="submit" value="Subir Archivo" class="btn btn-primary">   
+            </div> 
+            
+        </form>
+        </div>
         <div class="sticky-top p-3 shadow menu">
             <div class="d-flex justify-content-between align-items-center">
                 <h2 class="text-center mb-3 flex-grow-1">Documentos Subidos</h2>
@@ -93,13 +130,11 @@ include '../../../Login/auth.php';
                 </button>
             </div>
 
-            <div id="documentsContainer" class="border rounded p-3 bg-light overflow-auto color" style="max-height: 40vh; display: none;">
+            <div id="documentsContainer" class="border rounded p-3 bg-light overflow-auto color" style="max-height: 30vh; display: none;">
                 <!-- Aquí se cargarán los documentos -->
             </div>
         </div>
-
-    </div>
-
+        
     <script src="1.3.js" defer></script>
      
 </body>

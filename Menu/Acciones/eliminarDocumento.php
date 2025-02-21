@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "../../../conexion/conexion.php";
+include "../../conexion/conexion.php";
 
 if (isset($_POST['ruta_archivo']) && isset($_POST['id_documento'])) {
     $rutaArchivo = $_POST['ruta_archivo'];

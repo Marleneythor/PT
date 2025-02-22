@@ -15,82 +15,76 @@ if (isset($_SESSION['usuario']) && isset($_GET['document_type'])) {
     $stmt->close();
 
     if ($idDocente) {
-        // Obtener los puntos totales por documento (manteniendo límites individuales)
+
         $stmt = $conexion->prepare("
             SELECT 
                 LEAST(SUM(puntosporactividad), 
                     CASE 
-                        -- LÍMITES PARA 1.3.1
-                        WHEN subdocumento = '1.3.1.1' THEN 80
-                        WHEN subdocumento = '1.3.1.2' THEN 75
-                        WHEN subdocumento = '1.3.1.3' THEN 80
-                        WHEN subdocumento = '1.3.1.4' THEN 60
-                        WHEN subdocumento = '1.3.1.5' THEN 100
-                        WHEN subdocumento = '1.3.1.6' THEN 80
-                        
-                        -- LÍMITES PARA 1.3.2
-                        WHEN subdocumento = '1.3.2.1' THEN 30
-                        WHEN subdocumento = '1.3.2.2' THEN 30
-                        WHEN subdocumento = '1.3.2.3' THEN 30
-                        WHEN subdocumento = '1.3.2.4' THEN 30
-                        WHEN subdocumento = '1.3.2.5' THEN 30
-                        ELSE SUM(puntosporactividad) ñ
+                        WHEN documento = '1.2.1.1' THEN 40
+                        WHEN documento = '1.2.1.2' THEN 40
+                        WHEN documento = '1.2.1.3' THEN 10
+                        WHEN documento = '1.2.1.4' THEN 20
+                        WHEN documento = '1.2.2.1' THEN 60
+                        WHEN documento = '1.2.2.2' THEN 60
+                        WHEN documento = '1.2.2.3' THEN 80
+                        WHEN documento = '1.2.2.4' THEN 80
+                        WHEN documento = '1.2.2.5' THEN 80
+                        WHEN documento = '1.2.2.6' THEN 80
+                        WHEN documento = '1.2.2.7' THEN 80
+                        ELSE SUM(puntosporactividad) 
                     END
                 ) AS puntos_totales
             FROM documentos
-            WHERE id_docente = ? AND subdocumento = ?");
+            WHERE id_docente = ? AND documento = ?");
         $stmt->bind_param("is", $idDocente, $documentType);
         $stmt->execute();
         $stmt->bind_result($puntosTotales);
         $stmt->fetch();
         $stmt->close();
     
-        // Obtener la suma total de puntos considerando los límites de 1.3.1 y 1.3.2
+        // Obtener la suma total de puntos considerando el límite de 100 para 1.2.1 y 1.2.2
         $stmt = $conexion->prepare("
             SELECT 
-                LEAST(SUM(CASE WHEN subdocumento LIKE '1.3.1%' THEN puntos_limited ELSE 0 END), 100) AS total_1_3_1,
-                LEAST(SUM(CASE WHEN subdocumento LIKE '1.3.2%' THEN puntos_limited ELSE 0 END), 100) AS total_1_3_2
+                LEAST(SUM(CASE WHEN documento LIKE '1.2.1%' THEN puntos_limited ELSE 0 END), 100) AS total_1_2_1,
+                LEAST(SUM(CASE WHEN documento LIKE '1.2.2%' THEN puntos_limited ELSE 0 END), 100) AS total_1_2_2
             FROM (
                 SELECT 
-                    subdocumento,
+                    documento,
                     LEAST(SUM(puntosporactividad), 
                         CASE 
-                            -- LÍMITES PARA 1.3.1
-                            WHEN subdocumento = '1.3.1.1' THEN 80
-                            WHEN subdocumento = '1.3.1.2' THEN 75
-                            WHEN subdocumento = '1.3.1.3' THEN 80
-                            WHEN subdocumento = '1.3.1.4' THEN 60
-                            WHEN subdocumento = '1.3.1.5' THEN 100
-                            WHEN subdocumento = '1.3.1.6' THEN 80
-                            
-                            -- LÍMITES PARA 1.3.2
-                            WHEN subdocumento = '1.3.2.1' THEN 30
-                            WHEN subdocumento = '1.3.2.2' THEN 30
-                            WHEN subdocumento = '1.3.2.3' THEN 30
-                            WHEN subdocumento = '1.3.2.4' THEN 30
-                            WHEN subdocumento = '1.3.2.5' THEN 30
+                            WHEN documento = '1.2.1.1' THEN 40
+                            WHEN documento = '1.2.1.2' THEN 40
+                            WHEN documento = '1.2.1.3' THEN 10
+                            WHEN documento = '1.2.1.4' THEN 20
+                            WHEN documento = '1.2.2.1' THEN 60
+                            WHEN documento = '1.2.2.2' THEN 60
+                            WHEN documento = '1.2.2.3' THEN 80
+                            WHEN documento = '1.2.2.4' THEN 80
+                            WHEN documento = '1.2.2.5' THEN 80
+                            WHEN documento = '1.2.2.6' THEN 80
+                            WHEN documento = '1.2.2.7' THEN 80
                             ELSE SUM(puntosporactividad) 
                         END
                     ) AS puntos_limited
                 FROM documentos
                 WHERE id_docente = ?
-                AND subdocumento LIKE '1.3.%'
-                GROUP BY subdocumento
+                AND documento LIKE '1.2.%'
+                GROUP BY documento
             ) AS subquery
         ");
         $stmt->bind_param("i", $idDocente);
         $stmt->execute();
-        $stmt->bind_result($total_1_3_1, $total_1_3_2);
+        $stmt->bind_result($total_1_2_1, $total_1_2_2);
         $stmt->fetch();
         $stmt->close();
     
-        // Aplicar el límite global de 150 para los totales de 1.3.1 y 1.3.2
-        $sumaTotal_1_3 = min($total_1_3_1 + $total_1_3_2, 150);
+        // Aplicar el límite global de 150
+        $sumaTotal_1_2 = min($total_1_2_1 + $total_1_2_2, 150);
+        
 
-    
         // Mostrar ambos valores con el límite aplicado
         echo "<div class='d-flex justify-content-between align-items-center mb-2'>";
-        echo "<div class='d-flex justify-content-end alert alert-primary mb-3'>Puntos Totales Acumulados: <strong>$sumaTotal_1_3</strong></div>";
+        echo "<div class='d-flex justify-content-end alert alert-primary mb-3'>Puntos Totales Acumulados: <strong>$sumaTotal_1_2</strong></div>";
         echo "<div class='d-flex justify-content-end alert alert-success mb-3'>Puntos Totales del Documento: <strong>$puntosTotales</strong></div>";
         echo "</div>";  
 

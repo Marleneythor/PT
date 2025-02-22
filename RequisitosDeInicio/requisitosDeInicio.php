@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['file']) && isset($_SE
         //$targetDir = realpath("../../../docentes/") . "/$curp/1/1.1/$customText/";
       //  $targetDir = realpath("../../../docentes/") . "/$curp/1/1.1";
       //  $targetDir = "../../../docentes/" . $curp . "/RI/" . $customText . "/";
-        $targetDir = "../docentes/" . $curp . "/requisitosDeInicio/";
+        $targetDir = "../docentes/" . $curp . "/RI/" . $customText;
 
         // Crear la carpeta si no existe
         if (!is_dir($targetDir)) {
@@ -47,20 +47,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['file']) && isset($_SE
         } while (file_exists($targetFilePath));
         
         // Definir puntos por actividad
-        $puntosPuntos = [
-            '1.1.1' => 5,
-            '1.1.2' => 10,
-            '1.1.3' => 5,
-           
-            '1.1.6' => 10,
-            '1.1.7' => 10,
-        ];
+       
+       
 
-        $puntosporactividad = $puntosPuntos[$customText] ?? 0;
-        
-        if (!is_numeric($puntosporactividad)) {
-            $puntosporactividad = 0;
-        }
+    $puntosporactividad = null;
+
+
+    $nivelSeleccionado = null;
+
         
         // Datos para la base de datos
         $idActividad = 1;
@@ -70,8 +64,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['file']) && isset($_SE
         
         // Mover el archivo y registrar en BD
         if (move_uploaded_file($_FILES['file']['tmp_name'], $targetFilePath)) {
-            $stmt = $conexion->prepare("CALL sp_InsertarDocumento(?, ?, ?, ?, ?, ?, ?, ?, ?)");
-            $stmt->bind_param("iissssssi", $idDocente, $idActividad, $newFileName, $targetFilePath, $fechaSubida, $categoria, $tipoDocumento, $customText, $puntosporactividad);
+            $stmt = $conexion->prepare("CALL sp_InsertarDocumento(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            $stmt->bind_param("iissssssis", $idDocente, $idActividad, $newFileName, $targetFilePath, $fechaSubida, $categoria, $tipoDocumento, $customText, $puntosporactividad, $nivelSeleccionado);
 
             if ($stmt->execute()) {
                 echo "El archivo ha sido subido y registrado exitosamente.";

@@ -5,17 +5,17 @@ include "../../../conexion/conexion.php";
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['file']) && isset($_SESSION['usuario'])) {
     $usuario = $_SESSION['usuario'];
     
-    // Obtener CURP e ID del docente
-    $stmt = $conexion->prepare("SELECT CURP, id_docente FROM docentes WHERE Usuario = ?");
+    // Obtener CURP, ID del docente, ApellidoPaterno y ApellidoMaterno
+    $stmt = $conexion->prepare("SELECT CURP, id_docente, ApellidoPaterno, ApellidoMaterno FROM docentes WHERE Usuario = ?");
     $stmt->bind_param("s", $usuario);
     $stmt->execute();
-    $stmt->bind_result($curp, $idDocente);
+    $stmt->bind_result($curp, $idDocente, $apellidoPaterno, $apellidoMaterno);
     $stmt->fetch();
     $stmt->close();
     
     if ($curp && $idDocente) {
         $customText = $_POST['document_type'] ?? '';
-        $targetDir = "../../../docentes/" . $curp . "/1/1.3/" . $customText . "/";
+        $targetDir = "../../../docentes/" . $curp . "/1/1.3/" . $customText;
         // Crear la carpeta si no existe
         if (!is_dir($targetDir)) {
             mkdir($targetDir, 0777, true);
@@ -34,10 +34,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['file']) && isset($_SE
             exit("Error: El tamaño del archivo no debe exceder los 500 KB.");
         }
 
-        // Generar nombre de archivo único
+        // Generar nombre de archivo único utilizando ApellidoPaterno y ApellidoMaterno
         $n = 1;
         do {
-            $newFileName = "{$curp}_{$customText}_{$n}.{$fileExtension}";
+            $newFileName = "{$apellidoPaterno}_{$apellidoMaterno}_{$customText}_{$n}.{$fileExtension}";
             $targetFilePath = "$targetDir/$newFileName";
             $n++;
         } while (file_exists($targetFilePath));
@@ -50,31 +50,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['file']) && isset($_SE
             
             if ($customText === '1.3.1') {
                 $nivelesPosgrado = [
-                    'licenciatura' => 20,
-                    'Especialización' => 25,
-                    'Maestria' => 40,
-                    'Maestria.Co-Director' => 30,
-                    'Doctorado' => 50,
-                    'Doctorado.Co-Director' => 40,
+                    '1.3.1.1' => 20,
+                    '1.3.1.2' => 25,
+                    '1.3.1.3' => 40,
+                    '1.3.1.4' => 30,
+                    '1.3.1.5' => 50,
+                    '1.3.1.6' => 40,
                 ];
-                
-                // Asigna el valor correspondiente según el nivel seleccionado
-                $puntosporactividad = $nivelesPosgrado[$nivel_Posgrado] ?? 0; // Si el nivel no existe, asigna 0 puntos
+                $puntosporactividad = $nivelesPosgrado[$nivel_Posgrado] ?? 0;
+                $nivelSeleccionado = $nivel_Posgrado;
             } elseif ($customText === '1.3.2') {
                 $nivelesAcademico = [
-                    'TecnicoSuperior' => 5,
-                    'licenciatura' => 10,
-                    'Especialización' => 15,
-                    'Maestria' => 15,
-                    'Doctorado' => 30,
+                    '1.3.2.1' => 5,
+                    '1.3.2.2' => 10,
+                    '1.3.2.3' => 15,
+                    '1.3.2.4' => 15,
+                    '1.3.2.5' => 30,
                 ];
-                
-                // Asigna el valor correspondiente según el nivel seleccionado
-                $puntosporactividad = $nivelesAcademico[$nivel_academico] ?? 0; // Si el nivel no existe, asigna 0 puntos
+                $puntosporactividad = $nivelesAcademico[$nivel_academico] ?? 0;
+                $nivelSeleccionado = $nivel_academico;
             }
         }
-        
-
         
         // Datos para la base de datos
         $idActividad = 1;
@@ -84,8 +80,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['file']) && isset($_SE
         
         // Mover el archivo y registrar en BD
         if (move_uploaded_file($_FILES['file']['tmp_name'], $targetFilePath)) {
-            $stmt = $conexion->prepare("CALL sp_InsertarDocumento(?, ?, ?, ?, ?, ?, ?, ?, ?)");
-            $stmt->bind_param("iissssssi", $idDocente, $idActividad, $newFileName, $targetFilePath, $fechaSubida, $categoria, $tipoDocumento, $customText, $puntosporactividad);
+            $stmt = $conexion->prepare("CALL sp_InsertarDocumento(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            $stmt->bind_param("iissssssis", $idDocente, $idActividad, $newFileName, $targetFilePath, $fechaSubida, $categoria, $tipoDocumento, $customText, $puntosporactividad, $nivelSeleccionado);
 
             if ($stmt->execute()) {
                 echo "El archivo ha sido subido y registrado exitosamente.";
@@ -105,4 +101,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['file']) && isset($_SE
 }
 
 $conexion->close();
-?> 
+?>

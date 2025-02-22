@@ -27,19 +27,19 @@ include '../Login/auth.php'; // Protege la página
                     <select name="document_type" id="document_type" class="form-select" required onchange="cargarDocumentoSeleccionado1(); mostrarDescripcion();">
                         <option value="" selected disabled>-- Seleccione --</option>
                         <option value="RI1">01.- Constancia de recursos humanos</option>
-                        <option value="2">02.- Talon de pago</option>
-                        <option value="3">03.- Carga Academica</option>
-                        <option value="4">04.- Carta Exclusividad</option>
-                        <option value="5">05.- Proyecto de investigación</option>
-                        <option value="6">06.- CV</option>
-                        <option value="7">07.- Constancia de materias</option>
-                        <option value="8">08.- Autorización de periodo sabatico</option>
-                        <option value="9">09.- Licencia por gravidez</option>
-                        <option value="10">10.- Cedula profesional</option>
-                        <option value="11">11.- Constancia de cumplimiento actividades docentes</option>
-                        <option value="12">12.- Carta de liberación actividades academicas</option>
-                        <option value="13">13.- Evaluaciones departamentales</option>
-                        <option value="14">14.- Evaluaciones de desempeño</option>
+                        <option value="RI2">02.- Talon de pago</option>
+                        <option value="RI3">03.- Carga Academica</option>
+                        <option value="RI4">04.- Carta Exclusividad</option>
+                        <option value="RI5">05.- Proyecto de investigación</option>
+                        <option value="RI6">06.- CV</option>
+                        <option value="RI7">07.- Constancia de materias</option>
+                        <option value="RI8">08.- Autorización de periodo sabatico</option>
+                        <option value="RI9">09.- Licencia por gravidez</option>
+                        <option value="RI10">10.- Cedula profesional</option>
+                        <option value="RI11">11.- Constancia de cumplimiento actividades docentes</option>
+                        <option value="RI12">12.- Carta de liberación actividades academicas</option>
+                        <option value="RI13">13.- Evaluaciones departamentales</option>
+                        <option value="RI14">14.- Evaluaciones de desempeño</option>
                     </select>
                 </div>
                 <div class="col-md-6">

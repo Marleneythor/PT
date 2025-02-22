@@ -93,6 +93,15 @@ include '../../../Login/auth.php';
                     <label for="file" class="form-label">Selecciona un archivo (PDF, JPG o Word, máximo 500 KB):</label>
                     <input type="file" name="file" id="file" class="form-control" required>
                 </div>
+
+                <div class="container">
+                    <div class="row g-3 mb-3 align-items-center" id="pregunta1_2_2" style="display: none;">
+                        <div class="col-md-6">
+                            <label for="horas" class="form-label">Número de estudiantes atendidos:</label>
+                            <input type="number" name="horas" id="horas" class="form-control">
+                        </div>
+                    </div>
+                </div>
            
                 <div class="text-center">
                     <input type="submit" value="Subir Archivo" class="btn btn-primary">   

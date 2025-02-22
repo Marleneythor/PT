@@ -5,17 +5,17 @@ include "../../../conexion/conexion.php";
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['file']) && isset($_SESSION['usuario'])) {
     $usuario = $_SESSION['usuario'];
     
-    // Obtener CURP e ID del docente
-    $stmt = $conexion->prepare("SELECT CURP, id_docente FROM docentes WHERE Usuario = ?");
+    // Obtener CURP, ID del docente, ApellidoPaterno y ApellidoMaterno
+    $stmt = $conexion->prepare("SELECT CURP, id_docente, ApellidoPaterno, ApellidoMaterno FROM docentes WHERE Usuario = ?");
     $stmt->bind_param("s", $usuario);
     $stmt->execute();
-    $stmt->bind_result($curp, $idDocente);
+    $stmt->bind_result($curp, $idDocente, $apellidoPaterno, $apellidoMaterno);
     $stmt->fetch();
     $stmt->close();
     
     if ($curp && $idDocente) {
         $customText = $_POST['document_type'] ?? '';
-        $targetDir = "../../../docentes/" . $curp . "/1/1.1/" . $customText . "/";
+        $targetDir = "../../../docentes/" . $curp . "/1/1.1/" . $customText;
         // Crear la carpeta si no existe
         if (!is_dir($targetDir)) {
             mkdir($targetDir, 0777, true);
@@ -34,44 +34,43 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['file']) && isset($_SE
             exit("Error: El tamaño del archivo no debe exceder los 500 KB.");
         }
 
-        // Generar nombre de archivo único
+        // Generar nombre de archivo único utilizando ApellidoPaterno y ApellidoMaterno
         $n = 1;
         do {
-            $newFileName = "{$curp}_{$customText}_{$n}.{$fileExtension}";
+            $newFileName = "{$apellidoPaterno}_{$apellidoMaterno}_{$customText}_{$n}.{$fileExtension}";
             $targetFilePath = "$targetDir/$newFileName";
             $n++;
         } while (file_exists($targetFilePath));
         
         $puntosporactividad = 0;
 
-if ($customText === '1.1.4' || $customText === '1.1.5') {
-    $nivelEstudiantes = $_POST['nivel_estudiantes'] ?? '';
-    $numEstudiantes = (int) ($_POST['num_estudiantes'] ?? 0);
-    $num_estudiantes_1_1_5 = (int) ($_POST['num_estudiantes_1_1_5'] ?? 0);
+        if ($customText === '1.1.4' || $customText === '1.1.5') {
+            $nivelEstudiantes = $_POST['nivel_estudiantes'] ?? '';
+            $numEstudiantes = (int) ($_POST['num_estudiantes'] ?? 0);
+            $num_estudiantes_1_1_5 = (int) ($_POST['num_estudiantes_1_1_5'] ?? 0);
 
-    if ($customText === '1.1.5') {
-        $puntosporactividad = $num_estudiantes_1_1_5; // 1 punto por estudiante
-    } elseif ($nivelEstudiantes === 'licenciatura') {
-        $puntosporactividad = ($numEstudiantes *50 )/200; // 2 puntos por estudiante
-    } elseif ($nivelEstudiantes === 'posgrado') {
-        $puntosporactividad = $numEstudiantes; // 3 puntos por estudiante
-    }
-} else {
-    // Puntos predeterminados para otros tipos de documento
-    $puntosPuntos = [
-        '1.1.1' => 5,
-        '1.1.2' => 10,
-        '1.1.3' => 5,
-        '1.1.6' => 10,
-        '1.1.7' => 10,
-    ];
-    
-    if (isset($puntosPuntos[$customText])) {
-        $puntosporactividad = $puntosPuntos[$customText];
-    }
-}
+            if ($customText === '1.1.5') {
+                $puntosporactividad = $num_estudiantes_1_1_5; // 1 punto por estudiante
+            } elseif ($nivelEstudiantes === 'licenciatura') {
+                $puntosporactividad = ($numEstudiantes *50 )/200; // 2 puntos por estudiante
+            } elseif ($nivelEstudiantes === 'posgrado') {
+                $puntosporactividad = $numEstudiantes; // 3 puntos por estudiante
+            }
+        } else {
+            // Puntos predeterminados para otros tipos de documento
+            $puntosPuntos = [
+                '1.1.1' => 5,
+                '1.1.2' => 10,
+                '1.1.3' => 5,
+                '1.1.6' => 10,
+                '1.1.7' => 10,
+            ];
+            
+            if (isset($puntosPuntos[$customText])) {
+                $puntosporactividad = $puntosPuntos[$customText];
+            }
+        }
 
-        
         // Datos para la base de datos
         $idActividad = 1;
         $fechaSubida = date("Y-m-d");
@@ -101,4 +100,4 @@ if ($customText === '1.1.4' || $customText === '1.1.5') {
 }
 
 $conexion->close();
-?> 
+?>

@@ -89,12 +89,12 @@ include '../../../Login/auth.php';
                         <label for="nivel_posgrado" class="form-label">Nivel de posgrado en que trabajo como Asesor(a), Director(a) o Co-Director(a):</label>
                         <select name="nivel_posgrado" id="nivel_posgrado" class="form-select">
                             <option value="" selected disabled>-- Seleccione --</option>
-                            <option value="licenciatura">Licenciatura</option>
-                            <option value="Especializacion">Especialización</option>
-                            <option value="Maestria">Maestría</option>
-                            <option value="Maestria.Co-Director">Maestría. Co-Director</option>
-                            <option value="Doctorado">Doctorado</option>
-                            <option value="Doctorado.Co-Director">Doctorado. Co-Director</option>
+                            <option value="1.3.1.1">Licenciatura</option>
+                            <option value="1.3.1.2">Especialización</option>
+                            <option value="1.3.1.3">Maestría</option>
+                            <option value="1.3.1.4">Maestría. Co-Director</option>
+                            <option value="1.3.1.5">Doctorado</option>
+                            <option value="1.3.1.6">Doctorado. Co-Director</option>
                         </select>  
                     </div>
                 </div>
@@ -106,11 +106,11 @@ include '../../../Login/auth.php';
                         <label for="nivel_academico" class="form-label">Nivel académico en que participo como sinodal para titulación u obtención de grado de estudiantes del TecNM :</label>
                         <select name="nivel_academico" id="nivel_academico" class="form-select">
                             <option value="" selected disabled>-- Seleccione --</option>
-                            <option value="TecnicoSuperior">Técnico Superior</option>
-                            <option value="licenciatura">Licenciatura</option>
-                            <option value="Especializacion">Especialización</option>
-                            <option value="Maestria">Maestría</option>
-                            <option value="Doctorado">Doctorado</option>
+                            <option value="1.3.2.1">Técnico Superior</option>
+                            <option value="1.3.2.2">Licenciatura</option>
+                            <option value="1.3.2.3">Especialización</option>
+                            <option value="1.3.2.4">Maestría</option>
+                            <option value="1.3.2.5">Doctorado</option>
                         </select>  
                     </div>
                 </div>

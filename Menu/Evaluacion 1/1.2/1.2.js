@@ -54,6 +54,11 @@ function mostrarDescripcion() {
     puntos1.value = puntosPuntos[valorSeleccionado] ||'Descripción no disponible.';
     puntos2.value = puntosMax[valorSeleccionado] ||'Descripción no disponible.';
 
+    const pregunta1_2_2 = document.getElementById('pregunta1_2_2');
+const valoresPermitidos = ['1.2.2.1', '1.2.2.2', '1.2.2.3', '1.2.2.4', '1.2.2.5', '1.2.2.6', '1.2.2.7'];
+
+pregunta1_2_2.style.display = valoresPermitidos.includes(valorSeleccionado) ? 'flex' : 'none';
+
     // Mostrar u ocultar el botón según la selección
     //const botonCrearDocumento = document.getElementById('botonCrearDocumento');
     //botonCrearDocumento.style.display = (valorSeleccionado === '7') ? 'block' : 'none';

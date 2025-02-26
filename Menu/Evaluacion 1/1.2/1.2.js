@@ -101,7 +101,7 @@ function eliminarArchivo(idDocumento, rutaArchivo) {
         formData.append("ruta_archivo", rutaArchivo);
 
         const xhr = new XMLHttpRequest();
-        xhr.open("POST", "eliminarDocumento.php", true);
+        xhr.open("POST", "../../Acciones/eliminarDocumento.php", true);
 
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4 && xhr.status === 200) {

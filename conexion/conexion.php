@@ -6,7 +6,7 @@ $password = "";
 $database = "pedd";
 
 $conexion = mysqli_connect($host, $user, $password, $database);
-echo "<script>console.log('hola mundo')</script>";
+//echo "<script>console.log('hola mundo')</script>";
 
 
 ?> 

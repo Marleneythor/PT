@@ -69,11 +69,11 @@ include '../../../Login/auth.php';
             <div  class="row g-3 mb-3 align-items-center">
                     <div class="col-md-6">
                         <label for="puntos" class="form-label">Puntos por actividad:</label>
-                        <textarea id="puntos" class="form-control" rows="2" disabled></textarea>
+                        <textarea id="puntos" class="form-control" rows="3" disabled></textarea>
                     </div>
                     <div class="col-md-6">  
                         <label for="puntosmax" class="form-label">Puntuacion maxima:</label>
-                        <textarea id="puntosmax" class="form-control" rows="2" disabled></textarea>
+                        <textarea id="puntosmax" class="form-control" rows="3" disabled></textarea>
                     </div>
                 </div>
             <div class="mb-3">
@@ -84,7 +84,7 @@ include '../../../Login/auth.php';
             
             <div class="container">
                 <!-- Sección para 1.1.4 (pregunta con nivel y número de estudiantes) -->
-                <div class="row g-3 mb-3 align-items-center" id="pregunta1_3_1" style="display: none;">
+                <div class="row g-3 mb-3 align-items-center" id="pregunta1_3_1" style="display: none;" >
                     <div class="col-md-6">
                         <label for="nivel_posgrado" class="form-label">Nivel de posgrado en que trabajo como Asesor(a), Director(a) o Co-Director(a):</label>
                         <select name="nivel_posgrado" id="nivel_posgrado" class="form-select">

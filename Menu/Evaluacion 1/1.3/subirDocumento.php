@@ -47,31 +47,33 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['file']) && isset($_SE
         if ($customText === '1.3.1' || $customText === '1.3.2') {
             $nivel_Posgrado = $_POST['nivel_posgrado'] ?? '';
             $nivel_academico = $_POST['nivel_academico'] ?? '';
-            
+            $calculo1 = (int) ($_POST['calculo1'] ?? 0);
+            $calculo2 = (int) ($_POST['calculo2'] ?? 0);
+
             if ($customText === '1.3.1') {
                 $nivelesPosgrado = [
-                    '1.3.1.1' => 20,
-                    '1.3.1.2' => 25,
-                    '1.3.1.3' => 40,
-                    '1.3.1.4' => 30,
-                    '1.3.1.5' => 50,
-                    '1.3.1.6' => 40,
+                    '1.3.1.1' => $calculo1 * 20,
+                    '1.3.1.2' => $calculo1 * 25,
+                    '1.3.1.3' => $calculo1 * 40,
+                    '1.3.1.4' => $calculo1 * 30,
+                    '1.3.1.5' => $calculo1 * 50,
+                    '1.3.1.6' => $calculo1 * 40,
                 ];
                 $puntosporactividad = $nivelesPosgrado[$nivel_Posgrado] ?? 0;
                 $nivelSeleccionado = $nivel_Posgrado;
             } elseif ($customText === '1.3.2') {
                 $nivelesAcademico = [
-                    '1.3.2.1' => 5,
-                    '1.3.2.2' => 10,
-                    '1.3.2.3' => 15,
-                    '1.3.2.4' => 15,
-                    '1.3.2.5' => 30,
+                    '1.3.2.1' => $calculo2 * 5,
+                    '1.3.2.2' => $calculo2 * 10,
+                    '1.3.2.3' => $calculo2 * 15,
+                    '1.3.2.4' => $calculo2 * 15,
+                    '1.3.2.5' => $calculo2 * 30,
                 ];
                 $puntosporactividad = $nivelesAcademico[$nivel_academico] ?? 0;
                 $nivelSeleccionado = $nivel_academico;
             }
         }
-        
+
         // Datos para la base de datos
         $idActividad = 1;
         $fechaSubida = date("Y-m-d");

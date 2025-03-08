@@ -56,7 +56,7 @@ include '../../../Login/auth.php';
                 <div class="col-md-6">
                     <label for="document_type" class="form-label">Selecciona el número de documento:</label>
                     
-                    <select name="document_type" id="document_type" class="form-select" required onchange="cargarDocumentoSeleccionado1(); mostrarDescripcion(); actualizarTitulo();">
+                    <select name="document_type" id="document_type" class="form-select" required onchange="cargarDocumentoSeleccionado1(); mostrarDescripcion(); actualizarTitulo(); actualizarText();">
                     <option value="" selected disabled>-- Seleccione --</option>
                         <option value="1.2.1.1">1.2.1.1 - Proyectos integradores / Recurso Educativo Digital</option>
                         <option value="1.2.1.2">1.2.1.2 - Elaboración de manual de prácticas</option>
@@ -90,18 +90,32 @@ include '../../../Login/auth.php';
                     </div>
                 </div>
                 <div class="mb-3">
-                    <label for="file" class="form-label">Selecciona un archivo (PDF, JPG o Word, máximo 500 KB):</label>
+                    <label for="file" class="form-label">Subir documento (PDF, JPG o Word, máximo 500 KB):</label>
                     <input type="file" name="file" id="file" class="form-control" required>
                 </div>
 
                 <div class="container">
                     <div class="row g-3 mb-3 align-items-center" id="pregunta1_2_2" style="display: none;">
                         <div class="col-md-6">
-                            <label for="horas" class="form-label">Número de estudiantes atendidos:</label>
-                            <input type="number" name="horas" id="horas" class="form-control">
+                            <label for="horas" class="form-label">Número de horas:</label>
+                            <input type="number" name="horas" id="horas" class="form-control" min="0" step="1">
                         </div>
                     </div>
                 </div>
+
+                 <!-- Seccion de puntos-->
+            
+            <div id="pregunta1_1_3" class="text-center" >
+                <div class="mb-3 d-inline-block text-start w-100">
+                    <label id="texto" class="form-label"></label>
+                </div>
+            </div>
+            
+            <div id="calcular" class="text-center" style="display: none;">
+                <div class="mb-3 d-inline-block text-start w-100">
+                    <input type="number" name="calculo" id="calculo" class="form-control" min="0" step="1">
+                </div>
+            </div>
            
                 <div class="text-center">
                     <input type="submit" value="Subir Archivo" class="btn btn-primary">   

@@ -54,7 +54,7 @@ include '../../../Login/auth.php';
             <div class="row g-3 mb-3 align-items-center">
                 <div class="col-md-6">
                     <label for="document_type" class="form-label">Selecciona el número de documento:</label>
-                    <select name="document_type" id="document_type" class="form-select" required onchange="cargarDocumentoSeleccionado1(); mostrarDescripcion();">
+                    <select name="document_type" id="document_type" class="form-select" required onchange="cargarDocumentoSeleccionado1(); mostrarDescripcion(); actualizarText();">
                         <option value="" selected disabled>-- Seleccione --</option>
                         <option value="1.1.1">1.1.1 Asignaturas de licenciatura diferentes por año. </option>
                         <option value="1.1.2">1.1.2 Profesor(a) impartiendo una asignatura adicional de licenciatura (desde la séptima por año)</option>
@@ -82,40 +82,61 @@ include '../../../Login/auth.php';
                     </div>
                 </div>
             <div class="mb-3">
-                <label for="file" class="form-label">Selecciona un archivo (PDF, JPG o Word, máximo 500 KB):</label>
+                <label for="file" class="form-label">Subir documento (PDF, JPG o Word, máximo 500 KB):</label>
                 <input type="file" name="file" id="file" class="form-control" required>
             </div>
            
             
             <div class="container">
-    <!-- Sección para 1.1.4 (pregunta con nivel y número de estudiantes) -->
-    <div class="row g-3 mb-3 align-items-center" id="pregunta1_1_4" style="display: none;">
-        <div class="col-md-6">
-            <label for="nivel_estudiantes" class="form-label">Selecciona el nivel en que atendió a los estudiantes:</label>
-            <select name="nivel_estudiantes" id="nivel_estudiantes" class="form-select">
-                <option value="" selected disabled>-- Seleccione --</option>
-                <option value="licenciatura">Licenciatura</option>
-                <option value="posgrado">Posgrado</option>
-            </select>  
-        </div>
-        <div class="col-md-6">
-            <label for="num_estudiantes" class="form-label">Número de estudiantes atendidos:</label>
-            <input type="number" name="num_estudiantes" id="num_estudiantes" class="form-control">
-        </div>
-    </div>
-</div>
+                <!-- Sección para 1.1.4 (pregunta con nivel y número de estudiantes) -->
+                <div class="row g-3 mb-3 align-items-center" id="pregunta1_1_4" style="display: none;">
+                    <div class="col-md-6">
+                        <label for="nivel_estudiantes" class="form-label">Selecciona el nivel en que atendió a los estudiantes:</label>
+                        <select name="nivel_estudiantes" id="nivel_estudiantes" class="form-select">
+                            <option value="" selected disabled>-- Seleccione --</option>
+                            <option value="licenciatura">Licenciatura</option>
+                            <option value="posgrado">Posgrado</option>
+                        </select>  
+                    </div>
+                    <div class="col-md-6">
+                        <label for="num_estudiantes" class="form-label">Número de estudiantes atendidos:</label>
+                        <input type="number" name="num_estudiantes" id="num_estudiantes" class="form-control"  min="0" step="1">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <!-- Sección para 1.1.5 -->
+                <div class="row g-3 mb-3 align-items-center" id="pregunta1_1_5" style="display: none;">
+                    <div class="col-md-6">
+                        <label for="ciclo" class="form-label">Selecciona el periodo de estudiantes atendidos:</label>
+                        <select name="ciclo" id="ciclo" class="form-select">
+                            <option value="" selected disabled>-- Seleccione --</option>
+                            <option value="1.1.5.1">Estudiantes atendidos en Ene-Jun.</option>
+                            <option value="1.1.5.2">Estudiantes atendidos en Ago-Dic.</option>
+                        </select>  
+                    </div>
+                    <div class="col-md-6">
+                        <label for="num_estudiantes_1_1_5" class="form-label">Número de estudiantes atendidos:</label>
+                        <input type="number" name="num_estudiantes_1_1_5" id="num_estudiantes_1_1_5" class="form-control"  min="0" step="1">
+                    </div>
+                </div>
+            </div>
 
-<div class="container">
-    <!-- Sección para 1.1.5 (solo número de estudiantes) -->
-    <div class="row g-3 mb-3 align-items-center" id="pregunta1_1_5" style="display: none;">
-        <div class="col-md-6">
-            <label for="num_estudiantes_1_1_5" class="form-label">Número de estudiantes atendidos:</label>
-            <input type="number" name="num_estudiantes_1_1_5" id="num_estudiantes_1_1_5" class="form-control">
-        </div>
-    </div>
-</div>
+           
 
 
+            <!-- Seccion de puntos-->
+            <div id="pregunta1_1_3" class="text-center" >
+                <div class="mb-3 d-inline-block text-start w-100">
+                    <label id="texto" class="form-label"></label>
+                </div>
+            </div>
+
+            <div id="calcular" class="text-center" style="display: none;">
+                <div class="mb-3 d-inline-block text-start w-100">
+                    <input type="number" name="calculo" id="calculo" class="form-control" min="0" step="1">
+                </div>
+            </div>
 
                 <div class="mb-4 text-center">
                     <input type="submit" value="Subir Archivo" class="btn btn-primary">   

@@ -55,13 +55,23 @@ function mostrarDescripcion() {
     puntos2.value = puntosMax[valorSeleccionado] ||'Descripción no disponible.';
 
     const pregunta1_2_2 = document.getElementById('pregunta1_2_2');
-const valoresPermitidos = ['1.2.2.1', '1.2.2.2', '1.2.2.3', '1.2.2.4', '1.2.2.5', '1.2.2.6', '1.2.2.7'];
+    const valoresPermitidos = ['1.2.2.1', '1.2.2.2', '1.2.2.3', '1.2.2.4', '1.2.2.5', '1.2.2.6', '1.2.2.7'];
 
-pregunta1_2_2.style.display = valoresPermitidos.includes(valorSeleccionado) ? 'flex' : 'none';
+    pregunta1_2_2.style.display = valoresPermitidos.includes(valorSeleccionado) ? 'flex' : 'none';
 
     // Mostrar u ocultar el botón según la selección
     //const botonCrearDocumento = document.getElementById('botonCrearDocumento');
     //botonCrearDocumento.style.display = (valorSeleccionado === '7') ? 'block' : 'none';
+
+     // Calcular puntos
+     const calcular = document.getElementById('calcular'); 
+     const valoresPermitidos2 = ['1.2.1.1', '1.2.1.2', '1.2.1.3', '1.2.1.4'];
+ 
+     if (valoresPermitidos2.includes(valorSeleccionado)) {
+         calcular.style.display = 'flex';
+     } else {
+         calcular.style.display = 'none';
+     }
 }
 
 async function cargarDocumentoSeleccionado1() {
@@ -150,5 +160,32 @@ function actualizarTitulo() {
         titulo.textContent = "Seleccione una opción";
     }
 }
+function actualizarText() {
+    console.log("Función hol llamada"); // Para verificar si se ejecuta
+
+    const select = document.getElementById("document_type");
+    const texto = document.getElementById("texto");
+
+    if (!select || !texto) {
+        console.error("Elemento no encontrado: text");
+        return;
+    }
+
+    const valorSeleccionado = select.value;
+    console.log("Valor seleccionado:", valorSeleccionado); // Verifica qué valor se obtiene
+
+    if (valorSeleccionado.startsWith("1.2.1.1")) {
+        texto.textContent = "¿Cuántos Proyectos Integradores y/o Recursos Educativos Digitales ha realizado para una asignatura del plan de estudios oficial?";
+    } else if (valorSeleccionado.startsWith("1.2.1.2")) {
+        texto.textContent = "¿Cuántos manuales de prácticas elaboró para el desarrollo de competencias en los planes de estudio 2009 y posteriores?";
+    } else if (valorSeleccionado.startsWith("1.2.1.3")) {
+        texto.textContent = "¿Cuántas estrategias didácticas innovadoras ha implementado en el aula por asignatura, como estudio de casos, aprendizaje basado en problemas, aprendizaje basado en proyectos, aprendizaje experiencial, aula invertida, y escenarios y ambientes virtuales?";
+    } else if (valorSeleccionado.startsWith("1.2.1.4")) {
+        texto.textContent = "¿Cuántos materiales didácticos diseñó y desarrolló con enfoque incluyente para las asignaturas?";
+    } else {
+        texto.textContent = " ";
+    }
+}
+
 
 

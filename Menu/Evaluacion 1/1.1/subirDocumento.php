@@ -44,43 +44,48 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['file']) && isset($_SE
         
         $puntosporactividad = 0;
 
-        if ($customText === '1.1.4' || $customText === '1.1.5') {
+        if (isset($customText)) {
+            $calculo = (int) ($_POST['calculo'] ?? 0);
             $nivelEstudiantes = $_POST['nivel_estudiantes'] ?? '';
             $numEstudiantes = (int) ($_POST['num_estudiantes'] ?? 0);
             $num_estudiantes_1_1_5 = (int) ($_POST['num_estudiantes_1_1_5'] ?? 0);
-
-            if ($customText === '1.1.5') {
-                $puntosporactividad = $num_estudiantes_1_1_5; // 1 punto por estudiante
-            } elseif ($nivelEstudiantes === 'licenciatura') {
-                $puntosporactividad = ($numEstudiantes *50 )/200; // 2 puntos por estudiante
-            } elseif ($nivelEstudiantes === 'posgrado') {
-                $puntosporactividad = $numEstudiantes; // 3 puntos por estudiante
-            }
-        } else {
-            // Puntos predeterminados para otros tipos de documento
-            $puntosPuntos = [
-                '1.1.1' => 5,
-                '1.1.2' => 10,
-                '1.1.3' => 5,
-                '1.1.6' => 10,
-                '1.1.7' => 10,
-            ];
+            $ciclo = $_POST['ciclo'] ?? '';
             
-            if (isset($puntosPuntos[$customText])) {
-                $puntosporactividad = $puntosPuntos[$customText];
+            if ($customText === '1.1.4') {
+                if ($nivelEstudiantes === 'licenciatura') {
+                    $puntosporactividad = ($numEstudiantes * 50) / 200; // 2 puntos por estudiante
+                } elseif ($nivelEstudiantes === 'posgrado') {
+                    $puntosporactividad = $numEstudiantes; // 3 puntos por estudiante
+                }
+            } elseif ($customText === '1.1.5') {
+                // Solo un input, pero depende del ciclo seleccionado
+                if ($ciclo === '1.1.5.1' || $ciclo === '1.1.5.2') {
+                    $puntosporactividad = $num_estudiantes_1_1_5;
+                } else {
+                    $puntosporactividad = 0; // Si no se selecciona un ciclo válido
+                }
+                
+                $nivelSeleccionado = $ciclo;
+            
+            } elseif (in_array($customText, ['1.1.1', '1.1.3'])) {
+                $puntosporactividad = $calculo * 5; 
+            } elseif (in_array($customText, ['1.1.2', '1.1.6', '1.1.7'])) {
+                $puntosporactividad = $calculo * 10; 
             }
         }
+       
 
         // Datos para la base de datos
         $idActividad = 1;
         $fechaSubida = date("Y-m-d");
         $categoria = "CategoriaEjemplo";
         $tipoDocumento = "Constancia";
+       // $nivelSeleccionado = null;
         
         // Mover el archivo y registrar en BD
         if (move_uploaded_file($_FILES['file']['tmp_name'], $targetFilePath)) {
-            $stmt = $conexion->prepare("CALL sp_InsertarDocumento(?, ?, ?, ?, ?, ?, ?, ?, ?)");
-            $stmt->bind_param("iissssssi", $idDocente, $idActividad, $newFileName, $targetFilePath, $fechaSubida, $categoria, $tipoDocumento, $customText, $puntosporactividad);
+            $stmt = $conexion->prepare("CALL sp_InsertarDocumento(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            $stmt->bind_param("iissssssis", $idDocente, $idActividad, $newFileName, $targetFilePath, $fechaSubida, $categoria, $tipoDocumento, $customText, $puntosporactividad, $nivelSeleccionado);
 
             if ($stmt->execute()) {
                 echo "El archivo ha sido subido y registrado exitosamente.";

@@ -77,7 +77,7 @@ include '../../../Login/auth.php';
                     </div>
                 </div>
             <div class="mb-3">
-                <label for="file" class="form-label">Selecciona un archivo (PDF, JPG o Word, máximo 500 KB):</label>
+                <label for="file" class="form-label">Subir documento (PDF, JPG o Word, máximo 500 KB):</label>
                 <input type="file" name="file" id="file" class="form-control" required>
             </div>
            
@@ -97,6 +97,10 @@ include '../../../Login/auth.php';
                             <option value="1.3.1.6">Doctorado. Co-Director</option>
                         </select>  
                     </div>
+                    <div class="col-md-6">
+                        <label for="calculo1" class="form-label">¿Cuántas veces participo en este nivel de posgrado?</label>
+                        <input type="number" name="calculo1" id="calculo1" class="form-control"  min="0" step="1">
+                    </div>
                 </div>
             </div>
 
@@ -112,6 +116,10 @@ include '../../../Login/auth.php';
                             <option value="1.3.2.4">Maestría</option>
                             <option value="1.3.2.5">Doctorado</option>
                         </select>  
+                    </div>
+                    <div class="col-md-6">
+                        <label for="calculo2" class="form-label">¿Cuántas veces participo en este nivel académico?</label>
+                        <input type="number" name="calculo2" id="calculo2" class="form-control"  min="0" step="1">
                     </div>
                 </div>
             </div>

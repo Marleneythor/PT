@@ -30,10 +30,10 @@ function mostrarDescripcion() {
     puntos2.value = puntosMax[valorSeleccionado] || 'Descripción no disponible.';
 
     //Mostrar u ocultar el botón según la selección
-    const pregunta1_1_4 = document.getElementById('pregunta1_3_1');
-    pregunta1_1_4.style.display = (valorSeleccionado === '1.3.1') ? 'flex' : 'none';
-    const pregunta1_1_5 = document.getElementById('pregunta1_3_2');
-   pregunta1_1_5.style.display = (valorSeleccionado === '1.3.2') ? 'flex' : 'none';
+    const pregunta1_3_1 = document.getElementById('pregunta1_3_1');
+    pregunta1_3_1.style.display = (valorSeleccionado === '1.3.1') ? 'flex' : 'none';
+    const pregunta1_3_2 = document.getElementById('pregunta1_3_2');
+    pregunta1_3_2.style.display = (valorSeleccionado === '1.3.2') ? 'flex' : 'none';
   
 }
 

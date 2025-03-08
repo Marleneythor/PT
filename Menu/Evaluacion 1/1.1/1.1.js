@@ -46,8 +46,19 @@ function mostrarDescripcion() {
     const pregunta1_1_4 = document.getElementById('pregunta1_1_4');
     pregunta1_1_4.style.display = (valorSeleccionado === '1.1.4') ? 'flex' : 'none';
     const pregunta1_1_5 = document.getElementById('pregunta1_1_5');
-   pregunta1_1_5.style.display = (valorSeleccionado === '1.1.5') ? 'flex' : 'none';
+    pregunta1_1_5.style.display = (valorSeleccionado === '1.1.5') ? 'flex' : 'none'
+    
   
+
+    // Calcular puntos
+    const calcular = document.getElementById('calcular'); 
+    const valoresPermitidos = ['1.1.1', '1.1.2', '1.1.3', '1.1.6', '1.1.7'];
+
+    if (valoresPermitidos.includes(valorSeleccionado)) {
+        calcular.style.display = 'flex';
+    } else {
+        calcular.style.display = 'none';
+    }
 }
 
 
@@ -108,5 +119,33 @@ function toggleDocuments() {
     } else {
         container.style.display = 'none';
         button.innerHTML = '▼'; 
+    }
+}
+function actualizarText() {
+    console.log("Función hol llamada"); // Para verificar si se ejecuta
+
+    const select = document.getElementById("document_type");
+    const texto = document.getElementById("texto");
+
+    if (!select || !texto) {
+        console.error("Elemento no encontrado: text");
+        return;
+    }
+
+    const valorSeleccionado = select.value;
+    console.log("Valor seleccionado:", valorSeleccionado); // Verifica qué valor se obtiene
+
+    if (valorSeleccionado.startsWith("1.1.1")) {
+        texto.textContent = "Número de asignaturas de licenciatura diferentes por año:";
+    } else if (valorSeleccionado.startsWith("1.1.2")) {
+        texto.textContent = "Número de asignaturas de licenciatura diferentes y adicional a las declaradas en el 1.1.1. (Se considerará a partir de la séptima asignatura diferente por año):";
+    } else if (valorSeleccionado.startsWith("1.1.3")) {
+        texto.textContent = "Número de asignaturas de posgrado diferentes por año:";
+    } else if (valorSeleccionado.startsWith("1.1.6")) {
+        texto.textContent = "Número de  asignaturas por programa educativo acreditado y/o en PNPC/SNP:";
+    } else if (valorSeleccionado.startsWith("1.1.7")) {
+        texto.textContent = "Número de actividades en créditos complementarios autorizados por el Comité Académico o por TecNM:";
+    } else {
+        texto.textContent = " ";
     }
 }

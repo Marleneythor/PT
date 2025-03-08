@@ -42,20 +42,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['file']) && isset($_SE
             $n++;
         } while (file_exists($targetFilePath));
         
+        
         $puntosporactividad = 0;
-        if (in_array($customText, ['1.2.2.1', '1.2.2.2', '1.2.2.3', '1.2.2.4', '1.2.2.5', '1.2.2.6', '1.2.2.7'])) {
+        if (isset($customText)) {
+            $calculo = (int) ($_POST['calculo'] ?? 0);
             $horas = (int) ($_POST['horas'] ?? 0);
-            $puntosporactividad = $horas; // 1 punto por hora
-        } else {
-            $puntosPuntos = [
-                '1.2.1.1' => 20,
-                '1.2.1.2' => 20, 
-                '1.2.1.3' => 5,
-                '1.2.1.4' => 10,
-            ];
             
-            $puntosporactividad = $puntosPuntos[$customText] ?? 0; // Si no está en la lista, se asigna 0 por defecto
+            if (in_array($customText, ['1.2.1.1', '1.2.1.2'])) {
+                $puntosporactividad = $calculo * 20; 
+            } elseif ($customText === '1.2.1.3') {
+                $puntosporactividad = $calculo * 5; 
+            } elseif ($customText === '1.2.1.4')  {
+                $puntosporactividad = $calculo * 10; 
+            } elseif (in_array($customText, ['1.2.2.1', '1.2.2.2', '1.2.2.3', '1.2.2.4', '1.2.2.5', '1.2.2.6', '1.2.2.7'])) {
+                $puntosporactividad = $horas; // 1 punto por hora
+            }else {
+                $puntosporactividad = $puntosPuntos[$customText] ?? 0; // Si no está en la lista, se asigna 0 por defecto
+            }
         }
+
         $nivelSeleccionado = null;
         // Datos para la base de datos
         $idActividad = 1;

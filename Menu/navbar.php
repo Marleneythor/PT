@@ -13,7 +13,6 @@
                 <ul class="hidden md:flex space-x-6 text-white font-medium">
                     <li><a class="hover:text-blue-300" href="<?=$URL_BASE?>Perfil/perfilView.php">Perfil</a></li>
                     <li><a class="hover:text-blue-300" href="<?=$URL_BASE?>RequisitosDeInicio/requisitosDeInicioView.php">Requisitos de Inicio</a></li>
-                    <li><a class="hover:text-blue-300" href="#">Buscar</a></li>
                     <li><a class="hover:text-blue-300" target="_blank" href="https://edd.tecnm.mx/docentes/index.php">Ayuda</a></li>
                     <li><a class="hover:text-blue-300" href="<?=$URL_BASE?>cerrarSesion/cerrarSesion.php">Cerrar Sesión</a></li>
                 </ul>

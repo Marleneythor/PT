@@ -18,7 +18,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['file']) && isset($_SE
         //$targetDir = realpath("../../../docentes/") . "/$curp/1/1.1/$customText/";
       //  $targetDir = realpath("../../../docentes/") . "/$curp/1/1.1";
       //  $targetDir = "../../../docentes/" . $curp . "/RI/" . $customText . "/";
-        $targetDir = "../docentes/" . $curp . "/RI/" . $customText;
+        //$targetDir = "../docentes/" . $curp . "/RI/" . $customText;
+        $targetDir = "../docentes/" . $curp . "/RI/";
 
         // Crear la carpeta si no existe
         if (!is_dir($targetDir)) {

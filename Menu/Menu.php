@@ -114,8 +114,8 @@ img {
             <p>Seleccione un bloque para almacenar sus documentos</p>
             <div class="button-container d-flex flex-wrap justify-content-center">
                 <a href="../Menu/Evaluacion 1/MuenuE1.php" class="btn btn-lg">1. La dedicación en las actividades de la docencia</a>
-                <a href="2.html" class="btn btn-lg">2. La calidad en el desempeño de la docencia</a>
-                <a href="3.html" class="btn btn-lg">3. La permanencia en las actividades de la docencia</a>
+                <a href="../Menu/evaluacion2/MenuE2.php" class="btn btn-lg">2. La calidad en el desempeño de la docencia</a>
+                <a href="../Menu/Evaluacion 3/3View.php" class="btn btn-lg">3. La permanencia en las actividades de la docencia</a>
                 <a href="GenerarEvaluacion/GenerarE.html" class="btn btn-lg">Generar Evaluación</a>
             </div>
         </div>

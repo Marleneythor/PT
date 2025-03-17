@@ -177,7 +177,7 @@ include '../../../Login/auth.php';
                          <option value="1.4.3.3">1º Lugar Nacional.</option>
                          <option value="1.4.3.4">3º Lugar Internacional (fuera del país).</option>
                          <option value="1.4.3.5">2º Lugar Internacional (fuera del país).</option>
-                         <option value="1.3.3.6">1º Lugar Internacional (fuera del país).</option>
+                         <option value="1.4.3.6">1º Lugar Internacional (fuera del país).</option>
                      </select>  
                  </div>
                  <div class="col-md-6">

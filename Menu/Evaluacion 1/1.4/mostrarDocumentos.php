@@ -19,6 +19,8 @@ if (isset($_SESSION['usuario']) && isset($_GET['document_type'])) {
         $query = "
     SELECT LEAST(SUM(puntos_limited), 420) AS puntos_totales
     FROM (
+        SELECT '1.4.2' AS categoria, LEAST(SUM(puntos_limited), 20) AS puntos_limited
+        FROM (
         SELECT subdocumento, LEAST(SUM(puntosporactividad), limite) AS puntos_limited
         FROM (
             SELECT subdocumento, puntosporactividad,
@@ -32,9 +34,11 @@ if (isset($_SESSION['usuario']) && isset($_GET['document_type'])) {
             WHERE id_docente = ? AND documento LIKE '1.4.2%'
         ) AS subquery_1
         GROUP BY subdocumento, limite
-        
+        ) AS subquery_3
+       
         UNION ALL
-        
+        SELECT '1.4.3' AS categoria, LEAST(SUM(puntos_limited), 50) AS puntos_limited
+        FROM (
         SELECT subdocumento, LEAST(SUM(puntosporactividad), limite) AS puntos_limited
         FROM (
             SELECT subdocumento, puntosporactividad,
@@ -51,8 +55,11 @@ if (isset($_SESSION['usuario']) && isset($_GET['document_type'])) {
             WHERE id_docente = ? AND documento LIKE '1.4.3%'
         ) AS subquery_2
         GROUP BY subdocumento, limite
+        ) AS subquery_3
+
         UNION ALL
-        
+        SELECT '1.4.4' AS categoria, LEAST(SUM(puntos_limited), 35) AS puntos_limited
+        FROM (
         SELECT subdocumento, LEAST(SUM(puntosporactividad), limite) AS puntos_limited
         FROM (
             SELECT subdocumento, puntosporactividad,
@@ -72,8 +79,11 @@ if (isset($_SESSION['usuario']) && isset($_GET['document_type'])) {
             WHERE id_docente = ? AND documento LIKE '1.4.4%'
         ) AS subquery_3
         GROUP BY subdocumento, limite
+        ) AS subquery_3
+
         UNION ALL
-        
+        SELECT '1.4.5' AS categoria, LEAST(SUM(puntos_limited), 40) AS puntos_limited
+        FROM (
         SELECT subdocumento, LEAST(SUM(puntosporactividad), limite) AS puntos_limited
         FROM (
             SELECT subdocumento, puntosporactividad,
@@ -88,8 +98,11 @@ if (isset($_SESSION['usuario']) && isset($_GET['document_type'])) {
             WHERE id_docente = ? AND documento LIKE '1.4.5%'
         ) AS subquery_4
         GROUP BY subdocumento, limite
+        ) AS subquery_3
+
         UNION ALL
-        
+        SELECT '1.4.6' AS categoria, LEAST(SUM(puntos_limited), 30) AS puntos_limited
+        FROM (
         SELECT subdocumento, LEAST(SUM(puntosporactividad), limite) AS puntos_limited
         FROM (
             SELECT subdocumento, puntosporactividad,
@@ -103,8 +116,11 @@ if (isset($_SESSION['usuario']) && isset($_GET['document_type'])) {
             WHERE id_docente = ? AND documento LIKE '1.4.6%'
         ) AS subquery_5
         GROUP BY subdocumento, limite
+        ) AS subquery_3
+
         UNION ALL
-        
+        SELECT '1.4.7' AS categoria, LEAST(SUM(puntos_limited), 30) AS puntos_limited
+        FROM (
         SELECT subdocumento, LEAST(SUM(puntosporactividad), limite) AS puntos_limited
         FROM (
             SELECT subdocumento, puntosporactividad,
@@ -119,7 +135,7 @@ if (isset($_SESSION['usuario']) && isset($_GET['document_type'])) {
             WHERE id_docente = ? AND documento LIKE '1.4.7%'
         ) AS subquery_6
         GROUP BY subdocumento, limite
-       
+        ) AS subquery_3
 
         UNION ALL
         SELECT '1.4.8' AS categoria, LEAST(SUM(puntos_limited), 50) AS puntos_limited
@@ -153,10 +169,9 @@ if (isset($_SESSION['usuario']) && isset($_GET['document_type'])) {
             GROUP BY documento, limite 
         ) AS subquery_3
         
-
-
         UNION ALL
-        
+        SELECT '1.4.9' AS categoria, LEAST(SUM(puntos_limited), 120) AS puntos_limited
+        FROM (
         SELECT subdocumento, LEAST(SUM(puntosporactividad), limite) AS puntos_limited
         FROM (
             SELECT subdocumento, puntosporactividad,
@@ -169,8 +184,11 @@ if (isset($_SESSION['usuario']) && isset($_GET['document_type'])) {
             WHERE id_docente = ? AND documento LIKE '1.4.9%'
         ) AS subquery_8
         GROUP BY subdocumento, limite
+        ) AS subquery_3
+
         UNION ALL
-        
+        SELECT '1.4.1' AS categoria, LEAST(SUM(puntos_limited), 45) AS puntos_limited
+        FROM (
         SELECT documento, LEAST(SUM(puntosporactividad), limite) AS puntos_limited
         FROM (
             SELECT documento, puntosporactividad,
@@ -182,6 +200,7 @@ if (isset($_SESSION['usuario']) && isset($_GET['document_type'])) {
             WHERE id_docente = ? AND documento LIKE '1.4.1%'
         ) AS subquery_9
         GROUP BY documento, limite 
+        ) AS subquery_3
     ) AS final_query";
 
         // Ejecutar la consulta para la suma de 1.3.1 + 1.3.2
@@ -191,7 +210,7 @@ if (isset($_SESSION['usuario']) && isset($_GET['document_type'])) {
         $stmt->bind_result($sumaTotal_4);
         $stmt->fetch();
         $stmt->close();
-        $sumaTotal_1_4 = min($sumaTotal_4, 150);
+        $sumaTotal_1_4 = min($sumaTotal_4, 500);
 
         // Definir la consulta SQL dependiendo del tipo de documento
         if ($documentType == "1.4.2") {

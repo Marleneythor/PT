@@ -23,7 +23,7 @@ include '../Login/auth.php'; // Protege la página
         include 'navbar.php'
         ?>
 
-        
+
     <!-- Contenido -->
     <div class="container mx-auto mt-24 px-4 text-center">
         <h1 class="text-3xl md:text-5xl font-bold text-black mb-4">Bienvenido al Folder Digital EDD</h1>
@@ -34,6 +34,7 @@ include '../Login/auth.php'; // Protege la página
             <a href="/PT/shared/workingPage.php" class="bg-blue-900 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-300 hover:text-gray-900 transition">2. La calidad en el desempeño de la docencia</a>
             <a href="/PT/shared/workingPage.php" class="bg-blue-900 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-300 hover:text-gray-900 transition">3. La permanencia en las actividades de la docencia</a>
             <a href="/PT/shared/workingPage.php" class="bg-blue-900 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-300 hover:text-gray-900 transition">Generar Evaluación</a>
+
         </div>
     </div>
 

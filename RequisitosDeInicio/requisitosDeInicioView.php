@@ -11,6 +11,7 @@ include '../Login/auth.php'; // Protege la página
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
 </head>
 <body class="vh-100 d-flex flex-column">
+
     <div class="sticky-top bg-white p-3 shadow">
         <div class="d-flex align-items-center position-relative">
             <button class="btn btn-secondary position-absolute start-0" onclick="history.back();" aria-label="Regresar a la página anterior">

@@ -1,33 +1,33 @@
 console.log('scripts cargado correctamente'); 
 
 const descripcionesDescripcion = {
-    '1.1.1': 'Horarios: primer semestre 2023 y segundo semestre 2023 y constancia solicitada en el numeral 07 de la relación de requisitos de inicio. Se tomará la evidencia de los numerales 03 y 07 de los requisitos de inicio (Se tomará como máximo hasta 6 asignaturas diferentes por año).',
-    '1.1.2': 'Horarios: primer semestre 2023 y segundo semestre 2023 y constancia solicitada en el numeral 07 de la relación de requisitos de inicio. Se tomará la evidencia de los numerales 03 y 07 de los requisitos de inicio.',
-    '1.1.3': 'Horarios: primer semestre 2023 y segundo semestre 2023 y constancia solicitada en el numeral 07 de la relación de requisitos de inicio. Se tomará la evidencia de los numerales 03 y 07 de los requisitos de inicio.',
-    '1.1.4': 'Constancia solicitada en el numeral 07 de la relación de requisitos de inicio. Se tomará la evidencia del numeral 07 de los requisitos de inicio.',
-    '1.1.5': 'Constancia de cumplimiento firmada por el(la) Jefe(a) del departamento de desarrollo académico, con el vo.bo. de la subdirección académica que haga constar que se entregó en tiempo y forma el informe que contiene: \n• Número de estudiantes de licenciatura atendidos por semestre. \n• Evaluación del impacto en indicadores de eficiencia académica de la acción tutorial.',
-    '1.1.6': 'Constancia de acreditación del órgano acreditador o captura de pantalla del sistema de consulta del PNPC/SNP CONAHCYT con vo.bo. de la subdirección académica.',
-    '1.1.7': 'Constancia firmada por el(la) jefe(a) del departamento Correspondiente con vo.bo. de la subdirección académica, que contenga: \n• Número de dictamen de comité académico. \n• Nombre de la actividad complementaria. \n• Cantidad de créditos de la actividad. \n• Número de estudiantes atendidos.',
+    '2.1.1.1': 'hol',
+    '2.1.1.2': '',
+    '2.1.1.3': '',
+    '2.1.1.4': '',
+    '2.1.1.5': '',
+    '2.1.2.1': '',
+    '2.1.2.2': '',
 };
 
 const puntosPuntos = {
-    '1.1.1': '5',
-    '1.1.2': '10',
-    '1.1.3': '5',
-    '1.1.4': 'Licenciatura = (Núm. de estudiantes x 50)/200 \nPosgrado = (Un punto por estudiante)',
-    '1.1.5': '1 punto por estudiante',
-    '1.1.6': '10',
-    '1.1.7': '10',
+    '2.1.1.1': '',
+    '2.1.1.2': '',
+    '2.1.1.3': '',
+    '2.1.1.4': '',
+    '2.1.1.5': '',
+    '2.1.2.1': '',
+    '2.1.2.2': '',
 };
 
 const puntosMax = {
-    '1.1.1': '30',
-    '1.1.2': '20',
-    '1.1.3': '20',
-    '1.1.4': '50',
-    '1.1.5': '50',
-    '1.1.6': '20',
-    '1.1.7': '20',
+    '2.1.1.1': '',
+    '2.1.1.2': '',
+    '2.1.1.3': '',
+    '2.1.1.4': '',
+    '2.1.1.5': '',
+    '2.1.2.1': '',
+    '2.1.2.2': '',
 };
 
 
@@ -43,8 +43,8 @@ function mostrarDescripcion() {
     puntos2.value = puntosMax[valorSeleccionado] || 'Descripción no disponible.';
 
     //Mostrar u ocultar el botón según la selección
-    const pregunta1_1_4 = document.getElementById('pregunta1_1_4');
-    pregunta1_1_4.style.display = (valorSeleccionado === '1.1.4') ? 'flex' : 'none';
+    const pregunta1_1_4 = document.getElementById('pregunta2_1_1_1');
+    pregunta1_1_4.style.display = (valorSeleccionado === '2.1.1.1') ? 'flex' : 'none';
     const pregunta1_1_5 = document.getElementById('pregunta1_1_5');
     pregunta1_1_5.style.display = (valorSeleccionado === '1.1.5') ? 'flex' : 'none'
     
@@ -121,31 +121,26 @@ function toggleDocuments() {
         button.innerHTML = '▼'; 
     }
 }
-function actualizarText() {
-    console.log("Función hol llamada"); // Para verificar si se ejecuta
+
+function actualizarTitulo() {
+    console.log("Función actualizarTitulo llamada"); // Para verificar si se ejecuta
 
     const select = document.getElementById("document_type");
-    const texto = document.getElementById("texto");
+    const titulo = document.getElementById("titulo");
 
-    if (!select || !texto) {
-        console.error("Elemento no encontrado: text");
+    if (!select || !titulo) {
+        console.error("Elemento no encontrado: select o título");
         return;
     }
 
     const valorSeleccionado = select.value;
     console.log("Valor seleccionado:", valorSeleccionado); // Verifica qué valor se obtiene
 
-    if (valorSeleccionado.startsWith("1.1.1")) {
-        texto.textContent = "Número de asignaturas de licenciatura diferentes por año:";
-    } else if (valorSeleccionado.startsWith("1.1.2")) {
-        texto.textContent = "Número de asignaturas de licenciatura diferentes y adicional a las declaradas en el 1.1.1. (Se considerará a partir de la séptima asignatura diferente por año):";
-    } else if (valorSeleccionado.startsWith("1.1.3")) {
-        texto.textContent = "Número de asignaturas de posgrado diferentes por año:";
-    } else if (valorSeleccionado.startsWith("1.1.6")) {
-        texto.textContent = "Número de  asignaturas por programa educativo acreditado y/o en PNPC/SNP:";
-    } else if (valorSeleccionado.startsWith("1.1.7")) {
-        texto.textContent = "Número de actividades en créditos complementarios autorizados por el Comité Académico o por TecNM:";
+    if (valorSeleccionado.startsWith("2.1.1")) {
+        titulo.textContent = "2.1.1. PRODUCCIÓN CIENTÍFICA \n Nota: Ninguna obra podrá ser utilizada en más de un numeral de esta sección(250 Posibles puntos). ";
+   } else if (valorSeleccionado.startsWith("2.1.2")) {
+        titulo.textContent = "2.1.2. REDES DE INVESTIGACIÓN Y CUERPOS ACADÉMICOS Nota: Los puntos que se asignarán a esta actividad, será por mes de duración del reconocimiento/registro en el periodo a evaluar.(100 Posibles puntos).";
     } else {
-        texto.textContent = " ";
+        titulo.textContent = "Seleccione una opción";
     }
 }

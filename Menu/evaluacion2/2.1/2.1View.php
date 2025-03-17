@@ -1,5 +1,6 @@
 <?php
 include '../../../Login/auth.php'; 
+       
 ?>
 
 
@@ -52,9 +53,15 @@ include '../../../Login/auth.php';
     <div class="container mt-3 flex-grow-1 overflow-auto">
         <form action="subirDocumento.php" method="post" enctype="multipart/form-data" class="p-4 border rounded bg-light mb-3">
             <div class="row g-3 mb-3 align-items-center">
+            <h3 id="titulo"class="text-center flex-grow-1 mb-0"></h3>
+            <div id="pregunta1_1_3" class="text-center" >
+                <div class="mb-3 d-inline-block text-start w-100">
+                    <label id="texto" class="form-label"></label>
+                </div>
+            </div>
                 <div class="col-md-6">
                     <label for="document_type" class="form-label">Selecciona el número de documento:</label>
-                    <select name="document_type" id="document_type" class="form-select" required onchange="cargarDocumentoSeleccionado1(); mostrarDescripcion(); actualizarText();">
+                    <select name="document_type" id="document_type" class="form-select" required onchange="cargarDocumentoSeleccionado1(); mostrarDescripcion(); actualizarText(); actualizarTitulo();">
                         <option value="" selected disabled>-- Seleccione --</option>
                         <option value="2.1.1.1">2.1.1.1 en revista indizada en journal citation reports o indice conahcyt (160 puntos posibles).</option>
                         <option value="2.1.1.2">2.1.1.2 En revista incluida en otros índices (80 puntos posibles).</option>
@@ -125,11 +132,7 @@ include '../../../Login/auth.php';
 
 
             <!-- Seccion de puntos-->
-            <div id="pregunta1_1_3" class="text-center" >
-                <div class="mb-3 d-inline-block text-start w-100">
-                    <label id="texto" class="form-label"></label>
-                </div>
-            </div>
+           
 
             <div id="calcular" class="text-center" style="display: none;">
                 <div class="mb-3 d-inline-block text-start w-100">
@@ -159,7 +162,7 @@ include '../../../Login/auth.php';
 
     
 
-    <script src="1.1.js" defer></script>
+    <script src="2.1.js" defer></script>
      
 </body>
 </html>

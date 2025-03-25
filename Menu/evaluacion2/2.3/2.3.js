@@ -1,47 +1,54 @@
 console.log('scripts cargado correctamente'); 
 
 const descripcionesDescripcion = {
-    '1.2.1.1': 'Constancia del trabajo terminado, que debe indicar que secuenta con la rúbrica de evaluación correspondiente, firmadapor el (la) jefe(a) del departamento académico correspondientecon vo.bo. de la subdirección académica. \nNota: No se contabilizan los trabajos realizados durante el Período Sabático.',
-    '1.2.1.2': 'Constancia del trabajo terminado con la rúbrica de evaluacióncorrespondiente y que está siendo utilizado por la academia.Firmada por el (la) presidente(a) de academia o consejo deposgrado y por el(la) jefe(a) del departamento académicocorrespondiente con vo.bo. de la subdirección académica. \nNota: No se contabilizan los trabajos realizados durante el Período Sabático.', 
-    '1.2.1.3': 'Constancia que mencione los productos obtenidos (reporte decasos, reporte de proyectos, reporte de resolución deproblemas) y el impacto en las experiencias de aprendizaje.Debe indicar que se cuenta con la rúbrica de evaluacióncorrespondiente firmada por el(la) jefe(a) del departamentoacadémico con vo.bo. de la subdirección académica. \nNota: No se contabilizan los trabajos realizados durante el Período Sabático.',
-    '1.2.1.4': 'Constancia que mencione los productos obtenidos con enfoqueincluyente (reporte de casos, reporte de proyectos, reporte deresolución de problemas) y el impacto en las experiencias deaprendizaje. Debe indicar que se cuenta con la rúbrica deevaluación correspondiente firmada por el(la) jefe(a) deldepartamento académico con vo.bo. de la subdirecciónacadémica. \nNota: No se contabilizan los trabajos realizados durante el Período Sabático.', 
+    '2.3.1.1': '• Constancia de las visitas realizadas mencionando empresa visitada,fecha de la visita, asignatura y número de estudiantes, emitida por eldepartamento de gestión tecnológica y vinculación, con vo.bo. de lasubdirección académica. ',
+    '2.3.1.2': '• Certificado expedido por algún organismo o institución certificador(a) con vo.bo. de la subdirección académica.',
+    '2.3.2': '• Constancia de la institución organizadora donde se indique el evento o concurso donde participó o en su caso, constancia emitida por el departamento académico con vo.bo. de la subdirección académica. ',
+    '2.3.3': '• Constancia de la institución organizadora que indique el proyecto premiado con vo.bo. de la subdirección académica. ',
+    '2.3.4.1': ' • Constancia de cumplimiento especificando nombre de los residentes, empresas y períodos, expedida por el(la) jefe(a) de departamento académico correspondiente con vo.bo. de la subdirección académica. ',
+    '2.3.4.2': '• Constancia de cumplimiento especificando nombre de losestudiantes, empresas y con un mínimo de 1,000 horas de acuerdocon el modelo, expedida por el(la) jefe(a) de departamentoacadémico correspondiente con vo.bo. de la subdirecciónacadémica. ',
+    '2.3.4.3': '• Constancia de cumplimiento especificando nombre del proyectoestratégico de impacto, nombre de los residentes, empresas yperíodos, expedida por el(la) jefe(a) de departamento académicocorrespondiente con vo.bo. de la subdirección académica. ',
+    '2.3.5.1': '• Constancia emitida por el comité organizador del evento profesional,académico con vo.bo. de la subdirección académica y oficio decomisión. Para eventos fuera del país debe incluir la autorización deCOMEXTRA (para eventos atendidos de manera virtual no esnecesario el COMEXTRA).\n• Este numeral no aplica en periodos vacacionales.',
+    '2.3.6.1': '• Oficio de comisión firmado por el(la) Director(a) y constancia que mencione las actividades y los resultados de impacto para el plantel de adscripción, emitida por la empresa, institución o centro de investigación en hoja membretada, con sello y RFC.',
+    '2.3.6.2': '• Autorización COMEXTRA y constancia de cumplimiento en donde seindiquen las actividades y los resultados de impacto para el plantel deadscripción, emitida por la empresa institución o centro deinvestigación en hoja membretada y sello.',
+    '2.3.7.1': '• Constancia emitida por el(la) Director(a) indicando: \n• Tipo del convenio entre instancias involucradas \n• Vigencia del convenio o servicio \n• Cláusula de responsabilidad económica entre entidades \n• Hacer constar que los servicios realizados son para una entidadexterna al centro de trabajo de adscripción.\n• El(la) responsable del servicio y las funciones de los(as)colaboradores(as).\n• Constancia que mencione los servicios tecnológicos recibidos y establecidos en el acuerdo/convenio en hoja membretada, con sello y RFC, firmada por el representante de la entidad externa.',
+    '2.3.7.2': '• Constancia emitida por el(la) Director(a) indicando: \n• Tipo del convenio entre instancias involucradas \n• Vigencia del convenio o servicio \n• Cláusula de responsabilidad económica entre entidades \n• Hacer constar que los servicios realizados son para una entidadexterna al centro de trabajo de adscripción. \n• El(la) responsable del servicio y las funciones de los(as)colaboradores(as). \n• Constancia que mencione los servicios técnicos o certificaciones externas recibidas y establecidos en el acuerdo/convenio, en hoja membretada, con sello y RFC, firmada por el representante de la entidad externa.',
+    '2.3.7.3': '• Constancia de proyecto terminado donde se indique el tiempo de laasesoría firmada por parte del(la) jefe(a) del departamento de gestióntecnológica y vinculación con vo.bo. de la subdirección académica. \n• Registro de la incubadora emitido por la unidad de desarrolloproductivo de la secretaría de economía.',
+    '2.3.7.4': '• Oficio de acreditación del NODESS con folio del registro por parte delINAES. \n• Constancia de participación del(la) jefe(a) del departamento degestión tecnológica y vinculación con vo.bo. de la subdirecciónacadémica',
 
-    '1.2.2.1': 'Constancia por el instituto tecnológico donde fue instructor que especifique el número de horas y número de registro. (a) que especifique el número de horas y número de registro.\nNota: Para el 1.2.2.1 Se debe considerar el registro interno de acuerdo con el oficio M00.2/076/2021 emitido por la Secretaría Académica, de Investigación e Innovación.',
-    '1.2.2.2': 'Constancia de la Dirección de Docencia e Innovación Educativa del TecNM. \n\nNota: Para el 1.2.2.1 Se debe considerar el registro interno de acuerdo con el oficio M00.2/076/2021 emitido por la Secretaría Académica, de Investigación e Innovación.', 
-    '1.2.2.3': 'Constancia de la Dirección de Docencia e Innovación Educativa del TecNM. \n\nNota: Para el 1.2.2.1 Se debe considerar el registro interno de acuerdo con el oficio M00.2/076/2021 emitido por la Secretaría Académica, de Investigación e Innovación.',
-    '1.2.2.4': 'Constancia de la del TecNM. Dirección de Docencia e Innovación Educativa. \n\nNota: Para el 1.2.2.1 Se debe considerar el registro interno de acuerdo con el oficio M00.2/076/2021 emitido por la Secretaría Académica, de Investigación e Innovación.', 
-    '1.2.2.5': 'Constancia de la Dirección de Docencia e Innovación Educativa del TecNM. \n\nNota: Para el 1.2.2.1 Se debe considerar el registro interno de acuerdo con el oficio M00.2/076/2021 emitido por la Secretaría Académica, de Investigación e Innovación.', 
-    '1.2.2.6': 'Constancia de la del TecNM. Dirección de Docencia e Innovación Educativa del TecNM.\n\nNota: Para el 1.2.2.1 Se debe considerar el registro interno de acuerdo con el oficio M00.2/076/2021 emitido por la Secretaría Académica, de Investigación e Innovación.',
-    '1.2.2.7': 'Constancia del TecNM. (la) Responsable del Proyecto Estratégico del TecNM.\n\nNota: Para el 1.2.2.1 Se debe considerar el registro interno de acuerdo con el oficio M00.2/076/2021 emitido por la Secretaría Académica, de Investigación e Innovación.', 
 };
     
 const puntosPuntos = {
-    '1.2.1.1': '20',
-    '1.2.1.2': '20', 
-    '1.2.1.3': '5',
-    '1.2.1.4': '10', 
-
-    '1.2.2.1': '1 punto por hora ',
-    '1.2.2.2': '1 punto por hora ', 
-    '1.2.2.3': '1 punto por hora ',
-    '1.2.2.4': '1 punto por hora ', 
-    '1.2.2.5': '1 punto por hora ', 
-    '1.2.2.6': '1 punto por hora ',
-    '1.2.2.7': '1 punto por hora ', 
+    '2.3.1.1': '10',
+    '2.3.1.2': '20',
+    '2.3.2': '2.3.2.1. Estatal/Regional = 10, \n2.3.2.2. Nacional = 15, \n2.3.2.3. Internacional (fuera del país) = 20',
+    '2.3.3': '2.3.3.1. 3º Lugar Nacional = 10, \n2.3.3.2. 2º Lugar Nacional = 15, \n2.3.3.3. 1º Lugar Nacional = 20, \n2.3.3.4. 3º Lugar Internacional (fuera del país) = 30, \n2.3.3.5. 2º Lugar Internacional (fuera del país) = 35, \n2.3.3.6. 1º Lugar Internacional (fuera del país) = 40',   
+    '2.3.4.1': '10',
+    '2.3.4.2': '20',
+    '2.3.4.3': '20',
+    '2.3.5.1': '2.3.5.1.1. Conferencia o ponencia en el TecNM = 15, \n2.3.5.1.2. Conferencia o ponencia fuera del TecNM = 10, \n2.3.5.1.3. Conferencia o ponencia fuera del país = 20',
+    '2.3.6.1': '20',
+    '2.3.6.2': '30',
+    '2.3.7.1': '20',
+    '2.3.7.2': '20',
+    '2.3.7.3': '20',
+    '2.3.7.4': '20',
 };
 const puntosMax = {
-    '1.2.1.1': '40',
-    '1.2.1.2': '40', 
-    '1.2.1.3': '10',
-    '1.2.1.4': '20', 
-
-    '1.2.2.1': '60',
-    '1.2.2.2': '60', 
-    '1.2.2.3': '80',
-    '1.2.2.4': '80', 
-    '1.2.2.5': '80', 
-    '1.2.2.6': '80',
-    '1.2.2.7': '80',  
+    '2.3.1.1': '20',
+    '2.3.1.2': '20',
+    '2.3.2': '2.3.2.1. Estatal/Regional = 10, \n2.3.2.2. Nacional = 15, \n2.3.2.3. Internacional (fuera del país) = 20',
+    '2.3.3': '2.3.3.1. 3º Lugar Nacional = 30, \n2.3.3.2. 2º Lugar Nacional = 30, \n2.3.3.3. 1º Lugar Nacional = 40, \n2.3.3.4. 3º Lugar Internacional (fuera del país) = 30, \n2.3.3.5. 2º Lugar Internacional (fuera del país) = 35, \n2.3.3.6. 1º Lugar Internacional (fuera del país) = 40',
+    '2.3.4.1': '60',
+    '2.3.4.2': '60',
+    '2.3.4.3': '60',
+    '2.3.5.1': '2.3.5.1.1. Conferencia o ponencia en el TecNM = 30, \n2.3.5.1.2. Conferencia o ponencia fuera del TecNM = 30, \n2.3.5.1.3. Conferencia o ponencia fuera del país = 30',
+    '2.3.6.1': '20',
+    '2.3.6.2': '30',
+    '2.3.7.1': '20',
+    '2.3.7.2': '20',
+    '2.3.7.3': '20',
+    '2.3.7.4': '20',
 };
 function mostrarDescripcion() {
     const select = document.getElementById('document_type');
@@ -152,10 +159,16 @@ function actualizarTitulo() {
     const valorSeleccionado = select.value;
     console.log("Valor seleccionado:", valorSeleccionado); // Verifica qué valor se obtiene
 
-    if (valorSeleccionado.startsWith("1.2.1")) {
-        titulo.textContent = "1.2.1. Elaboración de material didáctico de la asignatura completa, aprobado y utilizado en la academia (100 Posibles puntos). ";
-    } else if (valorSeleccionado.startsWith("1.2.2")) {
-        titulo.textContent = "1.2.2. Instructor(a)/facilitador(a) en cursos de formación docente o actualización profesional para profesores(as) del tecnm (100 Posibles puntos).";
+    if (valorSeleccionado.startsWith("2.3.1")) {
+        titulo.textContent = "2.3.1. Vinculación para el aprendizaje (40 puntos posibles).";
+    } else if (valorSeleccionado.startsWith("2.3.4")) {
+        titulo.textContent = "2.3.4. Asesoría a estudiantes en residencias profesionales o de estudiantes en proyecto de formación dual \nnota: Para proyectos de residencias y dual de participación múltiple, se considera por proyecto y es independiente al número de estudiantes (60 puntos posibles).";
+    } else if (valorSeleccionado.startsWith("2.3.5")) {
+        titulo.textContent = "2.3.5 Participación con el entorno en actividades de vinculación (30 puntos posibles).";
+    } else if (valorSeleccionado.startsWith("2.3.6")) {
+        titulo.textContent = "2.3.6 Estancia en empresas, industrias, instituciones de educación superior o centros de investigación, relacionado con su profesión o su función institucional. \nNota: Sólo se considera una estancia en el periodo a evaluar. No se otorgan puntos en estancias por Período Sabático. (30 puntos posibles).";    
+    } else if (valorSeleccionado.startsWith("2.3.7")) {
+        titulo.textContent = "2.3.7. Actividades de vinculación para la innovación \nNota: Sólo se consideran los servicios realizados para una entidad externa al centro de trabajo de adscripción (40 puntos posibles).";    
     } else {
         titulo.textContent = "Seleccione una opción";
     }

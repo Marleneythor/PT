@@ -68,6 +68,10 @@ if (isset($_SESSION['usuario']) && isset($_GET['document_type'])) {
         $stmt->close();
         $sumaTotal_1_3 = min($sumaTotal_3, 130);
 
+         //  Guardar en sesión para usarlo en otro archivo
+         $_SESSION['suma_total1_3'] = $sumaTotal_1_3;
+         session_write_close(); // Asegurar que la sesión se guarde correctamente
+
         // Definir la consulta SQL dependiendo del tipo de documento
         if ($documentType == "1.3.1") {
             $query = "

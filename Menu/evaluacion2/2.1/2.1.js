@@ -1,33 +1,34 @@
 console.log('scripts cargado correctamente'); 
 
 const descripcionesDescripcion = {
-    '2.1.1.1': 'hol',
-    '2.1.1.2': '',
-    '2.1.1.3': '',
-    '2.1.1.4': '',
-    '2.1.1.5': '',
-    '2.1.2.1': '',
-    '2.1.2.2': '',
+    '2.1.1.1': '• En ambos casos, impresión de pantalla de la página de Clarivate, convo.bo. de la subdirección académica donde aparece el nombre de larevista, la cual se puede obtener de la siguiente liga:http://mjl.clarivate.com para validar la pertenencia al Master JournalList. Además, copia de la carátula del artículo en la cual se mencionela adscripción del autor al Tecnológico Nacional de México con vo.bo.de la subdirección académica, de acuerdo con la circular no.D/060/2019 \n• Constancia emitida por el(la) jefe(a) de departamento académico convo.bo. de la subdirección académica donde se indique la colaboraciónde estudiantes (sólo para el apartado 2.1.1.1.2.)',
+    '2.1.1.2': '• En ambos casos, copia del comprobante donde se indique el o losíndices de la revista con vo.bo. de la subdirección académica. Además,copia de la carátula del artículo en la cual se mencione la adscripcióndel autor al Tecnológico Nacional de México con vo.bo. de lasubdirección académica, de acuerdo con la circular no. D/060/2019 \n•  Constancia emitida por el(la) jefe(a) de departamento académico convo.bo. de la subdirección académica donde se indique la colaboraciónde estudiantes (sólo para el apartado 2.1.1.2.2.) \n Nota: No se consideran Artículos derivados de Memoria de Congresos (Las evidencias presentadas NO deberán contener la palabra Congreso, Coloquio, Workshop, etc)',
+    '2.1.1.3': '• En ambos casos copia de la carátula del artículo publicado se mencione la adscripción del autor al Tecnológico Nacional de México, donde se indique los autores, datos del congreso e ISBN o ISSN de la memoria del congreso con vo.bo. de la subdirección académica. \n• Constancia emitida por el jefe(a) de departamento académico convo.bo. de la subdirección académica donde se indique la colaboraciónde estudiantes (sólo para el apartado 2.1.1.3.2.)',
+    '2.1.1.4': '• Portada e índice del libro con vo.bo. por la dirección del plantel. \n• Evidencia en donde se muestre que en el libro aparece la adscripción del autor al Tecnológico Nacional de México. \n• Constancia de libro o capítulo publicado firmada por el(la) director(a) donde se especifique: \n ▪Autores \n ▪ISBN \n ▪Nombre de la publicación \n ▪Editorial. Se sugiere que la publicación pertenezca a una casa editorial registrada en la cámara nacional de la industria editorial mexicana (CANIEM) http://www.caniem.com) \n ▪Fecha de publicación (dentro del periodo a evaluar) \n ▪Que no es producto de periodo sabático, tesis, tesina, compilaciones o memorias de congresos, seminarios o eventos académicos y científicos. \n ▪Que el libro está relacionado con los programas que se imparten en el instituto. \n• Las evidencias se requieren para ambos casos.',
+    '2.1.1.5': '• Para 2.1.1.5.1. Constancia o correo electrónico oficial comunicando la liberación u oficio de liberación de la instancia correspondiente convo.bo. de la subdirección académica. \n• Para 2.1.1.5.2. Oficio de liberación por la Dirección de Docencia eInnovación Educativa o de la Dirección de Posgrado de Investigación eInnovación.',
+    '2.1.2.1': '• Constancia de vigencia de la red, emitida por la Dirección dePosgrado, Investigación e Innovación. \n• Nombramiento del líder de la red, emitido por la Dirección dePosgrado, Investigación e Innovación. \n• Constancia del Líder de la Red que avala la participación de(la)docente como miembro de la Red, con Vo.Bo. de la SubdirecciónAcadémica.',
+    '2.1.2.2': '• Dictamen de PRODEP (TecNM o DGSUI) del cuerpo académico, convigencia en el período a evaluar y constancia en donde seespecifiquen los integrantes del cuerpo académico firmada por elrepresentante institucional PRODEP con vo.bo. de la subdirecciónacadémica.',
 };
 
+
 const puntosPuntos = {
-    '2.1.1.1': '',
-    '2.1.1.2': '',
-    '2.1.1.3': '',
-    '2.1.1.4': '',
-    '2.1.1.5': '',
-    '2.1.2.1': '',
-    '2.1.2.2': '',
+    '2.1.1.1': '2.1.1.1.1. Artículo publicado en el periodo a evaluar, en revista indizada en JOURNAL CITATION REPORTS: \n 2.1.1.1.1.1. Autor principal o Autor de correspondencia = 80, \n 2.1.1.1.1.2. Co-autores = 40 \n2.1.1.1.2. Artículo publicado en el periodo a evaluar, en revista indizada en JOURNAL CITATION REPORTS. Con participación de estudiantes inscritos en el TecNM: \n 2.1.1.1.2.1. Autor principal o Autor de correspondencia = 100, \n 2.1.1.1.2.2. Co-autores = 50',
+    '2.1.1.2': '2.1.1.2.1. Artículos publicados en el periodo a evaluar, en revista incluida en otros índices: \n 2.1.1.2.1.1. Autor principal o Autor de correspondencia = 30, \n 2.1.1.2.1.2. Co-autores = 15 \n2.1.1.2.2. Artículos publicados en el periodo a evaluar, en revista incluida en otros índices. Con participación de estudiantes inscritos en el TecNM: \n 2.1.1.2.2.1. Autor principal o Autor de correspondencia = 40, 2.1.1.2.2.2. Co-autores = 20',
+    '2.1.1.3': '2.1.1.3.1. Con ISBN o ISSN: \n 2.1.1.3.1.1. Autor principal = 10, \n 2.1.1.3.1.2. Co-autores = 5,\n2.1.1.3.2. Con ISBN o ISSN y participación de estudiantes inscritos en el TecNM:\n 2.1.1.3.2.1. Autor principal = 20, \n 2.1.1.3.2.2. Co-autores = 10',
+    '2.1.1.4': '2.1.1.4.1. Libro publicado con créditos al TecNM (impreso o electrónico), excepto; compilaciones de artículos, antologías, monografías y memorias de congresos. = 100, \n 2.1.1.4.2. Capítulo de libro publicado: \n 2.1.1.4.2.1. Autor principal = 10, \n 2.1.1.4.2.2. Co-autores (máximo cinco) = 5',
+    '2.1.1.5': '2.1.1.5.1. Proyectos de Investigación con financiamiento: \n 2.1.1.5.1.1. Responsable o Director(a) del proyecto = 40, \n 2.1.1.5.1.2. Colaborador(a) del proyecto (Máximo 5 docentes) = 15, \n2.1.2.5.2. Proyectos de Investigación Educativa o Ciencia Básica y Aplicada, autorizados por el TecNM:\n 2.1.2.5.2.1. Responsable del proyecto = 40, \n 2.1.2.5.2.2. Colaborador(a) del proyecto (Máximo 5 docentes) = 15',
+    '2.1.2.1': '2.1.2.1.1. Regional = 2.5, \n2.1.2.1.2. Nacional = 3.33, \n2.1.2.1.3. Internacional = 4.16',
+    '2.1.2.2': '2.1.2.2.1. En Formación = 2.5, \n 2.1.2.2.2. En Consolidación = 3.33, \n 2.1.2.2.3. Consolidado = 4.16',
 };
 
 const puntosMax = {
-    '2.1.1.1': '',
-    '2.1.1.2': '',
-    '2.1.1.3': '',
-    '2.1.1.4': '',
-    '2.1.1.5': '',
-    '2.1.2.1': '',
-    '2.1.2.2': '',
+    '2.1.1.1': '2.1.1.1.1. Artículo publicado en el periodo a evaluar, en revista indizada en JOURNAL CITATION REPORTS: \n 2.1.1.1.1.1. Autor principal o Autor de correspondencia = 80, \n 2.1.1.1.1.2. Co-autores = 40 \n2.1.1.1.2. Artículo publicado en el periodo a evaluar, en revista indizada en JOURNAL CITATION REPORTS. Con participación de estudiantes inscritos en el TecNM: \n 2.1.1.1.2.1. Autor principal o Autor de correspondencia = 100, \n 2.1.1.1.2.2. Co-autores = 50',
+    '2.1.1.2': '2.1.1.2.1. Artículos publicados en el periodo a evaluar, en revista incluida en otros índices: \n 2.1.1.2.1.1. Autor principal o Autor de correspondencia = 60, \n 2.1.1.2.1.2. Co-autores = 30 \n2.1.1.2.2. Artículos publicados en el periodo a evaluar, en revista incluida en otros índices. Con participación de estudiantes inscritos en el TecNM: \n 2.1.1.2.2.1. Autor principal o Autor de correspondencia = 80, 2.1.1.2.2.2. Co-autores = 40',
+    '2.1.1.3': '2.1.1.3.1. Con ISBN o ISSN: \n 2.1.1.3.1.1. Autor principal = 20, \n 2.1.1.3.1.2. Co-autores = 10,\n2.1.1.3.2. Con ISBN o ISSN y participación de estudiantes inscritos en el TecNM:\n 2.1.1.3.2.1. Autor principal = 20, \n 2.1.1.3.2.2. Co-autores = 10',
+    '2.1.1.4': '2.1.1.4.1. Libro publicado con créditos al TecNM (impreso o electrónico), excepto; compilaciones de artículos, antologías, monografías y memorias de congresos. = 100, \n 2.1.1.4.2. Capítulo de libro publicado: \n 2.1.1.4.2.1. Autor principal = 20, \n 2.1.1.4.2.2. Co-autores (máximo cinco) = 10',
+    '2.1.1.5': '2.1.1.5.1. Proyectos de Investigación con financiamiento: \n 2.1.1.5.1.1. Responsable o Director(a) del proyecto = 40, \n 2.1.1.5.1.2. Colaborador(a) del proyecto (Máximo 5 docentes) = 15, \n2.1.2.5.2. Proyectos de Investigación Educativa o Ciencia Básica y Aplicada, autorizados por el TecNM:\n 2.1.2.5.2.1. Responsable del proyecto = 40, \n 2.1.2.5.2.2. Colaborador(a) del proyecto (Máximo 5 docentes) = 15',
+    '2.1.2.1': '2.1.2.1.1. Regional = 30, \n2.1.2.1.2. Nacional = 40, \n2.1.2.1.3. Internacional = 50',
+    '2.1.2.2': '2.1.2.2.1. En Formación = 30, \n 2.1.2.2.2. En Consolidación = 40, \n 2.1.2.2.3. Consolidado = 50',
 };
 
 
@@ -42,23 +43,20 @@ function mostrarDescripcion() {
     puntos1.value = puntosPuntos[valorSeleccionado] || 'Descripción no disponible.';
     puntos2.value = puntosMax[valorSeleccionado] || 'Descripción no disponible.';
 
-    //Mostrar u ocultar el botón según la selección
-    const pregunta1_1_4 = document.getElementById('pregunta2_1_1_1');
-    pregunta1_1_4.style.display = (valorSeleccionado === '2.1.1.1') ? 'flex' : 'none';
-    const pregunta1_1_5 = document.getElementById('pregunta1_1_5');
-    pregunta1_1_5.style.display = (valorSeleccionado === '1.1.5') ? 'flex' : 'none'
-    
-  
-
-    // Calcular puntos
-    const calcular = document.getElementById('calcular'); 
-    const valoresPermitidos = ['1.1.1', '1.1.2', '1.1.3', '1.1.6', '1.1.7'];
-
-    if (valoresPermitidos.includes(valorSeleccionado)) {
-        calcular.style.display = 'flex';
-    } else {
-        calcular.style.display = 'none';
-    }
+    const pregunta1 = document.getElementById('pregunta1');
+    pregunta1.style.display = (valorSeleccionado === '2.1.1.1') ? 'flex' : 'none';
+    const pregunta2 = document.getElementById('pregunta2');
+    pregunta2.style.display = (valorSeleccionado === '2.1.1.2') ? 'flex' : 'none';
+    const pregunta3 = document.getElementById('pregunta3');
+    pregunta3.style.display = (valorSeleccionado === '2.1.1.3') ? 'flex' : 'none';
+    const pregunta4 = document.getElementById('pregunta4');
+    pregunta4.style.display = (valorSeleccionado === '2.1.1.4') ? 'flex' : 'none';
+    const pregunta5 = document.getElementById('pregunta5');
+    pregunta5.style.display = (valorSeleccionado === '2.1.1.5') ? 'flex' : 'none';
+    const pregunta6 = document.getElementById('pregunta6');
+    pregunta6.style.display = (valorSeleccionado === '2.1.2.1') ? 'flex' : 'none';
+    const pregunta7 = document.getElementById('pregunta7');
+    pregunta7.style.display = (valorSeleccionado === '2.1.7.1') ? 'flex' : 'none';
 }
 
 
@@ -144,3 +142,8 @@ function actualizarTitulo() {
         titulo.textContent = "Seleccione una opción";
     }
 }
+
+
+
+
+

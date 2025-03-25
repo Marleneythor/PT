@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['file']) && isset($_SE
     
     if ($curp && $idDocente) {
         $customText = $_POST['document_type'] ?? '';
-        $targetDir = "../../../docentes/" . $curp . "/1/1.3/" . $customText;
+        $targetDir = "../../../docentes/" . $curp . "/2/2.2/" . $customText;
         // Crear la carpeta si no existe
         if (!is_dir($targetDir)) {
             mkdir($targetDir, 0777, true);
@@ -44,33 +44,34 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['file']) && isset($_SE
         
         $puntosporactividad = 0;
 
-        if ($customText === '1.3.1' || $customText === '1.3.2') {
-            $nivel_Posgrado = $_POST['nivel_posgrado'] ?? '';
-            $nivel_academico = $_POST['nivel_academico'] ?? '';
+        if (isset($customText)) {
             $calculo1 = (int) ($_POST['calculo1'] ?? 0);
             $calculo2 = (int) ($_POST['calculo2'] ?? 0);
-
-            if ($customText === '1.3.1') {
-                $nivelesPosgrado = [
-                    '1.3.1.1' => $calculo1 * 20,
-                    '1.3.1.2' => $calculo1 * 25,
-                    '1.3.1.3' => $calculo1 * 40,
-                    '1.3.1.4' => $calculo1 * 30,
-                    '1.3.1.5' => $calculo1 * 50,
-                    '1.3.1.6' => $calculo1 * 40,
+            $opcion = $_POST['opcion'] ?? '';
+            $calculo3 = (int) ($_POST['calculo3'] ?? 0);
+           
+           if ($customText === 'x') {
+                $opciones = [
+                    '2.2.2' => $calculo3 * 40,
+                    '2.2.3' => $calculo3 * 40,
+                    '2.2.4' => $calculo3 * 40,
+                    '2.2.5' => $calculo3 * 40,
+                    '2.2.6' => $calculo3 * 10,
                 ];
-                $puntosporactividad = $nivelesPosgrado[$nivel_Posgrado] ?? 0;
-                $nivelSeleccionado = $nivel_Posgrado;
-            } elseif ($customText === '1.3.2') {
-                $nivelesAcademico = [
-                    '1.3.2.1' => $calculo2 * 5,
-                    '1.3.2.2' => $calculo2 * 10,
-                    '1.3.2.3' => $calculo2 * 15,
-                    '1.3.2.4' => $calculo2 * 15,
-                    '1.3.2.5' => $calculo2 * 30,
+                $puntosporactividad = $opciones [$opcion] ?? 0;
+                $nivelSeleccionado = $opcion; 
+           
+            } else {
+                $puntosPuntos = [
+                    '2.2.7' => 10,
+                    '2.2.9' => 50,
+                    '2.2.10' => 40,
+                    '2.2.1' => $calculo1 * 10,
+                    '2.2.8' => $calculo2 * 30,
                 ];
-                $puntosporactividad = $nivelesAcademico[$nivel_academico] ?? 0;
-                $nivelSeleccionado = $nivel_academico;
+                if (isset($puntosPuntos[$customText])) {
+                    $puntosporactividad = $puntosPuntos[$customText];
+                }
             }
         }
 

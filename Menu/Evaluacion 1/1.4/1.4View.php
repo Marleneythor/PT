@@ -290,14 +290,14 @@ include '../../../Login/auth.php';
                  </div>
              </div>
          </div>
-         <div class="container">
-         <div id="pregunta1_4_8_3" class="text-center" style="display: none;">
+        <div class="container">
+            <div id="pregunta1_4_8_3" class="text-center" style="display: none;">
                 <div class="mb-3 d-inline-block text-start w-100">
                     <label for="calculo" class="form-label">¿Cuántas veces ha elaborado estudios de factibilidad para la apertura de un programa educativo a nivel licenciatura o posgrado?</label>
                     <input type="number" name="calculo8_3" id="calculo8_3" class="form-control"  min="0" step="1">
                 </div>
             </div>
-            </div>
+        </div>
                 <div class="text-center">
                     <input type="submit" value="Subir Archivo" class="btn btn-primary">   
                 </div> 

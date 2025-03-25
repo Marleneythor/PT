@@ -211,6 +211,9 @@ if (isset($_SESSION['usuario']) && isset($_GET['document_type'])) {
         $stmt->fetch();
         $stmt->close();
         $sumaTotal_1_4 = min($sumaTotal_4, 500);
+          //  Guardar en sesión para usarlo en otro archivo
+          $_SESSION['suma_total1_4'] = $sumaTotal_1_4;
+          session_write_close(); // Asegurar que la sesión se guarde correctamente
 
         // Definir la consulta SQL dependiendo del tipo de documento
         if ($documentType == "1.4.2") {

@@ -8,7 +8,7 @@ include '../../../Login/auth.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Punto 1.1</title>
+    <title>Punto 2.2</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
     <style>
@@ -44,9 +44,9 @@ include '../../../Login/auth.php';
             <button class="btn btn-secondary position-absolute start-0" onclick="history.back();" aria-label="Regresar a la página anterior">
                 <i class="bi bi-arrow-left"></i>
             </button>
-            <h1 class="text-center flex-grow-1 mb-0">1.3 ASESORÍA PARA TITULACIÓN INTEGRAL O DIRECCIÓN DE TESIS</h1>
+            <h1 class="text-center flex-grow-1 mb-0">2.2. PRODUCTOS DE INVESTIGACIÓN APLICADA CON CRÉDITO AL TECNM</h1>
         </div>
-            <h2 class="text-center mb-0">100 Puntos</h2>
+            <h2 class="text-center mb-0">150 Puntos</h2>
             
     </div>
     <div class="container mt-3 flex-grow-1 overflow-auto">
@@ -56,8 +56,12 @@ include '../../../Login/auth.php';
                     <label for="document_type" class="form-label">Selecciona el número de documento:</label>
                     <select name="document_type" id="document_type" class="form-select" required onchange="cargarDocumentoSeleccionado1(); mostrarDescripcion();">
                         <option value="" selected disabled>-- Seleccione --</option>
-                        <option value="1.3.1">1.3.1. Asesor(a) o director(a) o co-director(a) (solo posgrado) (100 puntos posibles).</option>
-                        <option value="1.3.2">1.3.2. Sinodal para titulación u obtención de grado de estudiantes del TecNM (30 puntos posibles).</option>
+                        <option value="2.2.1">2.2.1. Desarrollo de Software (con instructivo de operación).</option>
+                        <option value="x">Tipos de Propiedad Industrial y Protección de Innovaciones.</option>
+                        <option value="2.2.7">2.2.7. Derechos de autor (Excepto software con reserva de derechos)</option>
+                        <option value="2.2.8">2.2.8 Desarrollo de Curso Masivo en Línea (MOOCs)</option>
+                        <option value="2.2.9">2.2.9. Desarrollo de Software para los Procesos de la Dirección General del TecNM.</option>
+                        <option value="2.2.10">2.2.10. Diseño y desarrollo de diplomados y/o especializaciones, relacionados con los proyectos estratégicos del TecNM</option>
                     </select>
                     
                 </div>
@@ -80,54 +84,45 @@ include '../../../Login/auth.php';
                 <label for="file" class="form-label">Subir documento (PDF, JPG o Word, máximo 500 KB):</label>
                 <input type="file" name="file" id="file" class="form-control" required>
             </div>
-           
+            <div class="container">
+            <div id="pregunta2_2_1" class="text-center" style="display: none;">
+                <div class="mb-3 d-inline-block text-start w-100">
+                    <label for="calculo" class="form-label">¿Cuántas veces desarrollo esta actividad?</label>
+                    <input type="number" name="calculo1" id="calculo1" class="form-control"  min="0" step="1">
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div id="pregunta2_2_8" class="text-center" style="display: none;">
+                <div class="mb-3 d-inline-block text-start w-100">
+                    <label for="calculo" class="form-label">¿Cuántas veces desarrollo esta actividad?</label>
+                    <input type="number" name="calculo2" id="calculo2" class="form-control"  min="0" step="1">
+                </div>
+            </div>
+        </div>
             
             <div class="container">
-                <!-- Sección para 1.1.4 (pregunta con nivel y número de estudiantes) -->
-                <div class="row g-3 mb-3 align-items-center" id="pregunta1_3_1" style="display: none;" >
+                <div class="row g-3 mb-3 align-items-center" id="pregunta" style="display: none;" >
                     <div class="col-md-6">
-                        <label for="nivel_posgrado" class="form-label">Nivel de posgrado en que trabajo como Asesor(a), Director(a) o Co-Director(a):</label>
-                        <select name="nivel_posgrado" id="nivel_posgrado" class="form-select">
+                        <label for="opcion" class="form-label">Nivel de posgrado en que trabajo como Asesor(a), Director(a) o Co-Director(a):</label>
+                        <select name="opcion" id="opcion" class="form-select">
                             <option value="" selected disabled>-- Seleccione --</option>
-                            <option value="1.3.1.1">Licenciatura</option>
-                            <option value="1.3.1.2">Especialización</option>
-                            <option value="1.3.1.3">Maestría</option>
-                            <option value="1.3.1.4">Maestría. Co-Director</option>
-                            <option value="1.3.1.5">Doctorado</option>
-                            <option value="1.3.1.6">Doctorado. Co-Director</option>
+                            <option value="2.2.2">Modelo de utilidad.</option>
+                            <option value="2.2.3">Patente. (Se considerará patentes durante tres años a partir de la fecha en que se obtiene).</option>
+                            <option value="2.2.4">Secreto industrial.</option>
+                            <option value="2.2.5">Trazado de circuito integrado.</option>
+                            <option value="2.2.6">Registro de Marca, Signo Distintivo y Lemas Comerciales.</option>
                         </select>  
                     </div>
                     <div class="col-md-6">
-                        <label for="calculo1" class="form-label">¿Cuántas veces participo en este nivel de posgrado?</label>
-                        <input type="number" name="calculo1" id="calculo1" class="form-control"  min="0" step="1">
+                        <label for="calculo3" class="form-label">¿Cuántas veces desarrollo esta actividad?</label>
+                        <input type="number" name="calculo3" id="calculo3" class="form-control"  min="0" step="1">
                     </div>
                 </div>
             </div>
-
-            <div class="container">
-            <div class="row g-3 mb-3 align-items-center" id="pregunta1_3_2" style="display: none;">
-                    <div class="col-md-6">
-                        <label for="nivel_academico" class="form-label">Nivel académico en que participo como sinodal para titulación u obtención de grado de estudiantes del TecNM :</label>
-                        <select name="nivel_academico" id="nivel_academico" class="form-select">
-                            <option value="" selected disabled>-- Seleccione --</option>
-                            <option value="1.3.2.1">Técnico Superior</option>
-                            <option value="1.3.2.2">Licenciatura</option>
-                            <option value="1.3.2.3">Especialización</option>
-                            <option value="1.3.2.4">Maestría</option>
-                            <option value="1.3.2.5">Doctorado</option>
-                        </select>  
-                    </div>
-                    <div class="col-md-6">
-                        <label for="calculo2" class="form-label">¿Cuántas veces participo en este nivel académico?</label>
-                        <input type="number" name="calculo2" id="calculo2" class="form-control"  min="0" step="1">
-                    </div>
-                </div>
-            </div>
-
             <div class="mb-4 text-center">
                 <input type="submit" value="Subir Archivo" class="btn btn-primary">   
             </div> 
-            
         </form>
         </div>
         <div class="sticky-top p-3 shadow menu">
@@ -143,7 +138,7 @@ include '../../../Login/auth.php';
             </div>
         </div>
         
-    <script src="1.3.js" defer></script>
+    <script src="2.2.js" defer></script>
      
 </body>
 </html>

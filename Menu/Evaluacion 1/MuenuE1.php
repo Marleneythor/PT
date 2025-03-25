@@ -50,6 +50,20 @@ include '../../Login/auth.php';
             </button>
         </div>
     </div>
+
+    <h2>Puntos Acumulados:</h2>
+    <p id="puntos">Cargando...</p>
+
+    <script>
+        fetch('puntosAcumulados.php')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('puntos').innerHTML = data;
+            })
+            .catch(error => console.error('Error:', error));
+    </script>
+
+
 </div>
 
 <!-- Enlazamos el script de Bootstrap 5 -->

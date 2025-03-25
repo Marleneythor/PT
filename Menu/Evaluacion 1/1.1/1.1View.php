@@ -1,5 +1,6 @@
 <?php
 include '../../../Login/auth.php'; 
+
 ?>
 
 
@@ -122,9 +123,6 @@ include '../../../Login/auth.php';
                 </div>
             </div>
 
-           
-
-
             <!-- Seccion de puntos-->
             <div id="pregunta1_1_3" class="text-center" >
                 <div class="mb-3 d-inline-block text-start w-100">
@@ -151,6 +149,7 @@ include '../../../Login/auth.php';
                     ▼
                 </button>
             </div>
+            
 
             <div id="documentsContainer" class="border rounded p-3 bg-light overflow-auto color" style="max-height: 30vh; display: none;">
                 <!-- Aquí se cargarán los documentos -->

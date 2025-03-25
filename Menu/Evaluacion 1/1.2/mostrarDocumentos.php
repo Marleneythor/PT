@@ -80,6 +80,10 @@ if (isset($_SESSION['usuario']) && isset($_GET['document_type'])) {
     
         // Aplicar el límite global de 150
         $sumaTotal_1_2 = min($total_1_2_1 + $total_1_2_2, 150);
+
+          //  Guardar en sesión para usarlo en otro archivo
+          $_SESSION['suma_total1_2'] = $sumaTotal_1_2;
+          session_write_close(); // Asegurar que la sesión se guarde correctamente
         
 
         // Mostrar ambos valores con el límite aplicado

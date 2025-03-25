@@ -44,9 +44,9 @@ include '../../../Login/auth.php';
             <button class="btn btn-secondary position-absolute start-0" onclick="history.back();" aria-label="Regresar a la página anterior">
                 <i class="bi bi-arrow-left"></i>
             </button>
-            <h1 class="text-center flex-grow-1 mb-0">1.2 APOYO A LA DOCENCIA</h1>
+            <h1 class="text-center flex-grow-1 mb-0">2.3. ACTIVIDADES DE VINCULACIÓN ACADÉMICA</h1>
         </div>
-            <h2 class="text-center mb-0">150 Posibles puntos</h2>
+            <h2 class="text-center mb-0">200 Puntos posibles</h2>
             
     </div>
     <div class="container mt-3 flex-grow-1 overflow-auto">
@@ -57,19 +57,21 @@ include '../../../Login/auth.php';
                     <label for="document_type" class="form-label">Selecciona el número de documento:</label>
                     
                     <select name="document_type" id="document_type" class="form-select" required onchange="cargarDocumentoSeleccionado1(); mostrarDescripcion(); actualizarTitulo(); actualizarText();">
-                    <option value="" selected disabled>-- Seleccione --</option>
-                        <option value="1.2.1.1">1.2.1.1 - Proyectos integradores / Recurso Educativo Digital</option>
-                        <option value="1.2.1.2">1.2.1.2 - Elaboración de manual de prácticas</option>
-                        <option value="1.2.1.3">1.2.1.3 - Implementación de estrategias didácticas innovadoras</option>
-                        <option value="1.2.1.4">1.2.1.4 - Diseño y desarrollo de materiales didácticos incluyentes</option>
-
-                        <option value="1.2.2.1">1.2.2.1 - Instructor(a)/Facilitador(a) de cursos de formación docente (30 horas mínimo)</option>
-                        <option value="1.2.2.2">1.2.2.2 - Instructor(a)/Facilitador(a) de cursos del TecNM (30 horas mínimo)</option>
-                        <option value="1.2.2.3">1.2.2.3 - Instructor(a) del Diplomado de Competencias Docentes</option>
-                        <option value="1.2.2.4">1.2.2.4 - Instructor(a) del Diplomado para Formación de Tutores</option>
-                        <option value="1.2.2.5">1.2.2.5 - Instructor(a) del Diplomado Recursos Educativos Virtuales</option>
-                        <option value="1.2.2.6">1.2.2.6 - Instructor(a) del Diplomado en Educación Inclusiva</option>
-                        <option value="1.2.2.7">1.2.2.7 - Instructor(a) de Diplomados estratégicos del TecNM</option>
+                        <option value="" selected disabled>-- Seleccione --</option>
+                        <option value="2.3.1.1">2.3.1.1. Visitas a empresas o centros de investigación.</option>
+                        <option value="2.3.1.2">2.3.1.2. Certificación en competencias laborales o docentes.</option>
+                        <option value="2.3.2">2.3.2. Asesoría en concursos de emprendimiento o innovación.</option>
+                        <option value="2.3.3">2.3.3. Asesoría en proyectos premiados o tesis destacadas.</option>
+                        <option value="2.3.4.1">2.3.4.1. Asesoría en residencia profesional (no dual).</option>
+                        <option value="2.3.4.2">2.3.4.2. Asesoría en educación dual (licenciatura).</option>
+                        <option value="2.3.4.3">2.3.4.3. Asesoría en residencia vinculada a proyectos estratégicos.</option>
+                        <option value="2.3.5.1">2.3.5.1. Conferencias o ponencias en eventos externos.</option>
+                        <option value="2.3.6.1">2.3.6.1. Estancia nacional (mínimo un mes).</option>
+                        <option value="2.3.6.2">2.3.6.2. Estancia en el extranjero (mínimo un mes).</option>
+                        <option value="2.3.7.1">2.3.7.1. Servicios tecnológicos.</option>
+                        <option value="2.3.7.2">2.3.7.2. Servicios técnicos y certificaciones externas.</option>
+                        <option value="2.3.7.3">2.3.7.3. Asesoría en incubación de empresas (mínimo 3 meses).</option>
+                        <option value="2.3.7.4">2.3.7.4. Asesoría en NODESS.</option>
                     </select>
                 </div>
                 <div class="col-md-6">
@@ -136,7 +138,7 @@ include '../../../Login/auth.php';
 
     </div>
 
-    <script src="1.2.js" defer></script>
+    <script src="2.3.js" defer></script>
      
 </body>
 </html>

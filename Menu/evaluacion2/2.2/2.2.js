@@ -1,21 +1,30 @@
 console.log('scripts cargado correctamente'); 
 const descripcionesDescripcion = {
-    '1.3.1': '• Para Licenciatura: Copia del documento del libro de actas de examen profesional o de grado en la que aparezca como Presidente(a) del jurado.No se consideran participaciones como Secretario y/o Vocal.\n• Para Posgrado: Acta de examen de grado en donde se especifique la Dirección o Co-Dirección.\n• Titulaciones en otras instituciones requieren copia de convenio de colaboración académico y de investigación.\nNota: No se reconocerá la asesoría a estudiantes que se titulen por la opción por Promedio, EGEL, Escolaridad por Estudios de Posgrado.',
-    
-    '1.3.2': 'Constancia emitida por el Departamento de Servicios Escolares que especifique folio del acta, fecha del examen, nombre del estudiante y programa educativo.\nSe expedirá una sola constancia por todas las sinodalías realizadas de estudiantes titulados durante el período a evaluar.\nNota: Este rubro no aplica para directores(as), asesores(as) o co-directores(as).'
+    '2.2.1': '• Registro ante Indautor siendo el Titular el Tecnológico Nacional de México',
+    'x': '• Título emitido por el IMPI (no se considera la solicitud ante el IMPI) siendo el Titular el Tecnológico Nacional de México',
+    '2.2.7': '• Registro ante Indautor siendo el Titular el Tecnológico Nacional de México',
+    '2.2.8': '• Constancia por parte del Área Central del TecNM.',
+    '2.2.9': '• Constancia de la Dirección de Docencia e Innovación Educativa del TecNM.',
+    '2.2.10': '• Constancia de  la Dirección del TecNM Responsable del Proyecto Estratégico del TecNM.',
 };
 
     
 const puntosPuntos = {
-    '1.3.1': '1.3.1.1. Licenciatura = 20   \n1.3.1.2. Especialización = 25  \n1.3.1.3. Maestría = 40   \n1.3.1.4. Maestría Co-Director = 30   \n1.3.1.5. Doctorado = 50   \n1.3.1.6. Doctorado. Co-Director = 40 ',
-    '1.3.2': '1.3.2.1. Técnico Superior = 5   \n1.3.2.2. Licenciatura = 10   \n1.3.2.3. Especialización = 15    \n1.3.2.4. Maestría = 15    \n1.3.2.5. Doctorado = 30 ',
-   
+    '2.2.1': '10',
+    'x': '2.2.2. Modelo de utilidad = 40, \n2.2.3. Patente. (Se considerará patentes durante tres años a partir de la fecha en que se obtiene) = 40, \n2.2.4. Secreto industrial = 40, \n2.2.5. Trazado de circuito integrado = 40, \n2.2.6. Registro de Marca, Signo Distintivo y Lemas Comerciales= 10',
+    '2.2.7': '10',
+    '2.2.8': '30',
+    '2.2.9': '50',
+    '2.2.10': '40',
     
 };
 const puntosMax = {
-    '1.3.1': '1.3.1.1. Licenciatura = 80   \n1.3.1.2. Especialización = 75  \n1.3.1.3. Maestría = 80   \n1.3.1.4. Maestría Co-Director = 60   \n1.3.1.5. Doctorado = 100   \n1.3.1.6. Doctorado. Co-Director = 80 ', 
-    '1.3.2': '1.3.2.1. Técnico Superior = 30   \n1.3.2.2. Licenciatura = 30  \n1.3.2.3. Especialización = 30   \n1.3.2.4. Maestría = 30    \n1.3.2.5. Doctorado = 30 ', 
-
+    '2.2.1': '20',
+    'x': '2.2.2. Modelo de utilidad = 80, \n2.2.3. Patente. (Se considerará patentes durante tres años a partir de la fecha en que se obtiene) = 80, \n2.2.4. Secreto industrial = 80, \n2.2.5. Trazado de circuito integrado = 80, \n2.2.6. Registro de Marca, Signo Distintivo y Lemas Comerciales= 20',
+    '2.2.7': '10',
+    '2.2.8': '60',
+    '2.2.9': '50',
+    '2.2.10': '40',
     
 };
 function mostrarDescripcion() {
@@ -30,10 +39,13 @@ function mostrarDescripcion() {
     puntos2.value = puntosMax[valorSeleccionado] || 'Descripción no disponible.';
 
     //Mostrar u ocultar el botón según la selección
-    const pregunta1_3_1 = document.getElementById('pregunta1_3_1');
-    pregunta1_3_1.style.display = (valorSeleccionado === '1.3.1') ? 'flex' : 'none';
-    const pregunta1_3_2 = document.getElementById('pregunta1_3_2');
-    pregunta1_3_2.style.display = (valorSeleccionado === '1.3.2') ? 'flex' : 'none';
+    const pregunta = document.getElementById('pregunta');
+    pregunta.style.display = (valorSeleccionado === 'x') ? 'flex' : 'none';
+     // Calcular puntos
+     const pregunta2_2_1 = document.getElementById('pregunta2_2_1');
+     pregunta2_2_1.style.display = (valorSeleccionado === '2.2.1') ? 'flex' : 'none';
+     const pregunta2_2_8 = document.getElementById('pregunta2_2_8');
+     pregunta2_2_8.style.display = (valorSeleccionado === '2.2.8') ? 'flex' : 'none';
   
 }
 

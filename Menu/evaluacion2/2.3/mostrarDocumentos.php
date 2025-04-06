@@ -29,6 +29,7 @@ if (isset($_SESSION['usuario']) && isset($_GET['document_type'])) {
                         WHEN documento = '1.2.2.3' THEN 80
                         WHEN documento = '1.2.2.4' THEN 80
                         WHEN documento = '1.2.2.5' THEN 80
+
                         WHEN documento = '1.2.2.6' THEN 80
                         WHEN documento = '1.2.2.7' THEN 80
                         ELSE SUM(puntosporactividad) 
@@ -79,12 +80,12 @@ if (isset($_SESSION['usuario']) && isset($_GET['document_type'])) {
         $stmt->close();
     
         // Aplicar el límite global de 150
-        $sumaTotal_1_2 = min($total_1_2_1 + $total_1_2_2, 150);
+        $sumaTotal_2_3 = min($total_1_2_1 + $total_1_2_2, 150);
         
 
         // Mostrar ambos valores con el límite aplicado
         echo "<div class='d-flex justify-content-between align-items-center mb-2'>";
-        echo "<div class='d-flex justify-content-end alert alert-primary mb-3'>Puntos Totales Acumulados: <strong>$sumaTotal_1_2</strong></div>";
+        echo "<div class='d-flex justify-content-end alert alert-primary mb-3'>Puntos Totales Acumulados: <strong>$sumaTotal_2_3</strong></div>";
         echo "<div class='d-flex justify-content-end alert alert-success mb-3'>Puntos Totales del Documento: <strong>$puntosTotales</strong></div>";
         echo "</div>";  
 

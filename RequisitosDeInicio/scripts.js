@@ -1,8 +1,8 @@
 console.log('scripts.js cargado correctamente'); 
 
 const descripcionesDescripcion = {
-        'RI1': 'Constancia de Recursos Humanos que especifique el nombramiento en estatus 10 o 95 sin titular, anterior a la quincena 07 del 2024, además deberá especificar que no ha sido acreedor a algún tipo de sanción y que cumplió con al menos el 90% deasistencia de acuerdo con su jornada y horario de trabajo durante el período a evaluar.',
-        'RI2': 'Talón de pago (quincena 07 del 2024, sin la percepción o ajuste del DT o I8).', 
+        'RI1': 'Constancia de Recursos Humanos que especifique el nombramiento en estatus 10 o 95 sin titular, anterior a la quincena 07 del 2025, además deberá especificar que no ha sido acreedor a algún tipo de sanción y que cumplió con al menos el 90% deasistencia de acuerdo con su jornada y horario de trabajo durante el período a evaluar.',
+        'RI2': 'Talón de pago (quincena 07 del 2025, sin la percepción o ajuste del DT o I8).', 
         'RI3': 'Cumplir con la carga académica reglamentaria, con base en lo dispuesto en el Reglamento Interior de Trabajo del Personal Docente de los Institutos Tecnológicos (Art 143, 144, 146, 147, 148 y 156) reflejado en los horarios del periodo a evaluar y del primer semestre del año de la convocatoria. Para profesores(as) que imparten clases en nivel Posgrado se debenconsiderar los Lineamientos para la Operación de los Estudios de Posgrado en el Tecnológico Nacional de México, en sunumeral 2.4.2. ',
         'RI4': 'Profesores(as) de tiempo completo presentar carta de exclusividad. Descargar formato en http://www.edd.tecnm.mx',
         'RI5': 'Los(as) docentes con plaza de profesor(a) investigador(a), deben presentar un proyecto de investigación vigente registrado ante la DPII o de la DDIE del TecNM, o un proyecto de investigación vigente de instituciones u organismos externos al TecNM (Artículo 07 Lineamientos del Programa) que incluya el Dictamen firmado por el(la) Director(a) del plantel así como la opinióndel Comité Institucional de Posgrado e Investigación (CIPI) o por el Comité Académico en caso de que no exista el CIPI. Además, debe comprobar la existencia de al menos un proyecto, con las características antes mencionadas, durante el periodo a evaluar. Los docentes que no cuentan con plaza de profesor(a) investigador(a) y que justifiquen su descarga frente a grupo por el desarrollo de un proyecto de investigación, se deberá presentar la misma documentación.',
@@ -27,7 +27,17 @@ function mostrarDescripcion() {
    
     // Mostrar u ocultar el botón según la selección
     const botonCrearDocumento = document.getElementById('botonCrearDocumento');
-    botonCrearDocumento.style.display = (valorSeleccionado === '7') ? 'block' : 'none';
+    botonCrearDocumento.style.display = (valorSeleccionado === 'RI7') ? 'block' : 'none';
+
+    const pregunta1_1_4 = document.getElementById('pregunta1_1_4');
+    pregunta1_1_4.style.display = (valorSeleccionado === 'RI7') ? 'flex' : 'none';
+    
+
+    if (valoresPermitidos.includes(valorSeleccionado)) {
+        calcular.style.display = 'flex';
+    } else {
+        calcular.style.display = 'none';
+    }
 }
 
 

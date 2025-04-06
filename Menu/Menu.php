@@ -14,10 +14,12 @@ include '../Login/auth.php'; // Protege la página
     <style>
         body {
             font-family: 'Roboto', sans-serif;
+            background-color: #F1EFEC;
         }
     </style>
 </head>
-<body class="bg-gray-100 text-gray-900">
+<body class="bg-gray-100 text-gray-900" style="background-color: #F1EFEC;">
+
 
         <?php
         include 'navbar.php'
@@ -30,10 +32,10 @@ include '../Login/auth.php'; // Protege la página
         <p class="text-lg text-gray-700 mb-6">Seleccione un bloque para almacenar sus documentos</p>
         
         <div class="flex flex-wrap justify-center gap-4">
-            <a href="../Menu/Evaluacion 1/MuenuE1.php" class="bg-blue-900 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-300 hover:text-gray-900 transition">1. La dedicación en las actividades de la docencia</a>
-            <a href="../Menu/evaluacion2/MenuE2.php" class="bg-blue-900 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-300 hover:text-gray-900 transition">2. La calidad en el desempeño de la docencia</a>
-            <a href="../Menu/Evaluacion 3/3View.php" class="bg-blue-900 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-300 hover:text-gray-900 transition">3. La permanencia en las actividades de la docencia</a>
-            <a href="/PT/shared/workingPage.php" class="bg-blue-900 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-300 hover:text-gray-900 transition">Generar Evaluación</a>
+            <a href="../Menu/evaluacion1/menuE1.php" class="bg-blue-900 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-300 hover:text-gray-900 transition">1. La dedicación en las actividades de la docencia</a>
+            <a href="../Menu/evaluacion2/menuE2.php" class="bg-blue-900 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-300 hover:text-gray-900 transition">2. La calidad en el desempeño de la docencia</a>
+            <a href="../Menu/evaluacion3/3View.php" class="bg-blue-900 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-300 hover:text-gray-900 transition">3. La permanencia en las actividades de la docencia</a>
+            <a href="../Menu/generarEva/evaFinal.php" class="bg-blue-900 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-300 hover:text-gray-900 transition">Generar Evaluación</a>
 
         </div>
     </div>

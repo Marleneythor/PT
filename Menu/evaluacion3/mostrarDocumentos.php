@@ -1,7 +1,7 @@
 <?php
 session_start();
-include "../../../conexion/conexion.php";
-include "../../funciones.php";
+include "../../conexion/conexion.php";
+include "../funciones.php";
 
 if (!isset($_SESSION['usuario']) || !isset($_GET['document_type'])) {
     echo "<p class='text-danger'>Error al procesar la solicitud.</p>";
@@ -25,50 +25,86 @@ if (empty($idDocente)) {
 }
 
 // Obtener los puntos acumulados
-$sumaTotal_2_1 = obtenerPuntosTotales2_1($conexion, $idDocente);
-$_SESSION['sumaTotal_2_1'] = $sumaTotal_2_1;
+
+$sumaTotal_3_1 = obtenerPuntosTotales3_1($conexion, $idDocente);
+$sumaTotal_3_2 = obtenerPuntosTotales3_2($conexion, $idDocente);
+$sumaTotal_3_3 = obtenerPuntosTotales3_3($conexion, $idDocente);
+$_SESSION['sumaTotal_3_1'] = $sumaTotal_3_1;
+$_SESSION['sumaTotal_3_2'] = $sumaTotal_3_2;
+$_SESSION['sumaTotal_3_3'] = $sumaTotal_3_3;
+$total_3 = min($sumaTotal_3_1 + $sumaTotal_3_2 + $sumaTotal_3_3, 100);
 
         // Definir la consulta SQL dependiendo del tipo de documento
-        if ($documentType == "2.1.1.1") {
+        if ($documentType == "3.1.1") {
             $query = "
-            SELECT LEAST(SUM(puntos_limited), 160) AS puntos_totales
+            SELECT LEAST(SUM(puntos_limited), 40) AS puntos_totales
             FROM (
                 SELECT subdocumento, LEAST(SUM(puntosporactividad), limite) AS puntos_limited
                 FROM (
                     SELECT subdocumento, puntosporactividad,
                         CASE 
-                        WHEN subdocumento = '2.1.1.1.1.1' THEN 80
-                        WHEN subdocumento = '2.1.1.1.1.2' THEN 40
-                        WHEN subdocumento = '2.1.1.1.2.1' THEN 100
-                        WHEN subdocumento = '2.1.1.1.2.2' THEN 50
-                        ELSE 0  
+                        WHEN subdocumento = '3.1.1.1' THEN 40
+                        WHEN subdocumento = '3.1.1.2' THEN 40
+                            ELSE 0 
                         END AS limite
                     FROM documentos
-                    WHERE id_docente = ? AND documento LIKE '2.1.1.1%'
+                    WHERE id_docente = ? AND documento LIKE '3.1.1%'
                 ) AS subquery
                 GROUP BY subdocumento, limite
             ) AS final_query";
         
-        } elseif ($documentType == "2.1.1.2") {
+        } elseif ($documentType == "3.1.2") {
             $query = "
-                SELECT LEAST(SUM(puntos_limited), 80) AS puntos_totales
+                SELECT LEAST(SUM(puntos_limited), 40) AS puntos_totales
                 FROM (
                     SELECT subdocumento, LEAST(SUM(puntosporactividad), limite) AS puntos_limited
                     FROM (
                         SELECT subdocumento, puntosporactividad,
+                            CASE 
+                            WHEN subdocumento = '3.1.2.1' THEN 40
+                            WHEN subdocumento = '3.1.2.2' THEN 40
+                                ELSE 0 
+                            END AS limite
+                        FROM documentos
+                        WHERE id_docente = ? AND documento LIKE '3.1.2%'
+                    ) AS subquery
+                    GROUP BY subdocumento, limite
+                ) AS final_query";
+        } elseif ($documentType == "3.2.1") {
+            $query = "
+                SELECT LEAST(SUM(puntos_limited), 60) AS puntos_totales
+                FROM (
+                    SELECT documento, LEAST(SUM(puntosporactividad), limite) AS puntos_limited
+                    FROM (
+                        SELECT documento, puntosporactividad,
+                            CASE 
+                            WHEN subdocumento = '3.2.1.1' THEN 60
+                            WHEN subdocumento = '3.2.1.2' THEN 40
+                                ELSE 0 
+                            END AS limite
+                        FROM documentos
+                        WHERE id_docente = ? AND (documento LIKE '3.2.1%')
+                    ) AS subquery
+                    GROUP BY documento, limite 
+                ) AS final_query";
+        } elseif ($documentType == "3.2.2") {
+            $query = "
+            SELECT LEAST(SUM(puntos_limited), 20) AS puntos_totales
+            FROM (
+                SELECT documento, LEAST(SUM(puntosporactividad), limite) AS puntos_limited
+                FROM (
+                    SELECT documento, puntosporactividad,
                         CASE 
-                            WHEN subdocumento = '2.1.1.2.1.1' THEN 60
-                            WHEN subdocumento = '2.1.1.2.1.2' THEN 30
-                            WHEN subdocumento = '2.1.1.2.2.1' THEN 80
-                            WHEN subdocumento = '2.1.1.2.2.2' THEN 40
+                        WHEN subdocumento = '3.2.2.1' THEN 10
+                        WHEN subdocumento = '3.2.2.2' THEN 10
                             ELSE 0 
                         END AS limite
                     FROM documentos
-                    WHERE id_docente = ? AND documento LIKE '2.1.1.2%'
-                    ) AS subquery
-                    GROUP BY subdocumento, limite
-                ) AS final_query";
-        } elseif ($documentType == "2.1.1.3") {
+                    WHERE id_docente = ? AND documento LIKE '3.2.2%'
+                ) AS subquery
+                GROUP BY documento, limite
+            ) AS final_query";
+        } elseif ($documentType == "3.3") {
             $query = "
                 SELECT LEAST(SUM(puntos_limited), 80) AS puntos_totales
                 FROM (
@@ -76,94 +112,41 @@ $_SESSION['sumaTotal_2_1'] = $sumaTotal_2_1;
                     FROM (
                         SELECT subdocumento, puntosporactividad,
                             CASE 
-                                WHEN subdocumento = '2.1.1.3.1.1' THEN 20
-                                WHEN subdocumento = '2.1.1.3.1.1' THEN 10 
-                                WHEN subdocumento = '2.1.1.3.2.1' THEN 20
-                                WHEN subdocumento = '2.1.1.3.2.1' THEN 10
+                            WHEN subdocumento = '3.3.1' THEN 20
+                            WHEN subdocumento = '3.3.2' THEN 20
+                            WHEN subdocumento = '3.3.3' THEN 20
+                            WHEN subdocumento = '3.3.4' THEN 40
+                            WHEN subdocumento = '3.3.5' THEN 40
+                            WHEN subdocumento = '3.3.6' THEN 60
+                            WHEN subdocumento = '3.3.7' THEN 80
                                 ELSE 0 
                             END AS limite
                         FROM documentos
-                        WHERE id_docente = ? AND documento LIKE '2.1.1.3%'
-                    ) AS subquery
-                    GROUP BY subdocumento, limite 
-                ) AS final_query";
-        } elseif ($documentType == "2.1.1.4") {
-            $query = "
-            SELECT  LEAST(SUM(puntos_limited), 100) AS puntos_limited
-            FROM (
-            SELECT subdocumento, LEAST(SUM(puntosporactividad), limite) AS puntos_limited
-            FROM (
-                SELECT subdocumento, puntosporactividad,
-                    CASE 
-                        WHEN subdocumento = '2.1.1.4.1' THEN 100
-                        WHEN subdocumento = '2.1.1.4.2.1' THEN 20 
-                        WHEN subdocumento = '2.1.1.4.2.2' THEN 10
-                        ELSE 0 
-                    END AS limite
-                FROM documentos
-                WHERE id_docente = ? AND documento LIKE '2.1.1.4%'
-            ) AS subquery
-            GROUP BY subdocumento, limite
-            ) AS final_query";
-        } elseif ($documentType == "2.1.1.5") {
-            $query = "
-                SELECT LEAST(SUM(puntos_limited), 50) AS puntos_totales
-                FROM (
-                    SELECT subdocumento, LEAST(SUM(puntosporactividad), limite) AS puntos_limited
-                    FROM (
-                        SELECT subdocumento, puntosporactividad,
-                            CASE 
-                                WHEN subdocumento = '2.1.1.5.1.1' THEN 40
-                                WHEN subdocumento = '2.1.1.5.1.2' THEN 15
-                                WHEN subdocumento = '2.1.2.5.2.1' THEN 20
-                                WHEN subdocumento = '2.1.2.5.2.2' THEN 10
-                                ELSE 0 
-                            END AS limite
-                        FROM documentos
-                        WHERE id_docente = ? AND documento LIKE '2.1.1.5%'
+                        WHERE id_docente = ? AND documento LIKE '3.3%'
                     ) AS subquery
                     GROUP BY subdocumento, limite
                 ) AS final_query";
-        } elseif ($documentType == "2.1.2.1") {
+        } elseif ($documentType == "3.1.3") {
             $query = "
-                SELECT LEAST(SUM(puntos_limited), 100) AS puntos_totales
+                SELECT LEAST(SUM(puntos_limited), 45) AS puntos_totales
                 FROM (
-                    SELECT subdocumento, LEAST(SUM(puntosporactividad), limite) AS puntos_limited
+                    SELECT documento, LEAST(SUM(puntosporactividad), limite) AS puntos_limited
                     FROM (
-                        SELECT subdocumento, puntosporactividad,
+                        SELECT documento, puntosporactividad,
                             CASE 
-                                WHEN subdocumento = '2.1.2.1.1' THEN 30
-                                WHEN subdocumento = '2.1.2.1.2' THEN 40 
-                                WHEN subdocumento = '2.1.2.1.3' THEN 50
+                                WHEN documento = '3.1.3' THEN 50
                                 ELSE 0 
                             END AS limite
                         FROM documentos
-                        WHERE id_docente = ? AND documento LIKE '2.1.2.1%'
+                        WHERE id_docente = ? AND documento LIKE '3.1.3%'
                     ) AS subquery
-                    GROUP BY subdocumento, limite
-                ) AS final_query";
-        } elseif ($documentType == "2.1.2.2") {
-            $query = "
-                SELECT LEAST(SUM(puntos_limited), 100) AS puntos_totales
-                FROM (
-                    SELECT subdocumento, LEAST(SUM(puntosporactividad), limite) AS puntos_limited
-                    FROM (
-                        SELECT subdocumento, puntosporactividad,
-                            CASE 
-                                WHEN subdocumento = '2.1.2.2.1' THEN 30
-                                WHEN subdocumento = '2.1.2.2.2' THEN 40 
-                                WHEN subdocumento = '2.1.2.2.3' THEN 50
-                                ELSE 0 
-                            END AS limite
-                        FROM documentos
-                        WHERE id_docente = ? AND documento LIKE '2.1.2.2%'
-                    ) AS subquery
-                    GROUP BY subdocumento, limite
+                    GROUP BY documento, limite
                 ) AS final_query";
         } else {
             echo "<p class='text-danger'>Tipo de documento no válido.</p>";
             exit;
         }
+
 
         // Ejecutar la consulta del tipo de documento seleccionado
         $stmt = $conexion->prepare($query);
@@ -178,7 +161,7 @@ $_SESSION['sumaTotal_2_1'] = $sumaTotal_2_1;
         
         // Mostrar los puntos acumulados según la opción seleccionada
         echo "<div class='d-flex justify-content-between align-items-center mb-2'>";
-        echo "<div class='d-flex justify-content-end alert alert-success mb-3'>Puntos Acumulados: <strong>$sumaTotal_2_1</strong></div>";
+        echo "<div class='d-flex justify-content-end alert alert-success mb-3'>Puntos Acumulados: <strong>$total_3</strong></div>";
         echo "<div class='d-flex justify-content-end alert alert-primary mb-3'>Puntos Totales del Documento ($documentType): <strong>$puntosTotales</strong></div>";
         echo "</div>";
 

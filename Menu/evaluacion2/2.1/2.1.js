@@ -56,7 +56,59 @@ function mostrarDescripcion() {
     const pregunta6 = document.getElementById('pregunta6');
     pregunta6.style.display = (valorSeleccionado === '2.1.2.1') ? 'flex' : 'none';
     const pregunta7 = document.getElementById('pregunta7');
-    pregunta7.style.display = (valorSeleccionado === '2.1.7.1') ? 'flex' : 'none';
+    pregunta7.style.display = (valorSeleccionado === '2.1.2.2') ? 'flex' : 'none';
+
+    const info_1 = document.getElementById('info_1');
+    info_1.style.display = (valorSeleccionado === '2.1.1.1') ? 'flex' : 'none';
+    const info_2 = document.getElementById('info_2');
+    info_2.style.display = (valorSeleccionado === '2.1.1.2') ? 'flex' : 'none';
+    const info_3 = document.getElementById('info_3');
+    info_3.style.display = (valorSeleccionado === '2.1.1.3') ? 'flex' : 'none';
+    const info_4 = document.getElementById('info_4');
+    info_4.style.display = (valorSeleccionado === '2.1.1.4') ? 'flex' : 'none';
+    const info_7 = document.getElementById('info_7');
+    info_7.style.display = (valorSeleccionado === '2.1.2.1') ? 'flex' : 'none';
+    
+    const info_41 = document.getElementById('info_41');
+    info_41.style.display = (valorSeleccionado === '2.1.1.4') ? 'flex' : 'none';
+    const info_71 = document.getElementById('info_71');
+    info_71.style.display = (valorSeleccionado === '2.1.2.1') ? 'flex' : 'none';
+
+     // Manejo de subir archivos
+     const subir2 = document.getElementById('subir2'); // Para 1.4.1 (dos archivos)
+     const subir = document.getElementById('subir'); // Para otros casos (un archivo)
+     const subir3 = document.getElementById('subir3')
+     const subir21 = document.getElementById('subir21');
+ 
+     const valoresPermitidos = ['2.1.1.1', '2.1.1.2', '2.1.1.3'];
+ 
+     if (valoresPermitidos.includes(valorSeleccionado)) {
+        subir2.style.display = 'flex';
+        subir.style.display = 'none';
+        subir3.style.display = 'none';
+        subir21.style.display = 'none';
+    } else if (valorSeleccionado === '2.1.2.2'||valorSeleccionado === '2.1.1.5' ) {
+        subir2.style.display = 'none';
+         subir.style.display = 'flex';
+        subir21.style.display = 'none';
+        subir3.style.display = 'none';
+         
+        subir3.style.display = 'none';
+    } else if (valorSeleccionado === '2.1.1.4'||valorSeleccionado === '2.1.2.1' ) {
+        subir.style.display = 'none';
+        subir2.style.display = 'none';
+        subir21.style.display = 'flex';
+        subir3.style.display = 'flex';
+    } else {
+        subir2.style.display = 'none';
+         subir.style.display = 'none';
+         
+        subir21.style.display = 'none';
+        subir3.style.display = 'none';
+    }
+
+
+    
 }
 
 

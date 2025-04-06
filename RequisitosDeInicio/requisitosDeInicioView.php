@@ -9,10 +9,36 @@ include '../Login/auth.php'; // Protege la página
     <title>RI</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <style>
+        body{
+            background-color: #F1EFEC;
+          
+        }
+        h1{
+            color: white;
+            font-weight: bold;
+           
+        }
+        h2{
+            color: white; 
+        }
+        .menu {
+    background-color:  #123458;
+}
+    .color{
+        background-color: #F1EFEC !important;
+    }
+    .titulo{
+        background-color: #123458 !important;
+    }
+    .form-label{
+        font-weight: bold;
+    }
+    </style>
 </head>
 <body class="vh-100 d-flex flex-column">
+    <div class="sticky-top bg-white p-3 shadow titulo">
 
-    <div class="sticky-top bg-white p-3 shadow">
         <div class="d-flex align-items-center position-relative">
             <button class="btn btn-secondary position-absolute start-0" onclick="history.back();" aria-label="Regresar a la página anterior">
                 <i class="bi bi-arrow-left"></i>
@@ -25,7 +51,7 @@ include '../Login/auth.php'; // Protege la página
             <div class="row g-3 mb-3 align-items-center">
                 <div class="col-md-6">
                     <label for="document_type" class="form-label">Selecciona el número de requisito:</label>
-                    <select name="document_type" id="document_type" class="form-select" required onchange="cargarDocumentoSeleccionado1(); mostrarDescripcion();">
+                    <select name="document_type" id="document_type" class="form-select" required onchange="cargarDocumentoSeleccionado1(); mostrarDescripcion(); ">
                         <option value="" selected disabled>-- Seleccione --</option>
                         <option value="RI1">01.- Constancia de recursos humanos</option>
                         <option value="RI2">02.- Talon de pago</option>
@@ -53,6 +79,36 @@ include '../Login/auth.php'; // Protege la página
                 <label for="file" class="form-label">Selecciona un archivo (PDF, JPG o Word, máximo 500 KB):</label>
                 <input type="file" name="file" id="file" class="form-control" required>
             </div>
+            <div class="container">
+                <div class="row g-3 mb-3 align-items-center" id="pregunta1_1_4" style="display: none;">
+                    <div class="col-md-6">
+                        <label for="nivel_estudiantes" class="form-label">Selecciona el nivel en que atendió a los estudiantes:</label>
+                        <select name="nivel_estudiantes" id="nivel_estudiantes" class="form-select">
+                            <option value="" selected disabled>-- Seleccione --</option>
+                            <option value="licenciatura">Licenciatura</option>
+                            <option value="posgrado">Posgrado</option>
+                        </select>  
+                    </div>
+                    <div class="col-md-6">
+                        <label for="num_estudiantes" class="form-label">Número de estudiantes atendidos:</label>
+                        <input type="number" name="num_estudiantes" id="num_estudiantes" class="form-control"  min="0" step="1">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="num_estudiantes" class="form-label">Número de asignaturas de licenciatura diferentes por año:</label>
+                        <input type="number" name="calculo" id="calculo" class="form-control" min="0" step="1">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="num_estudiantes" class="form-label">Número de asignaturas de licenciatura diferentes y adicional a las declaradas en el 1.1.1. (Se considerará a partir de la séptima asignatura diferente por año):</label>
+                        <input type="number" name="calculo2" id="calculo2" class="form-control" min="0" step="1">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="num_estudiantes" class="form-label">Número de asignaturas de posgrado diferentes por año:</label>
+                        <input type="number" name="calculo3" id="calculo3" class="form-control" min="0" step="1">
+                    </div>
+                </div>
+            </div>
+          
+
 
             <div class="text-center d-flex justify-content-center gap-3">
                 <input type="submit" value="Subir Archivo" class="btn btn-primary">
@@ -66,7 +122,7 @@ include '../Login/auth.php'; // Protege la página
         
 
     </div>
-        <div class="sticky-top bg-white p-3 shadow">
+    <div class="sticky-top p-3 shadow menu">
             <div class="d-flex justify-content-between align-items-center">
                 <h2 class="text-center mb-3 flex-grow-1">Documentos Subidos</h2>
                 <button id="toggleButton" class="btn btn-secondary" onclick="toggleDocuments()">

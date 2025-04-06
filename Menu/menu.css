@@ -1,11 +1,11 @@
 html{
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #fcf29a;
+    background-color: #F1EFEC !important;
     color: #000;
 }
 nav {
-    background-color: #0B60B0;
+    background-color: #123458;
     padding: 1rem;
 }
 nav .navbar-nav .nav-link {

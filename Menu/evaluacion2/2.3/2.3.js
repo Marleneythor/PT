@@ -1,7 +1,7 @@
 console.log('scripts cargado correctamente'); 
 
 const descripcionesDescripcion = {
-    '2.3.1.1': '• Constancia de las visitas realizadas mencionando empresa visitada,fecha de la visita, asignatura y número de estudiantes, emitida por eldepartamento de gestión tecnológica y vinculación, con vo.bo. de lasubdirección académica. ',
+    '2.3.1.1': '• Constancia de las visitas realizadas mencionando empresa visitada, fecha de la visita, asignatura y número de estudiantes, emitida por eldepartamento de gestión tecnológica y vinculación, con vo.bo. de lasubdirección académica. ',
     '2.3.1.2': '• Certificado expedido por algún organismo o institución certificador(a) con vo.bo. de la subdirección académica.',
     '2.3.2': '• Constancia de la institución organizadora donde se indique el evento o concurso donde participó o en su caso, constancia emitida por el departamento académico con vo.bo. de la subdirección académica. ',
     '2.3.3': '• Constancia de la institución organizadora que indique el proyecto premiado con vo.bo. de la subdirección académica. ',
@@ -61,10 +61,18 @@ function mostrarDescripcion() {
     puntos1.value = puntosPuntos[valorSeleccionado] ||'Descripción no disponible.';
     puntos2.value = puntosMax[valorSeleccionado] ||'Descripción no disponible.';
 
-    const pregunta1_2_2 = document.getElementById('pregunta1_2_2');
-    const valoresPermitidos = ['1.2.2.1', '1.2.2.2', '1.2.2.3', '1.2.2.4', '1.2.2.5', '1.2.2.6', '1.2.2.7'];
+    const pregunta1 = document.getElementById('pregunta1');
+    pregunta1.style.display = (valorSeleccionado === '2.3.2') ? 'flex' : 'none';
+    const pregunta2 = document.getElementById('pregunta2');
+    pregunta2.style.display = (valorSeleccionado === '2.3.3') ? 'flex' : 'none';
+    const pregunta3 = document.getElementById('pregunta3');
+    pregunta3.style.display = (valorSeleccionado === '2.3.5.1') ? 'flex' : 'none';
+    const pregunta4 = document.getElementById('pregunta4');
+    pregunta4.style.display = (valorSeleccionado === '2.3.7.1') ? 'flex' : 'none';
+    const pregunta5 = document.getElementById('pregunta5');
+    pregunta5.style.display = (valorSeleccionado === '2.3.7.2') ? 'flex' : 'none';
+ 
 
-    pregunta1_2_2.style.display = valoresPermitidos.includes(valorSeleccionado) ? 'flex' : 'none';
 
     // Mostrar u ocultar el botón según la selección
     //const botonCrearDocumento = document.getElementById('botonCrearDocumento');
@@ -72,7 +80,7 @@ function mostrarDescripcion() {
 
      // Calcular puntos
      const calcular = document.getElementById('calcular'); 
-     const valoresPermitidos2 = ['1.2.1.1', '1.2.1.2', '1.2.1.3', '1.2.1.4'];
+     const valoresPermitidos2 = ['2.3.1.1', '2.3.3', '2.3.4.1', '2.3.4.2', '2.3.4.3', '2.3.5.1'];
  
      if (valoresPermitidos2.includes(valorSeleccionado)) {
          calcular.style.display = 'flex';
@@ -170,7 +178,7 @@ function actualizarTitulo() {
     } else if (valorSeleccionado.startsWith("2.3.7")) {
         titulo.textContent = "2.3.7. Actividades de vinculación para la innovación \nNota: Sólo se consideran los servicios realizados para una entidad externa al centro de trabajo de adscripción (40 puntos posibles).";    
     } else {
-        titulo.textContent = "Seleccione una opción";
+        titulo.textContent = "";
     }
 }
 function actualizarText() {
@@ -187,18 +195,20 @@ function actualizarText() {
     const valorSeleccionado = select.value;
     console.log("Valor seleccionado:", valorSeleccionado); // Verifica qué valor se obtiene
 
-    if (valorSeleccionado.startsWith("1.2.1.1")) {
-        texto.textContent = "¿Cuántos Proyectos Integradores y/o Recursos Educativos Digitales ha realizado para una asignatura del plan de estudios oficial?";
-    } else if (valorSeleccionado.startsWith("1.2.1.2")) {
-        texto.textContent = "¿Cuántos manuales de prácticas elaboró para el desarrollo de competencias en los planes de estudio 2009 y posteriores?";
-    } else if (valorSeleccionado.startsWith("1.2.1.3")) {
-        texto.textContent = "¿Cuántas estrategias didácticas innovadoras ha implementado en el aula por asignatura, como estudio de casos, aprendizaje basado en problemas, aprendizaje basado en proyectos, aprendizaje experiencial, aula invertida, y escenarios y ambientes virtuales?";
-    } else if (valorSeleccionado.startsWith("1.2.1.4")) {
-        texto.textContent = "¿Cuántos materiales didácticos diseñó y desarrolló con enfoque incluyente para las asignaturas?";
+    if (valorSeleccionado.startsWith("2.3.1.1")) {
+        texto.textContent = "hola";
+    } else if (valorSeleccionado.startsWith("2.3.3")) {
+        texto.textContent = "";
+    } else if (valorSeleccionado.startsWith("2.3.4.1")) {
+        texto.textContent = "";
+    } else if (valorSeleccionado.startsWith("2.3.4.2")) {
+        texto.textContent = "";
+    } else if (valorSeleccionado.startsWith("2.3.4.3")) {
+        texto.textContent = "";
+    } else if (valorSeleccionado.startsWith("2.3.5.1")) {
+        texto.textContent = "";
     } else {
         texto.textContent = " ";
     }
 }
-
-
 

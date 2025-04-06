@@ -27,11 +27,11 @@ if (empty($idDocente)) {
 }
 
 // Obtener los puntos acumulados
-$sumaTotal_2_2 = obtenerPuntosTotales2_2($conexion, $idDocente);
-$_SESSION['sumaTotal_2_2'] = $sumaTotal_2_2;
+$sumaTotal_1_1 = obtenerPuntosTotales1_1($conexion, $idDocente);
+$_SESSION['suma_total1_1'] = $sumaTotal_1_1;
 
 // Definir la consulta según el tipo de documento
-if ($documentType == "9") {
+if ($documentType == "1.1.5") {
     $query = "
         SELECT LEAST(SUM(puntos_limited), 50) AS puntos_totales
         FROM (
@@ -39,12 +39,8 @@ if ($documentType == "9") {
             FROM (
                 SELECT subdocumento, puntosporactividad,
                 CASE 
-                WHEN subdocumento = '2.2.2' THEN 80
-                WHEN subdocumento = '2.2.3' THEN 80
-                WHEN subdocumento = '2.2.4' THEN 80
-                WHEN subdocumento = '2.2.5' THEN 80
-                WHEN subdocumento = '2.2.6' THEN 20
-
+                    WHEN subdocumento = '1.1.5.1' THEN 25
+                    WHEN subdocumento = '1.1.5.2' THEN 25
                     ELSE 0 
                 END AS limite
                 FROM documentos
@@ -55,7 +51,7 @@ if ($documentType == "9") {
     $stmt = $conexion->prepare($query);
     $documentoLike = "1.1.5%"; 
     $stmt->bind_param("is", $idDocente, $documentoLike);
-} elseif (in_array($documentType, ['2.2.1','2.2.7', '2.2.8','2.2.9','2.2.10'])) {
+} elseif (in_array($documentType, ['1.1.1', '1.1.2', '1.1.3', '1.1.4', '1.1.6', '1.1.7'])) {
     $query = "
         SELECT LEAST(SUM(puntos_limited), 200) AS puntos_totales
         FROM (
@@ -63,12 +59,12 @@ if ($documentType == "9") {
             FROM (
                 SELECT documento, puntosporactividad,
                     CASE 
-                    WHEN documento = '2.2.1' THEN 20
-                    WHEN documento = '2.2.7' THEN 10
-                    WHEN documento = '2.2.8' THEN 60
-                    WHEN documento = '2.2.9' THEN 50
-                    WHEN documento = '2.2.10' THEN 40
-
+                        WHEN documento = '1.1.1' THEN 30
+                        WHEN documento = '1.1.2' THEN 20
+                        WHEN documento = '1.1.3' THEN 20
+                        WHEN documento = '1.1.4' THEN 50
+                        WHEN documento = '1.1.6' THEN 20
+                        WHEN documento = '1.1.7' THEN 20
                         ELSE 0 
                     END AS limite
                 FROM documentos
@@ -91,7 +87,7 @@ $stmt->close();
 
 // Mostrar los puntos acumulados
 echo "<div class='d-flex justify-content-between align-items-center mb-2'>";
-echo "<div class='d-flex justify-content-end alert alert-success mb-3'>Puntos Acumulados: <strong>" . htmlspecialchars($sumaTotal_2_2) . "</strong></div>";
+echo "<div class='d-flex justify-content-end alert alert-success mb-3'>Puntos Acumulados: <strong>" . htmlspecialchars($sumaTotal_1_1) . "</strong></div>";
 echo "<div class='d-flex justify-content-end alert alert-primary mb-3'>Puntos Totales del Documento ($documentType): <strong>" . htmlspecialchars($puntosTotales) . "</strong></div>";
 echo "</div>";
 

@@ -13,7 +13,7 @@ include '../../../Login/auth.php';
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
     <style>
         body{
-            background-color: #D1F8EF;
+            background-color: #F1EFEC;
           
         }
         h1{
@@ -28,7 +28,7 @@ include '../../../Login/auth.php';
     background-color:  #003366;
 }
     .color{
-        background-color: #D1F8EF !important;
+        background-color: #F1EFEC !important;
     }
     .titulo{
         background-color: #003366 !important;
@@ -82,11 +82,11 @@ include '../../../Login/auth.php';
             <div  class="row g-3 mb-3 align-items-center">
                     <div class="col-md-6">
                         <label for="puntos" class="form-label">Puntos por actividad:</label>
-                        <textarea id="puntos" class="form-control" rows="1" disabled></textarea>
+                        <textarea id="puntos" class="form-control" rows="3" disabled></textarea>
                     </div>
                     <div class="col-md-6">  
                         <label for="puntosmax" class="form-label">Puntuacion maxima:</label>
-                        <textarea id="puntosmax" class="form-control" rows="1" disabled></textarea>
+                        <textarea id="puntosmax" class="form-control" rows="3" disabled></textarea>
                     </div>
                 </div>
                 <div class="mb-3">
@@ -94,25 +94,109 @@ include '../../../Login/auth.php';
                     <input type="file" name="file" id="file" class="form-control" required>
                 </div>
 
-                <div class="container">
-                    <div class="row g-3 mb-3 align-items-center" id="pregunta1_2_2" style="display: none;">
-                        <div class="col-md-6">
-                            <label for="horas" class="form-label">Número de horas:</label>
-                            <input type="number" name="horas" id="horas" class="form-control" min="0" step="1">
-                        </div>
+             <!-- Seccion de selects-->
+            <div class="container">
+                <div class="row g-3 mb-3 align-items-center" id="pregunta1" style="display: none;" >
+                    <div class="col-md-6">
+                        <label for="opcion1" class="form-label">Selecione el el lugar en donde impartio el evento o curso:</label>
+                        <select name="opcion1" id="opcion1" class="form-select">
+                            <option value="" selected disabled>-- Seleccione --</option>
+                            <option value="2.3.2.1">Estatal/Regional.</option>
+                            <option value="2.3.2.2">Nacional</option>
+                            <option value="2.3.2.3"> Internacional (fuera del país)</option>
+                        </select>  
+                    </div>
+                    <div class="col-md-6">
+                        <label for="calculo1" class="form-label">¿Cuántas veces desarrollo esta actividad?</label>
+                        <input type="number" name="calculo1" id="calculo1" class="form-control"  min="0" step="1">
                     </div>
                 </div>
-
-                 <!-- Seccion de puntos-->
-            
-            <div id="pregunta1_1_3" class="text-center" >
-                <div class="mb-3 d-inline-block text-start w-100">
-                    <label id="texto" class="form-label"></label>
+            </div>
+            <div class="container">
+                <div class="row g-3 mb-3 align-items-center" id="pregunta2" style="display: none;" >
+                    <div class="col-md-6">
+                        <label for="opcion2" class="form-label">Selecione el nivel que alcanzó el proyecto que asesoro: </label>
+                        <select name="opcion2" id="opcion2" class="form-select">
+                            <option value="" selected disabled>-- Seleccione --</option>
+                            <option value="2.3.3.1">3º Lugar Nacional.</option>
+                            <option value="2.3.3.2">2º Lugar Nacional.</option>
+                            <option value="2.3.3.3">1º Lugar Nacional.</option>
+                            <option value="2.3.3.4">3º Lugar Internacional (fuera del país).</option>
+                            <option value="2.3.3.5">2º Lugar Internacional (fuera del país).</option>
+                            <option value="2.3.3.6">1º Lugar Internacional (fuera del país).</option>
+                        </select>  
+                    </div>
+                    <div class="col-md-6">
+                        <label for="calculo2" class="form-label">¿Cuántas veces desarrollo esta actividad?</label>
+                        <input type="number" name="calculo2" id="calculo2" class="form-control"  min="0" step="1">
+                    </div>
                 </div>
             </div>
+            <div class="container">
+                <div class="row g-3 mb-3 align-items-center" id="pregunta3" style="display: none;" >
+                    <div class="col-md-6">
+                        <label for="opcion3" class="form-label">Selecione la conferencia o potencia en eventos externos en que participo:</label>
+                        <select name="opcion3" id="opcion3" class="form-select">
+                            <option value="" selected disabled>-- Seleccione --</option>
+                            <option value="2.3.5.1.1">Conferencia o ponencia en el TecNM.</option>
+                            <option value="2.3.5.1.1">Conferencia o ponencia fuera del TecNM.</option>
+                            <option value="2.3.5.1.3">. Conferencia o ponencia fuera del país.</option>
+                        </select>  
+                    </div>
+                    <div class="col-md-6">
+                        <label for="calculo3" class="form-label">¿Cuántas veces desarrollo esta actividad?</label>
+                        <input type="number" name="calculo3" id="calculo3" class="form-control"  min="0" step="1">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row g-3 mb-3 align-items-center" id="pregunta4" style="display: none;" >
+                    <div class="col-md-6">
+                        <label for="opcion4" class="form-label">Selecione el servicio tecnológico en el que participo:</label>
+                        <select name="opcion4" id="opcion4" class="form-select">
+                            <option value="" selected disabled>-- Seleccione --</option>
+                            <option value="2.3.7.1.1">Adaptación de tecnología.</option>
+                            <option value="2.3.7.1.2">Diseño y desarrollo de software.</option>
+                            <option value="2.3.7.1.3">Diseño y construcción de prototipos y equipos.</option>
+                            <option value="2.3.7.1.4">Diseño de procesos productivos.</option>
+                            <option value="2.3.7.1.5">Diseño y desarrollo de nuevos productos o materiales.</option>
+                            <option value="2.3.7.1.6">Diseño para la mejora de procesos o sistemas de producción.</option>
+                            <option value="2.3.7.1.7">Paquetes tecnológicos.</option>
+                            <option value="2.3.7.1.8"> Proyectos llave en mano.</option>
+                        </select>  
+                    </div>
+                    <div class="col-md-6">
+                        <label for="calculo4" class="form-label">¿Cuántas veces desarrollo esta actividad?</label>
+                        <input type="number" name="calculo4" id="calculo4" class="form-control"  min="0" step="1">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row g-3 mb-3 align-items-center" id="pregunta5" style="display: none;" >
+                    <div class="col-md-6">
+                        <label for="opcion5" class="form-label">Selecione el servicio técnico y certificacion externa en el que participo: </label>
+                        <select name="opcion5" id="opcion5" class="form-select">
+                            <option value="" selected disabled>-- Seleccione --</option>
+                            <option value="2.3.7.2.1">Asesoría y/o consultoría y asistencia técnica.</option>
+                            <option value="2.3.7.2.2">Evaluaciones, caracterizaciones, análisis, pruebas, certificaciones y ensayos en laboratorios y talleres.</option>
+                            <option value="2.3.7.2.3">Reparación, instalación y mantenimiento de equipos y maquinaria.</option>
+                            <option value="2.3.7.2.4"> Dictámenes, peritajes y pruebas de laboratorio.</option>
+                            <option value="2.3.7.2.5">Cursos de capacitación por solicitud de la entidad externa.</option>
+                        </select>  
+                    </div>
+                    <div class="col-md-6">
+                        <label for="calculo5" class="form-label">¿Cuántas veces desarrollo esta actividad?</label>
+                        <input type="number" name="calculo5" id="calculo5" class="form-control"  min="0" step="1">
+                    </div>
+                </div>
+            </div>
+
+                 <!-- Seccion de puntos-->
+        
             
             <div id="calcular" class="text-center" style="display: none;">
                 <div class="mb-3 d-inline-block text-start w-100">
+                    <label id="texto" class="form-label"></label>
                     <input type="number" name="calculo" id="calculo" class="form-control" min="0" step="1">
                 </div>
             </div>

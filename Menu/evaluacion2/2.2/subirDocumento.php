@@ -16,12 +16,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['file']) && isset($_SE
     if ($curp && $idDocente) {
         $customText = $_POST['document_type'] ?? '';
         $targetDir = "../../../docentes/" . $curp . "/2/2.2/" . $customText;
-        // Crear la carpeta si no existe
         if (!is_dir($targetDir)) {
             mkdir($targetDir, 0777, true);
         }
 
-        // Validaciones del archivo
         $fileExtension = strtolower(pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION));
         $allowedTypes = ['pdf', 'doc', 'docx', 'jpg', 'jpeg', 'png'];
         $maxFileSize = 500 * 1024; // 500 KB
@@ -34,7 +32,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['file']) && isset($_SE
             exit("Error: El tamaño del archivo no debe exceder los 500 KB.");
         }
 
-        // Generar nombre de archivo único utilizando ApellidoPaterno y ApellidoMaterno
         $n = 1;
         do {
             $newFileName = "{$apellidoPaterno}_{$apellidoMaterno}_{$customText}_{$n}.{$fileExtension}";
@@ -75,13 +72,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['file']) && isset($_SE
             }
         }
 
-        // Datos para la base de datos
         $idActividad = 1;
         $fechaSubida = date("Y-m-d");
         $categoria = "CategoriaEjemplo";
         $tipoDocumento = "Constancia";
         
-        // Mover el archivo y registrar en BD
         if (move_uploaded_file($_FILES['file']['tmp_name'], $targetFilePath)) {
             $stmt = $conexion->prepare("CALL sp_InsertarDocumento(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
             $stmt->bind_param("iissssssis", $idDocente, $idActividad, $newFileName, $targetFilePath, $fechaSubida, $categoria, $tipoDocumento, $customText, $puntosporactividad, $nivelSeleccionado);

@@ -56,7 +56,7 @@ include '../../../Login/auth.php';
                 <div class="col-md-6">
                     <label for="document_type" class="form-label">Selecciona el número de documento:</label>
                     
-                    <select name="document_type" id="document_type" class="form-select" required onchange="cargarDocumentoSeleccionado1(); mostrarDescripcion(); actualizarTitulo(); actualizarText();">
+                    <select name="document_type" id="document_type" class="form-select" required onchange="cargarDocumentoSeleccionado1(); mostrarDescripcion(); actualizarTitulo(); actualizarText(); textFile();textFile2();">
                         <option value="" selected disabled>-- Seleccione --</option>
                         <option value="2.3.1.1">2.3.1.1. Visitas a empresas o centros de investigación.</option>
                         <option value="2.3.1.2">2.3.1.2. Certificación en competencias laborales o docentes.</option>
@@ -89,10 +89,24 @@ include '../../../Login/auth.php';
                         <textarea id="puntosmax" class="form-control" rows="3" disabled></textarea>
                     </div>
                 </div>
-                <div class="mb-3">
+            <div id="subir" class="text-center" style="display: none;">
+                <div class="mb-3 d-inline-block text-start w-100">
                     <label for="file" class="form-label">Subir documento (PDF, JPG o Word, máximo 500 KB):</label>
-                    <input type="file" name="file" id="file" class="form-control" required>
+                    <input type="file" name="file" id="file" class="form-control">
                 </div>
+            </div>
+            <div class="container">
+                <div class="row g-3 mb-3 align-items-center" id="subir2" style="display: none;">
+                    <div class="col-md-6">
+                        <label id="textfile1" class="form-label"></label>
+                        <input type="file" name="file1" id="file1" class="form-control">
+                    </div> 
+                    <div class="col-md-6">
+                        <label id="textfile2" class="form-label"></label>
+                        <input type="file" name="file2" id="file2" class="form-control">
+                    </div> 
+                </div>
+            </div>
 
              <!-- Seccion de selects-->
             <div class="container">
@@ -105,10 +119,6 @@ include '../../../Login/auth.php';
                             <option value="2.3.2.2">Nacional</option>
                             <option value="2.3.2.3"> Internacional (fuera del país)</option>
                         </select>  
-                    </div>
-                    <div class="col-md-6">
-                        <label for="calculo1" class="form-label">¿Cuántas veces desarrollo esta actividad?</label>
-                        <input type="number" name="calculo1" id="calculo1" class="form-control"  min="0" step="1">
                     </div>
                 </div>
             </div>
@@ -164,10 +174,6 @@ include '../../../Login/auth.php';
                             <option value="2.3.7.1.7">Paquetes tecnológicos.</option>
                             <option value="2.3.7.1.8"> Proyectos llave en mano.</option>
                         </select>  
-                    </div>
-                    <div class="col-md-6">
-                        <label for="calculo4" class="form-label">¿Cuántas veces desarrollo esta actividad?</label>
-                        <input type="number" name="calculo4" id="calculo4" class="form-control"  min="0" step="1">
                     </div>
                 </div>
             </div>

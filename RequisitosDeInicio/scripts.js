@@ -31,6 +31,8 @@ function mostrarDescripcion() {
 
     const pregunta1_1_4 = document.getElementById('pregunta1_1_4');
     pregunta1_1_4.style.display = (valorSeleccionado === 'RI7') ? 'flex' : 'none';
+    const pregunta1_4_9 = document.getElementById('pregunta1_4_9');
+    pregunta1_4_9.style.display = (valorSeleccionado === 'RI10') ? 'flex' : 'none';
     
 
     if (valoresPermitidos.includes(valorSeleccionado)) {

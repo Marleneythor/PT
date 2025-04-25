@@ -27,13 +27,14 @@ $sumaTotal_1_3 = obtenerPuntosTotales1_3($conexion, $idDocente);
 $sumaTotal_1_4 = obtenerPuntosTotales1_4($conexion, $idDocente);
 $sumaTotal_2_1 = obtenerPuntosTotales2_1($conexion, $idDocente);
 $sumaTotal_2_2 = obtenerPuntosTotales2_2($conexion, $idDocente);
+$sumaTotal_2_3 = obtenerPuntosTotales2_3($conexion, $idDocente);
 $sumaTotal_3_1 = obtenerPuntosTotales3_1($conexion, $idDocente);
 $sumaTotal_3_2 = obtenerPuntosTotales3_2($conexion, $idDocente);
 $sumaTotal_3_3 = obtenerPuntosTotales3_3($conexion, $idDocente);
 
 // Calcular totales
 $total_1 = min($sumaTotal_1_1 + $sumaTotal_1_2 + $sumaTotal_1_3 + $sumaTotal_1_4, 300);
-$total_2 = min($sumaTotal_2_2 + $sumaTotal_2_1, 600);
+$total_2 = min($sumaTotal_2_2 + $sumaTotal_2_1 + $sumaTotal_2_3, 600);
 $total_3 = min($sumaTotal_3_1 + $sumaTotal_3_2 + $sumaTotal_3_3, 100);
 $total_f = min($total_1 + $total_2 + $total_3, 1000);
 // Estilos para la tabla
@@ -123,7 +124,7 @@ echo "<tr><td class='total'>Total Bloque 1</td><td class='num'></td><td class='n
 echo "<tr><td class='block-title'>2. LA CALIDAD EN EL DESEMPEÑO DE LA DOCENCIA</td> <td class='block-title2'>600</td><td class='block-title2'></td></tr>";
 echo "<tr><td>2.1 PRODUCCIÓN CIENTÍFICA, TECNOLÓGICA, CUERPOS ACADÉMICOS, REDES DE INVESTIGACIÓN DEL TECNM</td><td class='num'>250</td><td class='num'>$sumaTotal_2_1</td></tr>";
 echo "<tr><td>2.2 PRODUCTOS DE INVESTIGACIÓN APLICADA CON CRÉDITO AL TECNM</td><td class='num'>150</td><td class='num'>$sumaTotal_2_2</td></tr>";
-//echo "<tr><td>2.3 ACTIVIDADES DE VINCULACIÓN ACADÉMICA</td><td class='num'>200</td><td class='num'>$sumaTotal_2_3</td></tr>";
+echo "<tr><td>2.3 ACTIVIDADES DE VINCULACIÓN ACADÉMICA</td><td class='num'>200</td><td class='num'>$sumaTotal_2_3</td></tr>";
 echo "<tr><td class='total'>Total Bloque 2</td><td class='num'></td><td class='num'><strong>$total_2</strong></td></tr>";
 
 echo "<tr><td class='block-title' >3. LA PERMANENCIA EN LAS ACTIVIDADES DE LA DOCENCIA</td> <td class='block-title2'>100</td><td class='block-title2'></td></tr>";

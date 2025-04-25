@@ -73,14 +73,23 @@ function mostrarDescripcion() {
     pregunta5.style.display = (valorSeleccionado === '2.3.7.2') ? 'flex' : 'none';
  
 
+    const subir2= document.getElementById('subir2'); // Para 1.4.1 (dos archivos)
+    const subir = document.getElementById('subir'); // Para otros casos (un archivo)
 
+    if (valorSeleccionado === '2.3.7.1'||valorSeleccionado === '2.3.7.2'||valorSeleccionado === '2.3.7.3'||valorSeleccionado === '2.3.7.4') {
+        subir2.style.display = 'flex';
+        subir.style.display = 'none';
+    } else {
+        subir2.style.display = 'none';
+        subir.style.display = 'flex';
+    }
     // Mostrar u ocultar el botón según la selección
     //const botonCrearDocumento = document.getElementById('botonCrearDocumento');
     //botonCrearDocumento.style.display = (valorSeleccionado === '7') ? 'block' : 'none';
 
      // Calcular puntos
      const calcular = document.getElementById('calcular'); 
-     const valoresPermitidos2 = ['2.3.1.1', '2.3.3', '2.3.4.1', '2.3.4.2', '2.3.4.3', '2.3.5.1'];
+     const valoresPermitidos2 = ['2.3.1.1', '2.3.4.1', '2.3.4.2', '2.3.4.3'];
  
      if (valoresPermitidos2.includes(valorSeleccionado)) {
          calcular.style.display = 'flex';
@@ -106,12 +115,22 @@ async function cargarDocumentoSeleccionado1() {
 }
 
 
-document.getElementById('file').addEventListener('change', function () {
-    const file = this.files[0];
-    if (file && file.size > 500 * 1024) {
-        alert('El archivo supera el tamaño máximo permitido (500 KB).');
-        this.value = ''; 
-    }
+document.querySelectorAll('input[type="file"]').forEach(input => {
+    input.addEventListener('change', function () {
+        const file = this.files[0];
+        const maxSize = 500 * 1024; // 500 KB
+        const allowedTypes = ['application/pdf', 'image/jpeg', 'image/png', 'application/msword', 
+                              'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+        if (file) {
+            if (!allowedTypes.includes(file.type)) {
+                alert(`Error: El tipo de archivo "${file.name}" no es válido.`);
+                this.value = ''; 
+            } else if (file.size > maxSize) {
+                alert(`Error: "${file.name}" supera el tamaño máximo permitido (500 KB).`);
+                this.value = ''; 
+            }
+        }
+    });
 });
 
 //function crearDocumento() { 
@@ -154,18 +173,9 @@ function toggleDocuments() {
 }
 
 function actualizarTitulo() {
-    console.log("Función actualizarTitulo llamada"); // Para verificar si se ejecuta
-
     const select = document.getElementById("document_type");
     const titulo = document.getElementById("titulo");
-
-    if (!select || !titulo) {
-        console.error("Elemento no encontrado: select o título");
-        return;
-    }
-
     const valorSeleccionado = select.value;
-    console.log("Valor seleccionado:", valorSeleccionado); // Verifica qué valor se obtiene
 
     if (valorSeleccionado.startsWith("2.3.1")) {
         titulo.textContent = "2.3.1. Vinculación para el aprendizaje (40 puntos posibles).";
@@ -182,33 +192,54 @@ function actualizarTitulo() {
     }
 }
 function actualizarText() {
-    console.log("Función hol llamada"); // Para verificar si se ejecuta
-
     const select = document.getElementById("document_type");
     const texto = document.getElementById("texto");
-
-    if (!select || !texto) {
-        console.error("Elemento no encontrado: text");
-        return;
-    }
-
     const valorSeleccionado = select.value;
-    console.log("Valor seleccionado:", valorSeleccionado); // Verifica qué valor se obtiene
 
     if (valorSeleccionado.startsWith("2.3.1.1")) {
-        texto.textContent = "hola";
-    } else if (valorSeleccionado.startsWith("2.3.3")) {
-        texto.textContent = "";
+        texto.textContent = "Número de visitas realizadas:";
     } else if (valorSeleccionado.startsWith("2.3.4.1")) {
-        texto.textContent = "";
+        texto.textContent = "Número de asesorías por proyecto de residencia profesional excluyendo las contempladas en el proyecto dual:";
     } else if (valorSeleccionado.startsWith("2.3.4.2")) {
-        texto.textContent = "";
+        texto.textContent = "Número de asesorías por proyecto de educación dual (sólo aplica para licenciatura):";
     } else if (valorSeleccionado.startsWith("2.3.4.3")) {
-        texto.textContent = "";
-    } else if (valorSeleccionado.startsWith("2.3.5.1")) {
-        texto.textContent = "";
+        texto.textContent = "Número de asesorías por Proyecto de residencia profesional vinculado con proyectos estratégicos del TecNM:";
     } else {
         texto.textContent = " ";
+    }
+}
+function textFile() {
+    const select = document.getElementById("document_type");
+    const textfile1 = document.getElementById("textfile1");
+    const valorSeleccionado = select.value;
+
+    if (valorSeleccionado.startsWith("2.3.7.1")) {
+        textfile1.textContent = "Constancia emitida por el(la) Director(a): ";
+    } else if (valorSeleccionado.startsWith("2.3.7.2")) {
+        textfile1.textContent = "Constancia emitida por el(la) Director(a): ";
+    } else if (valorSeleccionado.startsWith("2.3.7.3")) {
+        textfile1.textContent = "Constancia de proyecto: Indique tiempo de asesoría, firmada por Jefe(a) de Gestión Tecnológica y con Vo.Bo. de Subdirección Académica:";
+    } else if (valorSeleccionado.startsWith("2.3.7.4")) {
+        textfile1.textContent = "Oficio de acreditación NODESS: Con folio de registro emitido por el INAES:";
+    } else {
+        textfile1.textContent = " ";
+    }
+}
+function textFile2() {
+    const select = document.getElementById("document_type");
+    const textfile2 = document.getElementById("textfile2");
+    const valorSeleccionado = select.value;
+
+    if (valorSeleccionado.startsWith("2.3.7.1")) {
+        textfile2.textContent = "Constancia de servicios: En hoja membretada, con sello, RFC y firma del representante, que indique los servicios tecnológicos conforme al convenio: ";
+    } else if (valorSeleccionado.startsWith("2.3.7.2")) {
+        textfile2.textContent = "Constancia de servicios o certificaciones: En hoja membretada, con sello, RFC y firma del representante, que detalle lo establecido en el convenio:";
+    } else if (valorSeleccionado.startsWith("2.3.7.3")) {
+        textfile2.textContent = "Registro de incubadora: Emitido por la Unidad de Desarrollo Productivo de la Secretaría de Economía:";
+    } else if (valorSeleccionado.startsWith("2.3.7.4")) {
+        textfile2.textContent = "Constancia de participación: Firmada por Jefe(a) de Gestión Tecnológica y con Vo.Bo. de Subdirección Académica:";
+    } else {
+        textfile2.textContent = " ";
     }
 }
 

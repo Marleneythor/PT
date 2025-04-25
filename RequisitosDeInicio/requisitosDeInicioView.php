@@ -107,7 +107,18 @@ include '../Login/auth.php'; // Protege la página
                     </div>
                 </div>
             </div>
-          
+          <div class="container">
+            <div class="row g-3 mb-3 text-center" id="pregunta1_4_9" style="display: none;">
+                <div class="col-md-6, mb-3 d-inline-block text-start w-100">
+                     <label for="opcion_10" class="form-label">¿Cuál es su máximo grado de estudios en formación profesional?</label>
+                     <select name="opcion_10" id="opcion_10" class="form-select">
+                         <option value="" selected disabled>-- Seleccione --</option>
+                         <option value="1.4.9.1">Profesor(a) con Doctorado.</option>
+                         <option value="1.4.9.2">Profesor(a) con Maestría.</option>
+                      </select>  
+                 </div>
+             </div>
+         </div>
 
 
             <div class="text-center d-flex justify-content-center gap-3">

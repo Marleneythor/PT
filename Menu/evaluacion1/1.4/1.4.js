@@ -128,7 +128,6 @@ document.querySelectorAll('input[type="file"]').forEach(input => {
         const maxSize = 500 * 1024; // 500 KB
         const allowedTypes = ['application/pdf', 'image/jpeg', 'image/png', 'application/msword', 
                               'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
-
         if (file) {
             if (!allowedTypes.includes(file.type)) {
                 alert(`Error: El tipo de archivo "${file.name}" no es válido.`);

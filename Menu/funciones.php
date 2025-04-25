@@ -561,6 +561,207 @@ function obtenerPuntosTotales2_2($conexion, $idDocente) {
 }
 
 
+function obtenerPuntosTotales2_3($conexion, $idDocente) {
+    $query = "
+    SELECT LEAST(SUM(puntos_limited), 200) AS puntos_totales
+    FROM (
+        SELECT '2.3.1' AS categoria, LEAST(SUM(puntos_limited), 40) AS puntos_limited
+        FROM (
+        SELECT documento, LEAST(SUM(puntosporactividad), limite) AS puntos_limited
+        FROM (
+            SELECT documento, puntosporactividad,
+                CASE 
+                    WHEN documento = '2.3.1.1' THEN 20
+                    WHEN documento = '2.3.1.2' THEN 20
+                    ELSE 0 
+                END AS limite
+            FROM documentos
+            WHERE id_docente = ? AND documento LIKE '2.3.1%'
+        ) AS subquery_9
+        GROUP BY documento, limite 
+        ) AS subquery_3
+       
+        UNION ALL
+        SELECT '2.3.2' AS categoria, LEAST(SUM(puntos_limited), 20) AS puntos_limited
+        FROM (
+        SELECT subdocumento, LEAST(SUM(puntosporactividad), limite) AS puntos_limited
+        FROM (
+            SELECT subdocumento, puntosporactividad,
+                CASE 
+                    WHEN subdocumento = '2.3.2.1' THEN 10
+                    WHEN subdocumento = '1.4.3.2' THEN 15
+                    WHEN subdocumento = '1.4.3.3' THEN 20
+                    ELSE 0 
+                END AS limite
+            FROM documentos
+            WHERE id_docente = ? AND documento LIKE '2.3.2%'
+        ) AS subquery_2
+        GROUP BY subdocumento, limite
+        ) AS subquery_3
+
+        UNION ALL
+        SELECT '2.3.3' AS categoria, LEAST(SUM(puntos_limited), 40) AS puntos_limited
+        FROM (
+        SELECT subdocumento, LEAST(SUM(puntosporactividad), limite) AS puntos_limited
+        FROM (
+            SELECT subdocumento, puntosporactividad,
+                CASE 
+                    WHEN subdocumento = '2.3.3.1' THEN 30
+                    WHEN subdocumento = '2.3.3.2' THEN 30
+                    WHEN subdocumento = '2.3.3.3' THEN 40
+                    WHEN subdocumento = '2.3.3.4' THEN 30
+                    WHEN subdocumento = '2.3.3.5' THEN 35
+                    WHEN subdocumento = '2.3.3.6' THEN 40
+                    ELSE 0 
+                END AS limite
+            FROM documentos
+            WHERE id_docente = ? AND documento LIKE '2.3.3%'
+        ) AS subquery_3
+        GROUP BY subdocumento, limite
+        ) AS subquery_3
+
+        UNION ALL
+        SELECT '2.3.4' AS categoria, LEAST(SUM(puntos_limited), 60) AS puntos_limited
+        FROM (
+        SELECT documento, LEAST(SUM(puntosporactividad), limite) AS puntos_limited
+        FROM (
+            SELECT documento, puntosporactividad,
+                CASE 
+                    WHEN documento = '2.3.4.1' THEN 60
+                    WHEN documento = '2.3.4.2' THEN 60
+                    WHEN documento = '2.3.4.3' THEN 60
+                    ELSE 0 
+                END AS limite
+            FROM documentos
+            WHERE id_docente = ? AND documento LIKE '2.3.4%'
+        ) AS subquery_9
+        GROUP BY documento, limite 
+        ) AS subquery_3
+
+        
+        UNION ALL
+        SELECT '2.3.5' AS categoria, LEAST(SUM(puntos_limited), 30) AS puntos_limited
+        FROM (
+        SELECT subdocumento, LEAST(SUM(puntosporactividad), limite) AS puntos_limited
+        FROM (
+            SELECT subdocumento, puntosporactividad,
+                CASE 
+                    WHEN subdocumento = '2.3.5.1.1' THEN 30
+                    WHEN subdocumento = '2.3.5.1.2' THEN 30
+                    WHEN subdocumento = '2.3.5.1.3' THEN 30
+                    ELSE 0 
+                END AS limite
+            FROM documentos
+            WHERE id_docente = ? AND documento LIKE '2.3.5%'
+        ) AS subquery_5
+        GROUP BY subdocumento, limite
+        ) AS subquery_3
+
+        UNION ALL
+        SELECT '2.3.6' AS categoria, LEAST(SUM(puntos_limited), 30) AS puntos_limited
+        FROM (
+        SELECT documento, LEAST(SUM(puntosporactividad), limite) AS puntos_limited
+        FROM (
+            SELECT documento, puntosporactividad,
+                CASE 
+                    WHEN documento = '2.3.6.1' THEN 20
+                    WHEN documento = '2.3.6.2' THEN 20
+                    ELSE 0 
+                END AS limite
+            FROM documentos
+            WHERE id_docente = ? AND documento LIKE '2.3.6%'
+        ) AS subquery_9
+        GROUP BY documento, limite 
+        ) AS subquery_3
+
+        UNION ALL
+        SELECT '2.3.7' AS categoria, LEAST(SUM(puntos_limited), 40) AS puntos_limited
+        FROM (
+            SELECT '2.3.7.1' AS categoria, LEAST(SUM(puntos_limited), 20) AS puntos_limited
+            FROM (
+            SELECT subdocumento, LEAST(SUM(puntosporactividad), limite) AS puntos_limited
+            FROM (
+                SELECT subdocumento, puntosporactividad,
+                    CASE 
+                        WHEN subdocumento = '2.3.7.1.1' THEN 20
+                        WHEN subdocumento = '2.3.7.1.2' THEN 20
+                        WHEN subdocumento = '2.3.7.1.3' THEN 20
+                        WHEN subdocumento = '2.3.7.1.4' THEN 20
+                        WHEN subdocumento = '2.3.7.1.5' THEN 20
+                        WHEN subdocumento = '2.3.7.1.6' THEN 20
+                        WHEN subdocumento = '2.3.7.1.7' THEN 20
+                        WHEN subdocumento = '2.3.7.1.8' THEN 20
+                        ELSE 0 
+                    END AS limite
+                FROM documentos
+                WHERE id_docente = ? AND documento LIKE '2.3.7.1'
+            ) AS subquery_5
+            GROUP BY subdocumento, limite
+            ) AS subquery_3
+    
+            UNION ALL
+    
+            SELECT '2.3.7.2' AS categoria, LEAST(SUM(puntos_limited), 20) AS puntos_limited
+            FROM (
+            SELECT subdocumento, LEAST(SUM(puntosporactividad), limite) AS puntos_limited
+            FROM (
+                SELECT subdocumento, puntosporactividad,
+                    CASE 
+                        WHEN subdocumento = '2.3.7.2.1' THEN 20
+                        WHEN subdocumento = '2.3.7.2.2' THEN 20
+                        WHEN subdocumento = '2.3.7.2.3' THEN 20
+                        WHEN subdocumento = '2.3.7.2.4' THEN 20
+                        WHEN subdocumento = '2.3.7.2.5' THEN 20
+                        ELSE 0 
+                    END AS limite
+                FROM documentos
+                WHERE id_docente = ? AND documento LIKE '2.3.7.2'
+            ) AS subquery_5
+            GROUP BY subdocumento, limite
+            ) AS subquery_3
+            UNION ALL
+            SELECT '2.3.7.3' AS categoria, LEAST(SUM(puntos_limited), 20) AS puntos_limited
+            FROM (
+            SELECT documento, LEAST(SUM(puntosporactividad), limite) AS puntos_limited
+            FROM (
+                SELECT documento, puntosporactividad,
+                    CASE 
+                        WHEN documento = '2.3.7.3' THEN 20
+                        ELSE 0 
+                    END AS limite
+                FROM documentos
+                WHERE id_docente = ? AND documento LIKE '2.3.7.3%'
+            ) AS subquery_9
+            GROUP BY documento, limite 
+            ) AS subquery_3
+            UNION ALL
+            SELECT '2.3.7.4' AS categoria, LEAST(SUM(puntos_limited), 20) AS puntos_limited
+            FROM (
+            SELECT documento, LEAST(SUM(puntosporactividad), limite) AS puntos_limited
+            FROM (
+                SELECT documento, puntosporactividad,
+                    CASE 
+                        WHEN documento = '2.3.7.4' THEN 20
+                        ELSE 0 
+                    END AS limite
+                FROM documentos
+                WHERE id_docente = ? AND documento LIKE '2.3.7.4%'
+            ) AS subquery_9
+            GROUP BY documento, limite 
+            ) AS subquery_3
+        ) AS subquery_4
+    ) AS final_query";
+
+        $stmt = $conexion->prepare($query);
+        $stmt->bind_param("iiiiiiiiii", $idDocente, $idDocente, $idDocente, $idDocente, $idDocente, $idDocente , $idDocente, $idDocente, $idDocente , $idDocente);
+        $stmt->execute();
+        $stmt->bind_result($sumaTotal_2_3);
+        $stmt->fetch();
+        $stmt->close();
+        $sumaTotal_2_3 = min($sumaTotal_2_3, 250);
+
+    return $sumaTotal_2_3; 
+}
 
 
 

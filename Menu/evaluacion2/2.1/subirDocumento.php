@@ -5,7 +5,6 @@ include "../../../conexion/conexion.php";
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['usuario'])) {
     $usuario = $_SESSION['usuario'];
 
-    // Obtener información del docente
     $stmt = $conexion->prepare("SELECT CURP, id_docente, ApellidoPaterno, ApellidoMaterno FROM docentes WHERE Usuario = ?");
     $stmt->bind_param("s", $usuario);
     $stmt->execute();
@@ -20,7 +19,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['usuario'])) {
     $customText = $_POST['document_type'] ?? '';
     $targetDir = "../../../docentes/" . $curp . "/2/2.1/" . $customText;
 
-    // Crear la carpeta si no existe
     if (!is_dir($targetDir)) {
         mkdir($targetDir, 0777, true);
     }
@@ -47,11 +45,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['usuario'])) {
         if ($fileSize > $maxFileSize) {
             exit("Error: El tamaño del archivo excede los 500 KB.");
         }
-    
-        // Generar nombre base del archivo
-        $baseFileName = "{$apellidoPaterno}_{$apellidoMaterno}_{$customText}";
         
-        // Crear un nombre único de archivo incrementando el número si ya existe el archivo
+    
+        $baseFileName = "{$apellidoPaterno}_{$apellidoMaterno}_{$customText}";
+
         $n = 1;
         do {
             $newFileName = "{$baseFileName}_{$n}.{$fileExtension}";
@@ -68,29 +65,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['usuario'])) {
     
 
     $archivoFinal = null;
-
-   // if ($customText == "1.4.1" && isset($_FILES['file1']) && isset($_FILES['file2'])) {
     if (
         ($customText == "2.1.1.1" || $customText == "2.1.1.2" || $customText == "2.1.1.3") &&
         isset($_FILES['file1']) &&
         isset($_FILES['file2'])
     ) {
-        // Subir file1 y file2 y crear un ZIP
         $file1Path = validarYSubirArchivo('file1', $targetDir, $apellidoPaterno, $apellidoMaterno, $customText . "_1");
         $file2Path = validarYSubirArchivo('file2', $targetDir, $apellidoPaterno, $apellidoMaterno, $customText . "_2");
 
         if ($file1Path && $file2Path) {
-            // Generar nombre base para el archivo ZIP
             $baseZipFileName = "{$apellidoPaterno}_{$apellidoMaterno}_{$customText}";
             
-            // Crear un nombre único para el archivo ZIP incrementando el número si ya existe
             $n = 1;
             do {
                 $zipFileName = "$targetDir/{$baseZipFileName}_{$n}.zip";
                 $n++;
             } while (file_exists($zipFileName));
 
-            // Crear el archivo ZIP
             $zip = new ZipArchive();
 
             if ($zip->open($zipFileName, ZipArchive::CREATE) === TRUE) {
@@ -98,7 +89,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['usuario'])) {
                 $zip->addFile($file2Path, basename($file2Path));
                 $zip->close();
 
-                // Eliminar los archivos originales después de comprimir
                 unlink($file1Path);
                 unlink($file2Path);
 
@@ -113,7 +103,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['usuario'])) {
             isset($_FILES['file4'])&&
             isset($_FILES['file3'])
         ) {
-            // Subir file1 y file2 y crear un ZIP
             $file5Path = validarYSubirArchivo('file5', $targetDir, $apellidoPaterno, $apellidoMaterno, $customText . "_1");
             $file4Path = validarYSubirArchivo('file4', $targetDir, $apellidoPaterno, $apellidoMaterno, $customText . "_2");
             $file3Path = validarYSubirArchivo('file3', $targetDir, $apellidoPaterno, $apellidoMaterno, $customText . "_3");
@@ -135,7 +124,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['usuario'])) {
                     $zip->addFile($file3Path, basename($file3Path));
                     $zip->close();
     
-                    // Eliminar los archivos originales después de comprimir
                     unlink($file5Path);
                     unlink($file4Path);
                     unlink($file3Path);
@@ -146,7 +134,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['usuario'])) {
                 }
             }
     } elseif (isset($_FILES['file'])) {
-        // Subir solo un archivo si no es 1.4.1
         $archivoFinal = validarYSubirArchivo('file', $targetDir, $apellidoPaterno, $apellidoMaterno, $customText);
     }
     
@@ -251,7 +238,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['usuario'])) {
         $rutaArchivo = $archivoFinal;
         $nombreArchivo = basename($archivoFinal);
 
-        // Insertar en la base de datos
         $stmt = $conexion->prepare("CALL sp_InsertarDocumento(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
         $stmt->bind_param("iissssssis", 
             $idDocente, 
@@ -266,12 +252,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['usuario'])) {
             $nivelSeleccionado
         );
         if ($stmt->execute()) {
-            // Mensaje de éxito y recarga de página
             echo "El archivo ha sido subido y registrado exitosamente."; 
             echo "<script>history.back();</script>";
                  
         } else {
-            // Mensaje de error y recarga de página
             echo "<script>
                     alert('Error al registrar el archivo: " . $stmt->error . "');
                    // window.location.reload();  // Recarga la página
@@ -280,7 +264,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['usuario'])) {
     
         $stmt->close();
     } else {
-        // Mensaje de error si no se subió ningún archivo y recarga de página
         echo "<script>
                 alert('Error: No se pudo subir ningún archivo');
                // window.location.reload();  // Recarga la página

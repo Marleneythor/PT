@@ -127,14 +127,24 @@ async function cargarDocumentoSeleccionado1() {
     }
 }
 
-document.getElementById('file').addEventListener('change', function () {
-    const file = this.files[0];
-    if (file && file.size > 500 * 1024) {
-        alert('El archivo supera el tamaño máximo permitido (500 KB).');
-        this.value = ''; 
-    }
-});
 
+document.querySelectorAll('input[type="file"]').forEach(input => {
+    input.addEventListener('change', function () {
+        const file = this.files[0];
+        const maxSize = 500 * 1024; // 500 KB
+        const allowedTypes = ['application/pdf', 'image/jpeg', 'image/png', 'application/msword', 
+                              'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+        if (file) {
+            if (!allowedTypes.includes(file.type)) {
+                alert(`Error: El tipo de archivo "${file.name}" no es válido.`);
+                this.value = ''; 
+            } else if (file.size > maxSize) {
+                alert(`Error: "${file.name}" supera el tamaño máximo permitido (500 KB).`);
+                this.value = ''; 
+            }
+        }
+    });
+});
 function crearDocumento() { 
     window.location.href = 'RI7.php'; 
     console.log(window.location.href = 'RI7.php'); 

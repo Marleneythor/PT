@@ -20,7 +20,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['usuario'])) {
     $customText = $_POST['document_type'] ?? '';
     $targetDir = "../../../docentes/" . $curp . "/1/1.4/" . $customText;
 
-    // Crear la carpeta si no existe
     if (!is_dir($targetDir)) {
         mkdir($targetDir, 0777, true);
     }
@@ -48,10 +47,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['usuario'])) {
             exit("Error: El tamaño del archivo excede los 500 KB.");
         }
     
-        // Generar nombre base del archivo
         $baseFileName = "{$apellidoPaterno}_{$apellidoMaterno}_{$customText}";
         
-        // Crear un nombre único de archivo incrementando el número si ya existe el archivo
         $n = 1;
         do {
             $newFileName = "{$baseFileName}_{$n}.{$fileExtension}";
@@ -68,8 +65,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['usuario'])) {
     
 
     $archivoFinal = null;
-
-   // if ($customText == "1.4.1" && isset($_FILES['file1']) && isset($_FILES['file2'])) {
     if (
         ($customText == "1.4.1" || $customText == "1.4.3" || $customText == "1.4.8.3") &&
         isset($_FILES['file1']) &&
@@ -80,10 +75,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['usuario'])) {
         $file2Path = validarYSubirArchivo('file2', $targetDir, $apellidoPaterno, $apellidoMaterno, $customText . "_2");
 
         if ($file1Path && $file2Path) {
-            // Generar nombre base para el archivo ZIP
             $baseZipFileName = "{$apellidoPaterno}_{$apellidoMaterno}_{$customText}";
             
-            // Crear un nombre único para el archivo ZIP incrementando el número si ya existe
             $n = 1;
             do {
                 $zipFileName = "$targetDir/{$baseZipFileName}_{$n}.zip";

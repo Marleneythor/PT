@@ -25,7 +25,7 @@ if (empty($idDocente)) {
     echo "<p class='text-danger'>No se encontró el ID del docente asociado al usuario.</p>";
     exit;
 }
-
+                        
 // Obtener los puntos acumulados
 $sumaTotal_1_1 = obtenerPuntosTotales1_1($conexion, $idDocente);
 $_SESSION['suma_total1_1'] = $sumaTotal_1_1;

@@ -14,6 +14,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['file']) && isset($_SE
     $stmt->close();
     
     if ($curp && $idDocente) {
+        $targetDir = "../docentes/" . $curp . "/RI" . $customText;
+        // Crear la carpeta si no existe
+        if (!is_dir($targetDir)) {
+            mkdir($targetDir, 0777, true);
+        }
+
         $customText = $_POST['document_type'] ?? '';
         $fileExtension = strtolower(pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION));
         $allowedTypes = ['pdf', 'doc', 'docx', 'jpg', 'jpeg', 'png'];
@@ -93,7 +99,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['file']) && isset($_SE
                 }
                 
                 for ($i = 1; $i <= 4; $i++) {
-                    $subFolder = "../docentes/" . $curp . "/1/1.$i/1.1.$i/";
+                    $subFolder = "../docentes/" . $curp . "/1/1.1/1.1.$i/";
                     if (!is_dir($subFolder)) {
                         mkdir($subFolder, 0777, true);
                     }
@@ -136,7 +142,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['file']) && isset($_SE
                     $stmt->execute();
                     $stmt->close();
                     for ($i = 1; $i <= 3; $i++) {
-                        $subFolder = "../docentes/" . $curp . "/1/1.$i/1.1.$i/";
+                        $subFolder = "../docentes/" . $curp . "/1/1.1/1.1.$i/";
                         if (!is_dir($subFolder)) {
                             mkdir($subFolder, 0777, true);
                         }
@@ -161,6 +167,50 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['file']) && isset($_SE
                 } else {
                     echo "Error al subir el archivo original RI7.";
                 }
+        } elseif ($customText === "RI10") {
+            $n = 1;
+            do {
+                $newFileName = "{$apellidoPaterno}_{$apellidoMaterno}_RI10_{$n}.{$fileExtension}";
+                $targetFilePath = "$targetDir/$newFileName";
+                $n++;
+            } while (file_exists($targetFilePath));
+        
+            if (move_uploaded_file($_FILES['file']['tmp_name'], $targetFilePath)) {
+                $puntosRI7 = null; 
+                $stmt = $conexion->prepare("CALL sp_InsertarDocumento(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                $stmt->bind_param("iissssssis", $idDocente, $idActividad, $newFileName, $targetFilePath, $fechaSubida, $categoria, $tipoDocumento, $customText, $puntosRI7, $nivelSeleccionado);
+                $stmt->execute();
+                $stmt->close();
+                $opcion_10 = $_POST['opcion_10'] ?? '';
+                
+                $opciones_1_4_9 = [
+                    '1.4.9.1' => 120,
+                    '1.4.9.2' => 100,
+                ];
+                $puntosporactividad = $opciones_1_4_9 [$opcion_10] ?? 0;
+                $nivelSeleccionado = $opcion_10; 
+
+                    $n = 1;
+                    do {
+                        $nombreNuevo = "{$apellidoPaterno}_{$apellidoMaterno}_1.4.9_{$n}.{$fileExtension}";
+                        $subFolder = "../docentes/" . $curp . "/1/1.4/1.4.9/";
+                        $rutaDestino = $subFolder . $nombreNuevo;
+                        $n++;
+                    } while (file_exists($rutaDestino));
+                    copy($targetFilePath, $rutaDestino);
+        
+                    $subCustomText = "1.4.9";
+        
+                    $stmt = $conexion->prepare("CALL sp_InsertarDocumento(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                    $stmt->bind_param("iissssssis", $idDocente, $idActividad, $nombreNuevo, $rutaDestino, $fechaSubida, $categoria, $tipoDocumento, $subCustomText, $puntosporactividad, $nivelSeleccionado);
+                    $stmt->execute();
+                    $stmt->close();
+        
+                echo "Se subió RI7 y sus 4 copias correctamente.";
+                echo "<script>history.back();</script>";
+            } else {
+                echo "Error al subir el archivo original RI7.";
+            }
         } else {
     $n = 1;
     do {
@@ -180,8 +230,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['file']) && isset($_SE
         echo "Error al subir el archivo.";
     }
 }
-
-
 
     } else {
         echo "Error: No se encontró el CURP o ID del docente.";

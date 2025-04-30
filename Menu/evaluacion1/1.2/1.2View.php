@@ -104,15 +104,9 @@ include '../../../Login/auth.php';
                 </div>
 
                  <!-- Seccion de puntos-->
-            
-            <div id="pregunta1_1_3" class="text-center" >
-                <div class="mb-3 d-inline-block text-start w-100">
-                    <label id="texto" class="form-label"></label>
-                </div>
-            </div>
-            
             <div id="calcular" class="text-center" style="display: none;">
                 <div class="mb-3 d-inline-block text-start w-100">
+                    <label id="texto" class="form-label"></label>
                     <input type="number" name="calculo" id="calculo" class="form-control" min="0" step="1">
                 </div>
             </div>

@@ -56,7 +56,7 @@ include '../../../Login/auth.php';
                 <h3 id="titulo"class="text-center flex-grow-1 mb-0"></h3>
                 <div class="col-md-6">
                     <label for="document_type" class="form-label">Selecciona el número de documento:</label>
-                    <select name="document_type" id="document_type" class="form-select" required onchange="cargarDocumentoSeleccionado1(); mostrarDescripcion(); actualizarTitulo();">
+                    <select name="document_type" id="document_type" class="form-select" required onchange="cargarDocumentoSeleccionado1(); mostrarDescripcion(); actualizarTitulo(); textFile();textFile2(); textFile3(); textFile4(); textFile5();">
                     <option value="" selected disabled>-- Seleccione --</option>
                         <option value="2.1.1.1">2.1.1.1 En revista indizada en journal citation reports o indice conahcyt (160 puntos posibles).</option>
                         <option value="2.1.1.2">2.1.1.2 En revista incluida en otros índices (80 puntos posibles).</option>
@@ -92,68 +92,14 @@ include '../../../Login/auth.php';
                     <input type="file" name="file" id="file" class="form-control">
                 </div>
             </div>
-            
-            <div class="container">
-                <div class="row g-3 mb-3 align-items-center" id="info_1" style="display: none;">
-                    <div class="col-md-6">
-                        <label for="file1" class="form-label">Impresión de pantalla de la página de Clarivate:</label>
-                    </div> 
-                    <div class="col-md-6">
-                        <label for="file2" class="form-label">Constancia emitida por el(la) jefe(a) de departamento académico con vo.bo. de la subdirección académica:</label>
-                    </div> 
-                </div>
-            </div>
-            <div class="container">
-                <div class="row g-3 mb-3 align-items-center" id="info_2" style="display: none;" >
-                    <div class="col-md-6">
-                        <label for="file" class="form-label">Copia del comprobante donde se indique el o los índices de la revista con vo.bo. de la subdirección académica:</label>     
-                    </div> 
-                    <div class="col-md-6">
-                        <label for="file" class="form-label">Constancia emitida por el(la) jefe(a) de departamento académico con vo.bo. de la subdirección académica:</label>
-                    </div> 
-                </div>
-            </div>
-            
-            <div class="container">
-                <div class="row g-3 mb-3 align-items-center" id="info_3" style="display: none;" >
-                    <div class="col-md-6">
-                    <label for="file" class="form-label">Copia de la carátula del artículo publicado en la cual se mencione la adscripción del autor al Tecnológico Nacional de México:</label>
-                    </div> 
-                    <div class="col-md-6">
-                    <label for="file" class="form-label">Constancia emitida por el jefe(a) de departamento académico convo.bo. de la subdirección académica:</label>   
-
-                    </div>  
-                </div>
-            </div>
-            <div class="container">
-                <div class="row g-3 mb-3 align-items-center" id="info_4" style="display: none;" >
-                    <div class="col-md-6">
-                    <label for="file" class="form-label">Portada e índice del libro con vo.bo. por la dirección del plantel:</label>
-                    </div> 
-                    <div class="col-md-6">
-                    <label for="file" class="form-label">Evidencia en donde se muestre que en el libro aparece la adscripción del autor al Tecnológico Nacional de México:</label>
-                    </div> 
-                </div>
-            </div>
-         
-           
-            <div class="container">
-                <div class="row g-3 mb-3 align-items-center" id="info_7" style="display: none;" >
-                    <div class="col-md-6">
-                    <label for="file" class="form-label">Constancia de vigencia de la red, emitida por la Dirección dePosgrado, Investigación e Innovación:</label>
-                    </div> 
-                    <div class="col-md-6">
-                    <label for="file" class="form-label">Nombramiento del líder de la red, emitido por la Dirección dePosgrado, Investigación e Innovación:</label>
-                    </div> 
-                </div>
-            </div>
-    
             <div class="container">
                 <div class="row g-3 mb-3 align-items-center" id="subir2" style="display: none;">
                     <div class="col-md-6">
+                        <label id="textfile1" class="form-label"></label>
                         <input type="file" name="file1" id="file1" class="form-control">
                     </div> 
                     <div class="col-md-6">
+                        <label id="textfile2" class="form-label"></label>
                         <input type="file" name="file2" id="file2" class="form-control">
                     </div> 
                 </div>
@@ -161,43 +107,23 @@ include '../../../Login/auth.php';
             <div class="container">
                 <div class="row g-3 mb-3 align-items-center" id="subir21" style="display: none;">
                     <div class="col-md-6">
-                        <input type="file" name="file5" id="file4" class="form-control">
+                        <label id="textfile3" class="form-label"></label>
+                        <input type="file" name="file4" id="file4" class="form-control">
                     </div> 
                     <div class="col-md-6">
+                        <label id="textfile4" class="form-label"></label>
                         <input type="file" name="file5" id="file5" class="form-control">
-                    </div> 
-                </div>
-            </div>
-
-
-            <div class="container">
-                <div class="row g-3 mb-3 align-items-center" id="info_71" style="display: none;" >
-                    <div class="col-md-6">
-                    <label for="file" class="form-label">Constancia del Líder de la Red que avala la participación de(la)docente como miembro de la Red, con Vo.Bo. de la SubdirecciónAcadémica:</label>
-                    </div> 
-                </div>
-            </div>
-            <div class="container">
-                <div class="row g-3 mb-3 align-items-center" id="info_41" style="display: none;" >
-                    <div class="col-md-6">
-                    <label for="file" class="form-label">Constancia de libro o capítulo publicado firmada por el(la) director(a):</label>
                     </div> 
                 </div>
             </div>
             <div class="container">
                 <div class="row g-3 mb-3 align-items-center" id="subir3" style="display: none;">
                     <div class="col-md-6">
+                        <label id="textfile5" class="form-label"></label>
                         <input type="file" name="file3" id="file3" class="form-control">
                     </div> 
                 </div>
             </div>
-
-            
-            
-
-
-
-
 
             <div class="container">
                 <!-- Sección para 1.1.4 (pregunta con nivel y número de estudiantes) -->
@@ -235,7 +161,7 @@ include '../../../Login/auth.php';
                         </select>
                     </div>
                     <div class="col-md-6">
-                        <label for="calcular2" class="form-label">Número de estudiantes atendidos:</label>
+                        <label for="calcular2" class="form-label">Número de veces en que realizo esta actividad:</label>
                         <input type="number" name="calcular2" id="calcular2" class="form-control"  min="0" step="1">
                     </div>
                 </div>
@@ -256,7 +182,7 @@ include '../../../Login/auth.php';
                         </select>
                     </div>
                     <div class="col-md-6">
-                        <label for="calcular3" class="form-label">Número de estudiantes atendidos:</label>
+                        <label for="calcular3" class="form-label">Número de veces en que realizo esta actividad:</label>
                         <input type="number" name="calcular3" id="calcular3" class="form-control"  min="0" step="1">
                     </div>
                 </div>
@@ -275,7 +201,7 @@ include '../../../Login/auth.php';
                         </select>
                     </div>
                     <div class="col-md-6">
-                        <label for="calcular4" class="form-label">Número de estudiantes atendidos:</label>
+                        <label for="calcular4" class="form-label">Número de veces en que realizo esta actividad:</label>
                         <input type="number" name="calcular4" id="calcular4" class="form-control"  min="0" step="1">
                     </div>
                 </div>
@@ -310,7 +236,7 @@ include '../../../Login/auth.php';
                         </select>
                     </div>
                     <div class="col-md-6">
-                        <label for="calcular6" class="form-label">Número de estudiantes atendidos:</label>
+                        <label for="calcular6" class="form-label">Número de veces en que realizo esta actividad:</label>
                         <input type="number" name="calcular6" id="calcular6" class="form-control"  min="0" step="1">
                     </div>
                 </div>
@@ -327,7 +253,7 @@ include '../../../Login/auth.php';
                         </select>
                     </div>
                     <div class="col-md-6">
-                        <label for="calcular7" class="form-label">Número de estudiantes atendidos:</label>
+                        <label for="calcular7" class="form-label">Número de veces en que realizo esta actividad:</label>
                         <input type="number" name="calcular7" id="calcular7" class="form-control"  min="0" step="1">
                     </div>
                 </div>
@@ -348,7 +274,7 @@ include '../../../Login/auth.php';
                         </select>
                     </div>
                     <div class="col-md-6">
-                        <label for="calcular" class="form-label">Número de estudiantes atendidos:</label>
+                        <label for="calcular" class="form-label">Número de veces en que realizo esta actividad:</label>
                         <input type="number" name="calcular" id="calcular" class="form-control"  min="0" step="1">
                     </div>
                 </div>
@@ -363,11 +289,6 @@ include '../../../Login/auth.php';
                 </div>
             </div>
 
-       
-
-           
-        
-         
         
                 <div class="text-center">
                     <input type="submit" value="Subir Archivo" class="btn btn-primary">   

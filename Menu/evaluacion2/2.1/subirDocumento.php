@@ -145,6 +145,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['usuario'])) {
             $opcion2 = $_POST['opcion2'] ?? '';
             $opcion3 = $_POST['opcion3'] ?? '';
             $opcion4 = $_POST['opcion4'] ?? '';
+            $opcion5 = $_POST['opcion5'] ?? '';
             $opcion6 = $_POST['opcion6'] ?? '';
             $opcion7 = $_POST['opcion7'] ?? '';
             $calcular3 = (int) ($_POST['calcular3'] ?? 0);

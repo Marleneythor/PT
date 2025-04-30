@@ -42,7 +42,7 @@ include '../../../Login/auth.php';
 <body class="vh-100 d-flex flex-column">
     <div class="sticky-top bg-white p-3 shadow titulo">
         <div class="d-flex align-items-center position-relative">
-            <button class="btn btn-secondary position-absolute start-0" onclick="history.back();" aria-label="Regresar a la página anterior">
+        <button class="btn btn-secondary position-absolute start-0" onclick="history.back();" aria-label="Regresar a la página anterior">
                 <i class="bi bi-arrow-left"></i>
             </button>
             <h1 class="text-center flex-grow-1 mb-0">1.1 PROMOCIÓN DEL APRENDIZAJE</h1>

@@ -23,16 +23,19 @@ if (!$idDocente) {
 
 $sumaTotal_2_1 = obtenerPuntosTotales2_1($conexion, $idDocente);
 $sumaTotal_2_2 = obtenerPuntosTotales2_2($conexion, $idDocente);
+$sumaTotal_2_3 = obtenerPuntosTotales2_3($conexion, $idDocente);
 
 // Guardar en sesión
 $_SESSION['sumaTotal_2_1'] = $sumaTotal_2_1;
 $_SESSION['sumaTotal_2_2'] = $sumaTotal_2_2;
+$_SESSION['sumaTotal_2_3'] = $sumaTotal_2_3;
 session_write_close();
 
 echo "<table style= width: 50%; text-align: center;'>";
 echo "<tr><td>Suma 2.1</td><td>$sumaTotal_2_1</td></tr>";
 echo "<tr><td>Suma 2.2</td><td>$sumaTotal_2_2</td></tr>";
-$total_2 = min( $sumaTotal_2_2 + $sumaTotal_2_1, 600);
+echo "<tr><td>Suma 2.3</td><td>$sumaTotal_2_3</td></tr>";
+$total_2 = min( $sumaTotal_2_2 + $sumaTotal_2_1 + $sumaTotal_2_3, 600);
 echo "<tr><td><strong>Total</strong></td><td><strong>$total_2</strong></td></tr>";
 echo "</table>";
 

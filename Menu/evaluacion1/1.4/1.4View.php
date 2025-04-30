@@ -56,7 +56,8 @@ include '../../../Login/auth.php';
                 <h3 id="titulo"class="text-center flex-grow-1 mb-0"></h3>
                 <div class="col-md-6">
                     <label for="document_type" class="form-label">Selecciona el número de documento:</label>
-                    <select name="document_type" id="document_type" class="form-select" required onchange="cargarDocumentoSeleccionado1(); mostrarDescripcion(); actualizarTitulo();">
+                    <select name="document_type" id="document_type" class="form-select" required onchange="cargarDocumentoSeleccionado1(); mostrarDescripcion(); actualizarTitulo(); textFile();textFile2();">
+                        <option value="" selected disabled>-- Seleccione --</option>
                         <option value="" selected disabled>-- Seleccione --</option>
                         <option value="1.4.1">1.4.1. Asesoría en ciencias básicas (45 Posibles puntos).</option>
                         <option value="1.4.2">1.4.2. Asesoría en concursos académicos (20 Posibles puntos).</option>
@@ -96,50 +97,21 @@ include '../../../Login/auth.php';
                 </div>
             </div>
             
-            <div class="container">
-                <div class="row g-3 mb-3 align-items-center" id="info1_4_1" style="display: none;">
-                    <div class="col-md-6">
-                        <label for="file1" class="form-label">Programa de asesoría (PDF, JPG o Word, máximo 500 KB):</label>
-                    </div> 
-                    <div class="col-md-6">
-                        <label for="file2" class="form-label">Constancia de cumplimiento (PDF, JPG o Word, máximo 500 KB):</label>
-                    </div> 
-                </div>
-            </div>
-            <div class="container">
-                <div class="row g-3 mb-3 align-items-center" id="info1_4_3" style="display: none;" >
-                    <div class="col-md-6">
-                        <label for="file" class="form-label">Constancia de la institución organizadora (PDF, JPG o Word, máximo 500 KB):</label>     
-                    </div> 
-                    <div class="col-md-6">
-                        <label for="file" class="form-label">Constancia emitida por el departamento académico (PDF, JPG o Word, máximo 500 KB):</label>
-                    </div> 
-                </div>
-            </div>
-            
-            <div class="container">
-                <div class="row g-3 mb-3 align-items-center" id="info1_4_8_3" style="display: none;" >
-                    <div class="col-md-6">
-                        <label for="file" class="form-label">Constancia con los nombres de los participantes (PDF, JPG o Word, máximo 500 KB):</label>
-                    </div> 
-                    <div class="col-md-6">
-                        <label for="file" class="form-label">Oficio de autorización de la DDIE o DPII del TecNM (PDF, JPG o Word, máximo 500 KB):</label>
-                    </div> 
-                </div>
-            </div>
+           
     
             <div class="container">
                 <div class="row g-3 mb-3 align-items-center" id="subir1_4_1" style="display: none;">
                     <div class="col-md-6">
+                        <label id="textfile1" class="form-label"></label>
                         <input type="file" name="file1" id="file1" class="form-control">
                     </div> 
                     <div class="col-md-6">
+                        <label id="textfile2" class="form-label"></label>
                         <input type="file" name="file2" id="file2" class="form-control">
                     </div> 
                 </div>
             </div>
     
-       
 
            
          <!-- Preguntas segun la opcion-->

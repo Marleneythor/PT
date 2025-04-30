@@ -58,21 +58,6 @@ function mostrarDescripcion() {
     const pregunta7 = document.getElementById('pregunta7');
     pregunta7.style.display = (valorSeleccionado === '2.1.2.2') ? 'flex' : 'none';
 
-    const info_1 = document.getElementById('info_1');
-    info_1.style.display = (valorSeleccionado === '2.1.1.1') ? 'flex' : 'none';
-    const info_2 = document.getElementById('info_2');
-    info_2.style.display = (valorSeleccionado === '2.1.1.2') ? 'flex' : 'none';
-    const info_3 = document.getElementById('info_3');
-    info_3.style.display = (valorSeleccionado === '2.1.1.3') ? 'flex' : 'none';
-    const info_4 = document.getElementById('info_4');
-    info_4.style.display = (valorSeleccionado === '2.1.1.4') ? 'flex' : 'none';
-    const info_7 = document.getElementById('info_7');
-    info_7.style.display = (valorSeleccionado === '2.1.2.1') ? 'flex' : 'none';
-    
-    const info_41 = document.getElementById('info_41');
-    info_41.style.display = (valorSeleccionado === '2.1.1.4') ? 'flex' : 'none';
-    const info_71 = document.getElementById('info_71');
-    info_71.style.display = (valorSeleccionado === '2.1.2.1') ? 'flex' : 'none';
 
      // Manejo de subir archivos
      const subir2 = document.getElementById('subir2'); // Para 1.4.1 (dos archivos)
@@ -204,8 +189,75 @@ function actualizarTitulo() {
         titulo.textContent = "Seleccione una opción";
     }
 }
+function textFile() {
+    const select = document.getElementById("document_type");
+    const textfile1 = document.getElementById("textfile1");
+    const valorSeleccionado = select.value;
 
+    if (valorSeleccionado.startsWith("2.1.1.1")) {
+        textfile1.textContent = "Impresión de pantalla de la página de Clarivate:";
+    } else if (valorSeleccionado.startsWith("2.1.1.2")) {
+        textfile1.textContent = "Copia del comprobante donde se indique el o los índices de la revista con vo.bo. de la subdirección académica:";
+    } else if (valorSeleccionado.startsWith("2.1.1.3")) {
+        textfile1.textContent = "Copia de la carátula del artículo publicado en la cual se mencione la adscripción del autor al Tecnológico Nacional de México:";
+    } else {
+        textfile1.textContent = " ";
+    }
+}
+function textFile2() {
+    const select = document.getElementById("document_type");
+    const textfile2 = document.getElementById("textfile2");
+    const valorSeleccionado = select.value;
 
+    if (valorSeleccionado.startsWith("2.1.1.1")) {
+        textfile2.textContent = "Constancia emitida por el(la) jefe(a) de departamento académico con vo.bo. de la subdirección académica:";
+    } else if (valorSeleccionado.startsWith("2.1.1.2")) {
+        textfile2.textContent = "Constancia emitida por el(la) jefe(a) de departamento académico con vo.bo. de la subdirección académica:";
+    } else if (valorSeleccionado.startsWith("2.1.1.3")) {
+        textfile2.textContent = "Constancia emitida por el(la) jefe(a) de departamento académico convo.bo. de la subdirección académica:";
+    } else {
+        textfile2.textContent = " ";
+    }
+}
+function textFile4() {
+    const select = document.getElementById("document_type");
+    const textfile3 = document.getElementById("textfile3");
+    const valorSeleccionado = select.value;
+
+    if (valorSeleccionado.startsWith("2.1.1.4")) {
+        textfile3.textContent = "Portada e índice del libro con vo.bo. por la dirección del plantel:";
+    } else if (valorSeleccionado.startsWith("2.1.2.1")) {
+        textfile3.textContent = "Constancia de vigencia de la red, emitida por la Dirección dePosgrado, Investigación e Innovación:";
+    } else {
+        textfile3.textContent = " ";
+    }
+}
+function textFile5() {
+    const select = document.getElementById("document_type");
+    const textfile4 = document.getElementById("textfile4");
+    const valorSeleccionado = select.value;
+
+    if (valorSeleccionado.startsWith("2.1.1.4")) { 
+        textfile4.textContent = "Evidencia en donde se muestre que en el libro aparece la adscripción del autor al Tecnológico Nacional de México:";
+    } else if (valorSeleccionado.startsWith("2.1.2.1")) {
+        textfile4.textContent = "Nombramiento del líder de la red, emitido por la Dirección dePosgrado, Investigación e Innovación:";
+    } else {
+        textfile4.textContent = " ";
+    }
+}
+function textFile3() {
+    const select = document.getElementById("document_type");
+    const textfile5 = document.getElementById("textfile5");
+    const valorSeleccionado = select.value;
+
+    if (valorSeleccionado.startsWith("2.1.1.4")) {  
+        textfile5.textContent = "Constancia de libro o capítulo publicado firmada por el(la) director(a):";
+    } else if (valorSeleccionado.startsWith("2.1.2.1")) {
+        textfile5.textContent = "Constancia del Líder de la Red que avala la participación de(la)docente como miembro de la Red, con Vo.Bo. de la SubdirecciónAcadémica:";
+    } else {
+        textfile5.textContent = " ";
+    }
+}
 
 
 

@@ -1,11 +1,8 @@
 <?php
 session_start();
 include "../../../conexion/conexion.php";
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['file']) && isset($_SESSION['usuario'])) {
     $usuario = $_SESSION['usuario'];
-    
-    // Obtener CURP, ID del docente, ApellidoPaterno y ApellidoMaterno
     $stmt = $conexion->prepare("SELECT CURP, id_docente, ApellidoPaterno, ApellidoMaterno FROM docentes WHERE Usuario = ?");
     $stmt->bind_param("s", $usuario);
     $stmt->execute();
@@ -47,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['file']) && isset($_SE
             $opcion = $_POST['opcion'] ?? '';
             $calculo3 = (int) ($_POST['calculo3'] ?? 0);
            
-           if ($customText === 'x') {
+           if ($customText === '9') {
                 $opciones = [
                     '2.2.2' => $calculo3 * 40,
                     '2.2.3' => $calculo3 * 40,

@@ -337,8 +337,7 @@ function obtenerPuntosTotales1_4 ($conexion, $idDocente){
         GROUP BY documento, limite 
         ) AS subquery_3
     ) AS final_query";
-
-        // Ejecutar la consulta para la suma de 1.3.1 + 1.3.2
+    
         $stmt = $conexion->prepare($query);
         $stmt->bind_param("iiiiiiiiii", $idDocente, $idDocente, $idDocente, $idDocente, $idDocente, $idDocente, $idDocente, $idDocente, $idDocente, $idDocente);
         $stmt->execute();
@@ -525,7 +524,7 @@ function obtenerPuntosTotales2_2($conexion, $idDocente) {
                                 ELSE 0 
                             END AS limite
                         FROM documentos
-                        WHERE id_docente = ? AND documento LIKE 'x%'
+                        WHERE id_docente = ? AND documento LIKE '9%'
                     ) AS subquery_2
                     GROUP BY subdocumento, limite
                     UNION ALL

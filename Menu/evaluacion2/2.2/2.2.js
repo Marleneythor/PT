@@ -1,7 +1,7 @@
 console.log('scripts cargado correctamente'); 
 const descripcionesDescripcion = {
     '2.2.1': '• Registro ante Indautor siendo el Titular el Tecnológico Nacional de México',
-    'x': '• Título emitido por el IMPI (no se considera la solicitud ante el IMPI) siendo el Titular el Tecnológico Nacional de México',
+    '9': '• Título emitido por el IMPI (no se considera la solicitud ante el IMPI) siendo el Titular el Tecnológico Nacional de México',
     '2.2.7': '• Registro ante Indautor siendo el Titular el Tecnológico Nacional de México',
     '2.2.8': '• Constancia por parte del Área Central del TecNM.',
     '2.2.9': '• Constancia de la Dirección de Docencia e Innovación Educativa del TecNM.',
@@ -11,7 +11,7 @@ const descripcionesDescripcion = {
     
 const puntosPuntos = {
     '2.2.1': '10',
-    'x': '2.2.2. Modelo de utilidad = 40, \n2.2.3. Patente. (Se considerará patentes durante tres años a partir de la fecha en que se obtiene) = 40, \n2.2.4. Secreto industrial = 40, \n2.2.5. Trazado de circuito integrado = 40, \n2.2.6. Registro de Marca, Signo Distintivo y Lemas Comerciales= 10',
+    '9': '2.2.2. Modelo de utilidad = 40, \n2.2.3. Patente. (Se considerará patentes durante tres años a partir de la fecha en que se obtiene) = 40, \n2.2.4. Secreto industrial = 40, \n2.2.5. Trazado de circuito integrado = 40, \n2.2.6. Registro de Marca, Signo Distintivo y Lemas Comerciales= 10',
     '2.2.7': '10',
     '2.2.8': '30',
     '2.2.9': '50',
@@ -20,7 +20,7 @@ const puntosPuntos = {
 };
 const puntosMax = {
     '2.2.1': '20',
-    'x': '2.2.2. Modelo de utilidad = 80, \n2.2.3. Patente. (Se considerará patentes durante tres años a partir de la fecha en que se obtiene) = 80, \n2.2.4. Secreto industrial = 80, \n2.2.5. Trazado de circuito integrado = 80, \n2.2.6. Registro de Marca, Signo Distintivo y Lemas Comerciales= 20',
+    '9': '2.2.2. Modelo de utilidad = 80, \n2.2.3. Patente. (Se considerará patentes durante tres años a partir de la fecha en que se obtiene) = 80, \n2.2.4. Secreto industrial = 80, \n2.2.5. Trazado de circuito integrado = 80, \n2.2.6. Registro de Marca, Signo Distintivo y Lemas Comerciales= 20',
     '2.2.7': '10',
     '2.2.8': '60',
     '2.2.9': '50',
@@ -40,7 +40,7 @@ function mostrarDescripcion() {
 
     //Mostrar u ocultar el botón según la selección
     const pregunta = document.getElementById('pregunta');
-    pregunta.style.display = (valorSeleccionado === 'x') ? 'flex' : 'none';
+    pregunta.style.display = (valorSeleccionado === '9') ? 'flex' : 'none';
      // Calcular puntos
      const pregunta2_2_1 = document.getElementById('pregunta2_2_1');
      pregunta2_2_1.style.display = (valorSeleccionado === '2.2.1') ? 'flex' : 'none';

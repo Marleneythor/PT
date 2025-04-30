@@ -11,9 +11,7 @@ if (!isset($_SESSION['usuario']) || !isset($_GET['document_type'])) {
 }
 
 $usuario = $_SESSION['usuario'];
-$documentType = htmlspecialchars($_GET['document_type']); // Seguridad en la entrada
-
-// Consultar el id_docente basado en el usuario de la sesión
+$documentType = htmlspecialchars($_GET['document_type']); 
 $stmt = $conexion->prepare("SELECT id_docente FROM docentes WHERE Usuario = ?");
 $stmt->bind_param("s", $usuario);
 $stmt->execute();
@@ -25,15 +23,11 @@ if (empty($idDocente)) {
     echo "<p class='text-danger'>No se encontró el ID del docente asociado al usuario.</p>";
     exit;
 }
-
-// Obtener los puntos acumulados
 $sumaTotal_2_2 = obtenerPuntosTotales2_2($conexion, $idDocente);
 $_SESSION['sumaTotal_2_2'] = $sumaTotal_2_2;
-
-// Definir la consulta según el tipo de documento
 if ($documentType == "9") {
     $query = "
-        SELECT LEAST(SUM(puntos_limited), 50) AS puntos_totales
+        SELECT LEAST(SUM(puntos_limited), 150) AS puntos_totales
         FROM (
             SELECT subdocumento, LEAST(SUM(puntosporactividad), limite) AS puntos_limited
             FROM (
@@ -53,7 +47,7 @@ if ($documentType == "9") {
             GROUP BY subdocumento, limite
         ) AS final_query";
     $stmt = $conexion->prepare($query);
-    $documentoLike = "1.1.5%"; 
+    $documentoLike = "9%"; 
     $stmt->bind_param("is", $idDocente, $documentoLike);
 } elseif (in_array($documentType, ['2.2.1','2.2.7', '2.2.8','2.2.9','2.2.10'])) {
     $query = "
@@ -89,13 +83,11 @@ $puntosTotales = 0;
 $stmt->fetch();
 $stmt->close();
 
-// Mostrar los puntos acumulados
 echo "<div class='d-flex justify-content-between align-items-center mb-2'>";
 echo "<div class='d-flex justify-content-end alert alert-success mb-3'>Puntos Acumulados: <strong>" . htmlspecialchars($sumaTotal_2_2) . "</strong></div>";
 echo "<div class='d-flex justify-content-end alert alert-primary mb-3'>Puntos Totales del Documento ($documentType): <strong>" . htmlspecialchars($puntosTotales) . "</strong></div>";
 echo "</div>";
 
-// Consulta para obtener los documentos y sus puntos
 $stmt = $conexion->prepare("SELECT id_documento, nombre_documento, ruta_archivo, puntosporactividad, subdocumento FROM documentos WHERE id_docente = ? AND documento = ?");
 $stmt->bind_param("is", $idDocente, $documentType);
 $stmt->execute();

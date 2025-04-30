@@ -75,15 +75,7 @@ function mostrarDescripcion() {
 
     const pregunta1_4_9 = document.getElementById('pregunta1_4_9');
     pregunta1_4_9.style.display = (valorSeleccionado === '1.4.9') ? 'flex' : 'none';
-    const info1_4_1 = document.getElementById('info1_4_1');
-    info1_4_1.style.display = (valorSeleccionado === '1.4.1') ? 'flex' : 'none';
-    const info1_4_3 = document.getElementById('info1_4_3');
-    info1_4_3.style.display = (valorSeleccionado === '1.4.3') ? 'flex' : 'none';
-    const info1_4_8_3 = document.getElementById('info1_4_8_3');
-    info1_4_8_3.style.display = (valorSeleccionado === '1.4.8.3') ? 'flex' : 'none';
     
-
-
     // Manejo de subir archivos
     const subir1_4_1 = document.getElementById('subir1_4_1'); // Para 1.4.1 (dos archivos)
     const subir = document.getElementById('subir'); // Para otros casos (un archivo)
@@ -198,5 +190,35 @@ function actualizarTitulo() {
     
     } else {
         titulo.textContent = "";
+    }
+}
+function textFile() {
+    const select = document.getElementById("document_type");
+    const textfile1 = document.getElementById("textfile1");
+    const valorSeleccionado = select.value;
+
+    if (valorSeleccionado.startsWith("1.4.1")) {
+        textfile1.textContent = "Programa de asesoría (PDF, JPG o Word, máximo 500 KB): ";
+    } else if (valorSeleccionado.startsWith("1.4.3")) {
+        textfile1.textContent = "Constancia de la institución organizadora (PDF, JPG o Word, máximo 500 KB):";
+    } else if (valorSeleccionado.startsWith("1.4.8.3")) {
+        textfile1.textContent = "Constancia con los nombres de los participantes (PDF, JPG o Word, máximo 500 KB):";
+    } else {
+        textfile1.textContent = " ";
+    }
+}
+function textFile2() {
+    const select = document.getElementById("document_type");
+    const textfile2 = document.getElementById("textfile2");
+    const valorSeleccionado = select.value;
+
+    if (valorSeleccionado.startsWith("1.4.1")) {
+        textfile2.textContent = "Constancia de cumplimiento (PDF, JPG o Word, máximo 500 KB): ";
+    } else if (valorSeleccionado.startsWith("1.4.3")) {
+        textfile2.textContent = "Constancia emitida por el departamento académico (PDF, JPG o Word, máximo 500 KB):";
+    } else if (valorSeleccionado.startsWith("1.4.8.3")) {
+        textfile2.textContent = "Oficio de autorización de la DDIE o DPII del TecNM (PDF, JPG o Word, máximo 500 KB):";
+    } else {
+        textfile2.textContent = " ";
     }
 }

@@ -260,4 +260,59 @@ function textFile3() {
 }
 
 
+document.addEventListener('DOMContentLoaded', function () {
+    const tipoSelect = document.getElementById('document_type');
+    const submitBtn = document.getElementById('btn-submit');
+    const fileInput = document.getElementById('file');
+    const file1Input = document.getElementById('file1');
+    const file2Input = document.getElementById('file2');
+    const file3Input = document.getElementById('file3');
+    const file4Input = document.getElementById('file4');
+    const file5Input = document.getElementById('file5');
+
+    const camposPorTipo = {
+        '2.1.1.1': ['opcion1'],
+        '2.1.1.2': ['opcion2'],
+        '2.1.1.3': ['opcion3', 'calcular3'],
+        '2.1.1.4': ['opcion4', 'calcular4'],
+        '2.1.1.5': ['opcion5'],
+        '2.1.2.1': ['opcion6', 'calcular6'],
+        '2.1.2.2': ['opcion7', 'calcular7'],
+    };
+
+    const tiposConDosArchivos = ['2.1.1.5', '2.1.2.2'];
+    const tiposConDosArchivos2 = ['2.1.2.1', '2.1.1.4'];
+    function actualizarBoton() {
+        const tipo = tipoSelect.value;
+        const campos = camposPorTipo[tipo] || [];
+
+        const completos = campos.every(id => {
+            const el = document.getElementById(id);
+            return el && el.value.trim() !== '';
+        });
+
+        // Verificar archivos según el tipo
+        let archivosOk = false;
+        if (tiposConDosArchivos.includes(tipo)) {
+            archivosOk = fileInput.value.trim() !== '';
+        } else if (tiposConDosArchivos2.includes(tipo)) {
+            archivosOk = file3Input.value.trim() !== '' && file4Input.value.trim() !== '' && file5Input.value.trim() !== '';
+        }else {
+            archivosOk = file1Input.value.trim() !== '' && file2Input.value.trim() !== '';
+        }
+
+        const todoListo = tipo && completos && archivosOk;
+
+        submitBtn.disabled = !todoListo;
+        submitBtn.style.opacity = todoListo ? 1 : 0.5;
+    }
+
+    document.querySelectorAll('input, select').forEach(el => {
+        el.addEventListener('input', actualizarBoton);
+        el.addEventListener('change', actualizarBoton);
+    });
+
+    actualizarBoton();
+});
+
 

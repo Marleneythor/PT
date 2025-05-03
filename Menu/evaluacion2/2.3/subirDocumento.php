@@ -162,14 +162,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['usuario'])) {
                 $nivelSeleccionado = $opcion4;  
                 
             } elseif ($customText === '2.3.7.2') {
-                $opciones_1_4_5 = [
+                $opciones = [
                     '2.3.7.2.1' => 20,
                     '2.3.7.2.2' => 20,
                     '2.3.7.2.3' => 20,
                     '2.3.7.2.4' => 20,
                     '2.3.7.2.5' => 20,
                 ];
-                $puntosporactividad = $opciones_1_4_6 [$opcion5] ?? 0;
+                $puntosporactividad = $opciones [$opcion5] ?? 0;
                 $nivelSeleccionado = $opcion5; 
         } else {
             $puntosPuntos = [

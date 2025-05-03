@@ -122,30 +122,58 @@ function toggleDocuments() {
     }
 }
 function actualizarText() {
-    console.log("Función hol llamada"); // Para verificar si se ejecuta
-
     const select = document.getElementById("document_type");
     const texto = document.getElementById("texto");
-
-    if (!select || !texto) {
-        console.error("Elemento no encontrado: text");
-        return;
-    }
-
     const valorSeleccionado = select.value;
-    console.log("Valor seleccionado:", valorSeleccionado); // Verifica qué valor se obtiene
 
-    if (valorSeleccionado.startsWith("1.1.1")) {
-        texto.textContent = "Número de asignaturas de licenciatura diferentes por año:";
-    } else if (valorSeleccionado.startsWith("1.1.2")) {
-        texto.textContent = "Número de asignaturas de licenciatura diferentes y adicional a las declaradas en el 1.1.1. (Se considerará a partir de la séptima asignatura diferente por año):";
-    } else if (valorSeleccionado.startsWith("1.1.3")) {
-        texto.textContent = "Número de asignaturas de posgrado diferentes por año:";
-    } else if (valorSeleccionado.startsWith("1.1.6")) {
-        texto.textContent = "Número de  asignaturas por programa educativo acreditado y/o en PNPC/SNP:";
-    } else if (valorSeleccionado.startsWith("1.1.7")) {
-        texto.textContent = "Número de actividades en créditos complementarios autorizados por el Comité Académico o por TecNM:";
-    } else {
-        texto.textContent = " ";
-    }
+    const descripcionText = {
+        '1.1.1': "Número de asignaturas de licenciatura diferentes por año:",
+        '1.1.2': "Número de asignaturas de licenciatura diferentes y adicional a las declaradas en el 1.1.1. (Se considerará a partir de la séptima asignatura diferente por año):",
+        '1.1.3': "Número de asignaturas de posgrado diferentes por año:",
+        '1.1.6': "Número de asignaturas por programa educativo acreditado y/o en PNPC/SNP:",
+        '1.1.7': "Número de actividades en créditos complementarios autorizados por el Comité Académico o por TecNM:"
+    };
+
+    texto.textContent = descripcionText[valorSeleccionado] || " ";
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+    const tipoSelect = document.getElementById('document_type');
+    const submitBtn = document.getElementById('btn-submit');
+    const fileInput = document.getElementById('file');
+
+    const camposPorTipo = {
+        '1.1.4': ['nivel_estudiantes', 'num_estudiantes'],
+        '1.1.5': ['ciclo', 'num_estudiantes_1_1_5'],
+        '1.1.1': ['calculo'],
+        '1.1.2': ['calculo'],
+        '1.1.3': ['calculo'],
+        '1.1.6': ['calculo'],
+        '1.1.7': ['calculo'],
+    };
+
+    function actualizarBoton() {
+        const tipo = tipoSelect.value;
+        const campos = camposPorTipo[tipo] || [];
+
+        const completos = campos.every(id => {
+            const el = document.getElementById(id);
+            return el && el.value.trim() !== '';
+        });
+
+        const fileOk = fileInput.value.trim() !== '';
+
+        const todoListo = tipo && completos && fileOk;
+
+        submitBtn.disabled = !todoListo;
+        submitBtn.style.opacity = todoListo ? 1 : 0.5;
+    }
+
+    // Escuchar todos los inputs y selects
+    document.querySelectorAll('input, select').forEach(el => {
+        el.addEventListener('input', actualizarBoton);
+        el.addEventListener('change', actualizarBoton);
+    });
+
+    actualizarBoton(); // Evaluar al inicio
+});

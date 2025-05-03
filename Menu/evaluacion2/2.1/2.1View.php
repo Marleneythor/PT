@@ -11,39 +11,12 @@ include '../../../Login/auth.php';
     <title>Punto 2.1</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
-    <style>
-        body{
-            background-color: #F1EFEC;
-          
-        }
-        h1{
-            color: white;
-            font-weight: bold;
-           
-        }
-        h2{
-            color: white; 
-        }
-        .menu {
-    background-color:  #003366;
-}
-    .color{
-        background-color: #F1EFEC !important;
-    }
-    .titulo{
-        background-color: #003366 !important;
-    }
-    .form-label{
-        font-weight: bold;
-    }
-
-
-    </style>
+    <link rel="stylesheet" href="../../style.css">
 </head>
 <body class="vh-100 d-flex flex-column">
     <div class="sticky-top bg-white p-3 shadow titulo">
         <div class="d-flex align-items-center position-relative">
-            <button class="btn btn-secondary position-absolute start-0" onclick="history.back();" aria-label="Regresar a la página anterior">
+            <button class="btn btn-secondary position-absolute start-0" onclick="history.back();" aria-label="Regresar a la página anterior"  id="formulario">
                 <i class="bi bi-arrow-left"></i>
             </button>
             <h2 class="text-center flex-grow-1 mb-0">2.1. PRODUCCIÓN CIENTÍFICA, TECNOLÓGICA, CUERPOS ACADÉMICOS, REDES DE INVESTIGACIÓN DEL TECNM</h2>
@@ -291,7 +264,7 @@ include '../../../Login/auth.php';
 
         
                 <div class="text-center">
-                    <input type="submit" value="Subir Archivo" class="btn btn-primary">   
+                    <input type="submit" value="Subir Archivo" class="btn btn-primary" id="btn-submit" disabled style="opacity: 0.5;">
                 </div> 
             </div>
         </form>

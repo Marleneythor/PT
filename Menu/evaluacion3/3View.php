@@ -11,32 +11,7 @@ include '../../Login/auth.php';
     <title>Punto 3</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
-    <style>
-        body{
-            background-color: #F1EFEC;
-          
-        }
-        h1{
-            color: white;
-            font-weight: bold;
-           
-        }
-        h2{
-            color: white; 
-        }
-        .menu {
-    background-color:  #123458;
-}
-    .color{
-        background-color: #F1EFEC !important;
-    }
-    .titulo{
-        background-color: #123458 !important;
-    }
-    .form-label{
-        font-weight: bold;
-    }
-    </style>
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body class="vh-100 d-flex flex-column">
     <div class="sticky-top bg-white p-3 shadow titulo">
@@ -50,7 +25,7 @@ include '../../Login/auth.php';
             
     </div>
     <div class="container mt-3 flex-grow-1 overflow-auto">
-        <form action="subirDocumento.php" method="post" enctype="multipart/form-data" class="p-4 border rounded bg-light mb-3">
+        <form action="subirDocumento.php" method="post" enctype="multipart/form-data" class="p-4 border rounded bg-light mb-3" id="formulario">
             <div class="row g-3 mb-3 align-items-center">
             <h3 id="titulo"class="text-center flex-grow-1 mb-0"></h3>
                 <div class="col-md-6">
@@ -91,7 +66,7 @@ include '../../Login/auth.php';
                 <div class="row g-3 mb-3 align-items-center" id="pregunta3_1_1" style="display: none;" >
                     <div class="col-md-6">
                         <label for="opcion_1" class="form-label">Cursos resividos como:</label>
-                        <select name="opcion_1" id="nivel_poopcion_1sgrado" class="form-select">
+                        <select name="opcion_1" id="opcion_1" class="form-select">
                             <option value="" selected disabled>-- Seleccione --</option>
                             <option value="3.1.1.1">Formación docente</option>
                             <option value="3.1.1.2">Actualización Profesional</option>
@@ -177,7 +152,7 @@ include '../../Login/auth.php';
             </div>
 
             <div class="mb-4 text-center">
-                <input type="submit" value="Subir Archivo" class="btn btn-primary">   
+                <input type="submit" value="Subir Archivo" class="btn btn-primary" id="btn-submit" disabled style="opacity: 0.5;"> 
             </div> 
             
         </form>

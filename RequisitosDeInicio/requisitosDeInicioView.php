@@ -9,32 +9,7 @@ include '../Login/auth.php'; // Protege la página
     <title>RI</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
-    <style>
-        body{
-            background-color: #F1EFEC;
-          
-        }
-        h1{
-            color: white;
-            font-weight: bold;
-           
-        }
-        h2{
-            color: white; 
-        }
-        .menu {
-    background-color:  #123458;
-}
-    .color{
-        background-color: #F1EFEC !important;
-    }
-    .titulo{
-        background-color: #123458 !important;
-    }
-    .form-label{
-        font-weight: bold;
-    }
-    </style>
+    <link rel="stylesheet" href="../Menu/style.css">
 </head>
 <body class="vh-100 d-flex flex-column">
     <div class="sticky-top bg-white p-3 shadow titulo">
@@ -47,7 +22,7 @@ include '../Login/auth.php'; // Protege la página
         </div>
     </div>
     <div class="container mt-3 flex-grow-1 overflow-auto">
-        <form action="requisitosDeInicio.php" method="post" enctype="multipart/form-data" class="p-4 border rounded bg-light mb-3">
+        <form action="requisitosDeInicio.php" method="post" enctype="multipart/form-data" class="p-4 border rounded bg-light mb-3" id="formulario">
             <div class="row g-3 mb-3 align-items-center">
                 <div class="col-md-6">
                     <label for="document_type" class="form-label">Selecciona el número de requisito:</label>
@@ -122,15 +97,13 @@ include '../Login/auth.php'; // Protege la página
 
 
             <div class="text-center d-flex justify-content-center gap-3">
-                <input type="submit" value="Subir Archivo" class="btn btn-primary">
+            <input type="submit" value="Subir Archivo" class="btn btn-primary" id="btn-submit" disabled style="opacity: 0.5;"> 
                 <div id="botonCrearDocumento" style="display: none;">
                     <button onclick="crearDocumento()" class="btn btn-success">Crear Documento</button>
                 </div>
             </div>
 
         </form>
-
-        
 
     </div>
     <div class="sticky-top p-3 shadow menu">

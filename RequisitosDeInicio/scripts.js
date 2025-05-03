@@ -71,7 +71,7 @@ document.getElementById('file').addEventListener('change', function () {
 });
 
 function crearDocumento() { 
-    window.location.href = 'RI7.php';  // Ruta absoluta a partir de la raíz del servidor
+    window.location.href = 'RI7.php';  
     
 }
 
@@ -87,7 +87,6 @@ function eliminarArchivo(idDocumento, rutaArchivo) {
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4 && xhr.status === 200) {
                 alert(xhr.responseText);
-                // Recargar los documentos después de la eliminación
                 document.getElementById('document_type').dispatchEvent(new Event('change'));
             }
         };
@@ -108,3 +107,37 @@ function toggleDocuments() {
     }
 }
 
+
+document.addEventListener('DOMContentLoaded', function () {
+    const tipoSelect = document.getElementById('document_type');
+    const submitBtn = document.getElementById('btn-submit');
+    const fileInput = document.getElementById('file');
+
+    const camposPorTipo = {
+        'RI7': ['nivel_estudiantes', 'num_estudiantes', 'calculo', 'calculo2', 'calculo3'],
+        'RI10': ['opcion_10'],
+    };
+
+    function actualizarBoton() {
+        const tipo = tipoSelect.value;
+        const campos = camposPorTipo[tipo] || [];
+
+        const completos = campos.every(id => {
+            const el = document.getElementById(id);
+            return el && el.value.trim() !== '';
+        });
+
+        const fileOk = fileInput.value.trim() !== '';
+
+        const todoListo = tipo && completos && fileOk;
+
+        submitBtn.disabled = !todoListo;
+        submitBtn.style.opacity = todoListo ? 1 : 0.5;
+    }
+
+    document.querySelectorAll('input, select').forEach(el => {
+        el.addEventListener('input', actualizarBoton);
+        el.addEventListener('change', actualizarBoton);
+    });
+    actualizarBoton();
+});

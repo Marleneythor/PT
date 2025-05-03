@@ -11,39 +11,12 @@ include '../../../Login/auth.php';
     <title>Punto 1.4</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
-    <style>
-        body{
-            background-color: #F1EFEC;
-          
-        }
-        h1{
-            color: white;
-            font-weight: bold;
-           
-        }
-        h2{
-            color: white; 
-        }
-        .menu {
-    background-color:  #003366;
-}
-    .color{
-        background-color: #F1EFEC !important;
-    }
-    .titulo{
-        background-color: #003366 !important;
-    }
-    .form-label{
-        font-weight: bold;
-    }
-
-
-    </style>
+    <link rel="stylesheet" href="../../style.css">
 </head>
 <body class="vh-100 d-flex flex-column">
     <div class="sticky-top bg-white p-3 shadow titulo">
         <div class="d-flex align-items-center position-relative">
-            <button class="btn btn-secondary position-absolute start-0" onclick="history.back();" aria-label="Regresar a la página anterior">
+            <button class="btn btn-secondary position-absolute start-0" onclick="history.back();" aria-label="Regresar a la página anterior" id="formulario">
                 <i class="bi bi-arrow-left"></i>
             </button>
             <h1 class="text-center flex-grow-1 mb-0">1.4 ACTIVIDADES ACADÉMICAS</h1>
@@ -58,7 +31,6 @@ include '../../../Login/auth.php';
                     <label for="document_type" class="form-label">Selecciona el número de documento:</label>
                     <select name="document_type" id="document_type" class="form-select" required onchange="cargarDocumentoSeleccionado1(); mostrarDescripcion(); actualizarTitulo(); textFile();textFile2();">
                         <option value="" selected disabled>-- Seleccione --</option>
-                        <option value="" selected disabled>-- Seleccione --</option>
                         <option value="1.4.1">1.4.1. Asesoría en ciencias básicas (45 Posibles puntos).</option>
                         <option value="1.4.2">1.4.2. Asesoría en concursos académicos (20 Posibles puntos).</option>
                         <option value="1.4.3">1.4.3. Asesoría a estudiantes premiados (50 Posibles puntos).</option>
@@ -66,7 +38,6 @@ include '../../../Login/auth.php';
                         <option value="1.4.5">1.4.5. Jurado en eventos académicos (40 Posibles puntos).</option>
                         <option value="1.4.6">1.4.6. Evaluación de proyectos y acreditaciones (30 Posibles puntos).</option>
                         <option value="1.4.7">1.4.7. Participación en auditorías (30 Posibles puntos).</option>
-
                         <option value="1.4.8.1">1.4.8.1. Planes y programas de estudio</option>
                         <option value="1.4.8.2">1.4.8.2. Diseño de módulos de especialidad</option>
                         <option value="1.4.8.3">1.4.8.3. Estudios de factibilidad</option>
@@ -271,7 +242,7 @@ include '../../../Login/auth.php';
             </div>
         </div>
                 <div class="text-center">
-                    <input type="submit" value="Subir Archivo" class="btn btn-primary">   
+                    <input type="submit" value="Subir Archivo" class="btn btn-primary" id="btn-submit" disabled style="opacity: 0.5;">
                 </div> 
             </div>
         </form>

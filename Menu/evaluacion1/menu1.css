@@ -5,13 +5,7 @@ h1 {
   
   }
   
-/* Colores de los botones */
-/* Cambia los colores de los botones */
-.btn-secondary { background-color: #4e87c0; } /* Azul brillante */
-.btn-success { background-color: #003366; }   /* Verde */
 .btn-info { background-color: #123458; }      /* Azul turquesa */
-.btn-warning { background-color: #123458; }   /* Amarillo */
-.btn-escape { background-color: #ede2d3; }    /* Verde agua */
 
 
 

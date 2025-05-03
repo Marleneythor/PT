@@ -16,7 +16,14 @@ include '../Login/auth.php'; // Protege la página
             font-family: 'Roboto', sans-serif;
             background-color: #F1EFEC;
         }
+        .boton {
+            background-color: #123458;
+          
+        }
+
+      
     </style>
+
 </head>
 <body class="bg-gray-100 text-gray-900" style="background-color: #F1EFEC;">
 
@@ -32,10 +39,10 @@ include '../Login/auth.php'; // Protege la página
         <p class="text-lg text-gray-700 mb-6">Seleccione un bloque para almacenar sus documentos</p>
         
         <div class="flex flex-wrap justify-center gap-4">
-            <a href="../Menu/evaluacion1/menuE1.php" class="bg-blue-900 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-300 hover:text-gray-900 transition">1. La dedicación en las actividades de la docencia</a>
-            <a href="../Menu/evaluacion2/menuE2.php" class="bg-blue-900 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-300 hover:text-gray-900 transition">2. La calidad en el desempeño de la docencia</a>
-            <a href="../Menu/evaluacion3/3View.php" class="bg-blue-900 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-300 hover:text-gray-900 transition">3. La permanencia en las actividades de la docencia</a>
-            <a href="../Menu/generarEva/evaFinal.php" class="bg-blue-900 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-300 hover:text-gray-900 transition">Generar Evaluación</a>
+            <a href="evaluacion1/menuE1.php" class="boton text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-300 hover:text-gray-900 transition">1. La dedicación en las actividades de la docencia</a>
+            <a href="evaluacion2/menuE2.php"class="boton text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-300 hover:text-gray-900 transition">2. La calidad en el desempeño de la docencia</a>
+            <a href="evaluacion3/3View.php" class="boton text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-300 hover:text-gray-900 transition">3. La permanencia en las actividades de la docencia</a>
+            <a href="generarEva/evaFinal.php" class="boton text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-300 hover:text-gray-900 transition">Generar Evaluación</a>
 
         </div>
     </div>

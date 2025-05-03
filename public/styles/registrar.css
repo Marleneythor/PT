@@ -1,12 +1,12 @@
 
 body {
       
-  background-color: #D1F8EF;
+  background-color: #123458;
     padding: 20px; /* Espacio alrededor de toda la página */
 }
 
 .register-container {
-    background-color: #FFFFFF; /* Fondo del formulario */
+    background-color: #F1EFEC; /* Fondo del formulario */
     border: 2px solid #40A2D8; /* Borde del formulario */
     padding: 30px; /* Espacio interno del formulario */
     margin: 20px; /* Margen externo para separar del borde del navegador */

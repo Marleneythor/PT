@@ -137,7 +137,6 @@ function toggleDocuments() {
         button.innerHTML = '▼'; 
     }
 }
-
 function actualizarTitulo() {
     console.log("Función actualizarTitulo llamada"); // Para verificar si se ejecuta
 
@@ -160,32 +159,71 @@ function actualizarTitulo() {
         titulo.textContent = "Seleccione una opción";
     }
 }
-function actualizarText() {
-    console.log("Función hol llamada"); // Para verificar si se ejecuta
 
+function actualizarText() {
+    console.log("Función actualizarText llamada"); 
     const select = document.getElementById("document_type");
     const texto = document.getElementById("texto");
 
     if (!select || !texto) {
-        console.error("Elemento no encontrado: text");
+        console.error("Elemento no encontrado: select o texto");
         return;
     }
 
     const valorSeleccionado = select.value;
-    console.log("Valor seleccionado:", valorSeleccionado); // Verifica qué valor se obtiene
-
-    if (valorSeleccionado.startsWith("1.2.1.1")) {
-        texto.textContent = "¿Cuántos Proyectos Integradores y/o Recursos Educativos Digitales ha realizado para una asignatura del plan de estudios oficial?";
-    } else if (valorSeleccionado.startsWith("1.2.1.2")) {
-        texto.textContent = "¿Cuántos manuales de prácticas elaboró para el desarrollo de competencias en los planes de estudio 2009 y posteriores?";
-    } else if (valorSeleccionado.startsWith("1.2.1.3")) {
-        texto.textContent = "¿Cuántas estrategias didácticas innovadoras ha implementado en el aula por asignatura, como estudio de casos, aprendizaje basado en problemas, aprendizaje basado en proyectos, aprendizaje experiencial, aula invertida, y escenarios y ambientes virtuales?";
-    } else if (valorSeleccionado.startsWith("1.2.1.4")) {
-        texto.textContent = "¿Cuántos materiales didácticos diseñó y desarrolló con enfoque incluyente para las asignaturas?";
-    } else {
-        texto.textContent = " ";
-    }
+    console.log("Valor seleccionado:", valorSeleccionado); 
+    const textos = {
+        "1.2.1.1": "¿Cuántos Proyectos Integradores y/o Recursos Educativos Digitales ha realizado para una asignatura del plan de estudios oficial?",
+        "1.2.1.2": "¿Cuántos manuales de prácticas elaboró para el desarrollo de competencias en los planes de estudio 2009 y posteriores?",
+        "1.2.1.3": "¿Cuántas estrategias didácticas innovadoras ha implementado en el aula por asignatura, como estudio de casos, aprendizaje basado en problemas, aprendizaje basado en proyectos, aprendizaje experiencial, aula invertida, y escenarios y ambientes virtuales?",
+        "1.2.1.4": "¿Cuántos materiales didácticos diseñó y desarrolló con enfoque incluyente para las asignaturas?"
+    };
+    texto.textContent = textos[valorSeleccionado] || " ";
 }
 
+document.getElementById("document_type").addEventListener('change', function() {
+    actualizarTitulo(); 
+    actualizarText();  
+});
 
+document.addEventListener('DOMContentLoaded', function () {
+    const tipoSelect = document.getElementById('document_type');
+    const submitBtn = document.getElementById('btn-submit');
+    const fileInput = document.getElementById('file');
 
+    const camposPorTipo = {
+        '1.2.1.1': ['calcular'],
+        '1.2.1.2': ['calcular'],
+        '1.2.1.3': ['calcular'],
+        '1.2.1.4': ['calcular'],
+        '1.2.2.1': ['horas'],
+        '1.2.2.2': ['horas'],
+        '1.2.2.3': ['horas'], 
+        '1.2.2.4': ['horas'], '1.2.2.5': ['horas'], '1.2.2.6': ['horas'], '1.2.2.7': ['horas'],
+    };
+
+    function actualizarBoton() {
+        const tipo = tipoSelect.value;
+        const campos = camposPorTipo[tipo] || [];
+
+        const completos = campos.every(id => {
+            const el = document.getElementById(id);
+            return el && el.value.trim() !== '';
+        });
+
+        const fileOk = fileInput.value.trim() !== '';
+
+        const todoListo = tipo && completos && fileOk;
+
+        submitBtn.disabled = !todoListo;
+        submitBtn.style.opacity = todoListo ? 1 : 0.5;
+    }
+
+    // Escuchar todos los inputs y selects
+    document.querySelectorAll('input, select').forEach(el => {
+        el.addEventListener('input', actualizarBoton);
+        el.addEventListener('change', actualizarBoton);
+    });
+
+    actualizarBoton(); // Evaluar al inicio
+});

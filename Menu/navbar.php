@@ -3,7 +3,7 @@
             
         ?>
 
-        <nav class="w-full bg-blue-900 shadow-lg">
+        <nav class="w-full bg-blue-900 shadow-lg" style="background-color: #123458;">
             <div class="container mx-auto flex items-center justify-between px-4 py-3">
                 <div class="flex items-center">
                     <img src="<?=$URL_BASE?>/public/images/fondo.png" class="w-16 h-auto mr-4" alt="Logo">

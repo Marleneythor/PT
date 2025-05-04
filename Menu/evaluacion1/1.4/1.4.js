@@ -222,3 +222,56 @@ function textFile2() {
         textfile2.textContent = " ";
     }
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+    const tipoSelect = document.getElementById('document_type');
+    const submitBtn = document.getElementById('btn-submit');
+    const fileInput = document.getElementById('file');
+    const file1Input = document.getElementById('file1');
+    const file2Input = document.getElementById('file2');
+
+    const camposPorTipo = {
+        '1.4.1': ['num_estudiantes_1_4_1'],
+        '1.4.2': ['opcion_1_4_2'],
+        '1.4.3': ['opcion_1_4_3', 'calculo3'],
+        '1.4.4': ['opcion_1_4_4', 'calculo4'],
+        '1.4.5': ['opcion_1_4_5', 'calculo5'],
+        '1.4.6': ['opcion_1_4_6', 'calculo6'],
+        '1.4.7': ['opcion_1_4_7', 'calculo7'],
+        '1.4.8.1': ['opcion_1_4_8_1', 'calculo8'],
+        '1.4.8.3': ['calculo8_3'],
+        '1.4.9': ['opcion_1_4_9', 'calculo1'],
+    };
+
+    const tiposConDosArchivos = ['1.4.1', '1.4.3', '1.4.8.3'];
+
+    function actualizarBoton() {
+        const tipo = tipoSelect.value;
+        const campos = camposPorTipo[tipo] || [];
+
+        const completos = campos.every(id => {
+            const el = document.getElementById(id);
+            return el && el.value.trim() !== '';
+        });
+
+        // Verificar archivos según el tipo
+        let archivosOk = false;
+        if (tiposConDosArchivos.includes(tipo)) {
+            archivosOk = file1Input.value.trim() !== '' && file2Input.value.trim() !== '';
+        } else {
+            archivosOk = fileInput.value.trim() !== '';
+        }
+
+        const todoListo = tipo && completos && archivosOk;
+
+        submitBtn.disabled = !todoListo;
+        submitBtn.style.opacity = todoListo ? 1 : 0.5;
+    }
+
+    document.querySelectorAll('input, select').forEach(el => {
+        el.addEventListener('input', actualizarBoton);
+        el.addEventListener('change', actualizarBoton);
+    });
+
+    actualizarBoton();
+});

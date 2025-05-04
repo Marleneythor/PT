@@ -26,7 +26,7 @@ if (empty($idDocente)) {
 
 // Obtener los puntos acumulados
 $sumaTotal_1_2 = obtenerPuntosTotales1_2($conexion, $idDocente);
-$_SESSION['suma_total1_2'] = $sumaTotal_1_2;
+$_SESSION['suma_total_1_2'] = $sumaTotal_1_2;
 
 // Consultar los puntos del documento
 $stmt = $conexion->prepare("

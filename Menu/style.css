@@ -1,0 +1,22 @@
+body{
+    background-color: #F1EFEC;  
+}
+h1{
+    color: white;
+    font-weight: bold; 
+}
+h2{
+    color: white; 
+}
+.menu {
+background-color:  #123458;
+}
+.color{
+    background-color: #F1EFEC !important;
+}
+.titulo{
+    background-color: #123458 !important;
+}
+.form-label{
+    font-weight: bold;
+}

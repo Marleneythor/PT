@@ -32,7 +32,7 @@ $result = mysqli_query($conexion, $query);
             <?php while ($row = mysqli_fetch_assoc($result)) { ?>
                 <div class="grid grid-cols-3 bg-white p-3 mt-2 shadow rounded">
                     <div class="text-center"><?php echo htmlspecialchars($row['nombre_completo']); ?></div>
-                    <div class="text-center"><?php echo htmlspecialchars($row['puntaje_total']); ?></div>
+                    <div id="puntos" class="fs-5 fw-bold text-dark mb-0 text-center">0</div>
                     <div class="text-center">
                         <a href="detalle.php?id=<?php echo $row['id_docente']; ?>" class="bg-blue-600 text-white px-4 py-2 rounded">Ver Detalles</a>
                     </div>
@@ -40,5 +40,13 @@ $result = mysqli_query($conexion, $query);
             <?php } ?>
         </div>
     </div>
+    <script>
+        fetch('puntos.php')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('puntos').innerHTML = data;
+            })
+            .catch(error => console.error('Error:', error));
+    </script>
 </body>
 </html>

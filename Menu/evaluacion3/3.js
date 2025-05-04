@@ -140,4 +140,41 @@ function actualizarTitulo() {
     } else {
         titulo.textContent = "Seleccione una opción";
     }
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    const tipoSelect = document.getElementById('document_type');
+    const submitBtn = document.getElementById('btn-submit');
+    const fileInput = document.getElementById('file');
+
+    const camposPorTipo = {
+        '3.1.1': ['opcion_1', 'calculo1'],
+        '3.1.2': ['opcion_2'],
+        '3.2.1': ['opcion_3', 'calculo3'],
+        '3.2.2': ['opcion_4', 'calculo4'],
+        '3.3': ['opcion_5', 'calculo5'],
+    };
+
+    function actualizarBoton() {
+        const tipo = tipoSelect.value;
+        const campos = camposPorTipo[tipo] || [];
+
+        const completos = campos.every(id => {
+            const el = document.getElementById(id);
+            return el && el.value.trim() !== '';
+        });
+
+        const fileOk = fileInput.value.trim() !== '';
+
+        const todoListo = tipo && completos && fileOk;
+
+        submitBtn.disabled = !todoListo;
+        submitBtn.style.opacity = todoListo ? 1 : 0.5;
     }
+
+    document.querySelectorAll('input, select').forEach(el => {
+        el.addEventListener('input', actualizarBoton);
+        el.addEventListener('change', actualizarBoton);
+    });
+    actualizarBoton();
+});
